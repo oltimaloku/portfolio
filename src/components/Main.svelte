@@ -5,6 +5,7 @@
     {
       name: "IDEA",
       icon: "fa-solid fa-notes-medical",
+      href: "/idea",
       technologies: [
         {
           name: "Flutter",
@@ -27,6 +28,7 @@
     {
       name: "Geo Real",
       icon: "fa-solid fa-earth-americas",
+      href: "/georeal",
       technologies: [
         {
           name: "Flutter",
@@ -45,6 +47,7 @@
     {
       name: "Reddit DBMS",
       icon: "fa-brands fa-reddit",
+      href: "reddit-dbms",
       technologies: [
         {
           name: "Java",
