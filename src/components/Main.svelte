@@ -47,7 +47,7 @@
     {
       name: "Reddit DBMS",
       icon: "fa-brands fa-reddit",
-      href: "reddit-dbms",
+      href: "/reddit-dbms",
       technologies: [
         {
           name: "Java",
