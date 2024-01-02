@@ -1,12 +1,23 @@
 <script>
-  import { onMount } from "svelte";
+  import Idea from "../../../components/projects/Idea.svelte";
+  import GeoReal from "../../../components/projects/GeoReal.svelte";
+  import Dbms from "../../../components/projects/Dbms.svelte";
 
   export let data;
-  console.log(data.title);
+
+  let ComponentToRender;
+  $: {
+    if (data?.project === "idea") {
+      ComponentToRender = Idea;
+      console.log("hello");
+    } else if (data?.project === "georeal") {
+      ComponentToRender = GeoReal;
+    } else if (data?.project === "dbms") {
+      ComponentToRender = Dbms;
+    } else {
+      ComponentToRender = null; // or some default component
+    }
+  }
 </script>
 
-<article>
-  <h1>{data.title}</h1>
-  <p>Published: {data.date}</p>
-  <svelte:component this={data.content} />
-</article>
+<svelte:component this={ComponentToRender} />

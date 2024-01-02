@@ -6,11 +6,11 @@ const config = {
   kit: {
     adapter: adapter()
   },
-  extensions: ['.svelte', '.md'],
+  extensions: ['.svelte', '.md', '.svx'],
   preprocess: [
     vitePreprocess(),
     mdsvex({
-      extensions: ['.md']
+      extensions: ['.md', 'svx']
     })
   ]
 };
