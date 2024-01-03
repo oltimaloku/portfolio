@@ -12,7 +12,7 @@
       console.log("hello");
     } else if (data?.project === "georeal") {
       ComponentToRender = GeoReal;
-    } else if (data?.project === "dbms") {
+    } else if (data?.project === "reddit-dbms") {
       ComponentToRender = Dbms;
     } else {
       ComponentToRender = null; // or some default component
