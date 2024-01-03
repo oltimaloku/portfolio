@@ -30,7 +30,7 @@
           I embarked on an exciting project called IDEA (Interactive Daily
           Epilepsy Assistant) while working as a Product Manager Intern and
           Software Engineer Intern at <a
-            class="text-purple-500"
+            class="text-red-400"
             href="https://www.edeecare.com/"
             target="_blank">Edee Care</a
           >, a startup dedicated to creating solutions for people with epilepsy.
@@ -116,15 +116,15 @@
       initiated by feedback from V1 testing and the addition of new UX
       designers. This phase included a revamp of Edee Care’s visual style,
       resulting in a major rewrite of the frontend code for better integration
-      of design changes, and <a href="#SManagement" class="text-violet-500"
+      of design changes, and <a href="#SManagement" class="text-red-400"
         >improvements in state management</a
       >
       for enhanced performance and scalability. We also updated our
-      <a href="#Database" class="text-violet-500">database schema </a>for
-      greater user customization,
-      <a href="#Backend" class="text-violet-500">transitioned our backend</a>
+      <a href="#Database" class="text-red-400">database schema </a>for greater
+      user customization,
+      <a href="#Backend" class="text-red-400">transitioned our backend</a>
       from JavaScript to TypeScript for increased robustness, and refined the
-      <a href="#Health" class="text-violet-500"
+      <a href="#Health" class="text-red-400"
         >onboarding and health integration</a
       >
       processes to better cater to individual user needs.

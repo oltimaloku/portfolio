@@ -4,7 +4,7 @@
 
 <a
   href={`/projects${step.href}`}
-  class="p-4 sm:p-6 md:p-8 flex flex-col gap-4 rounded-lg border border-solid border-violet-700 text-center group cursor-pointer hover:border-violet-400 duration-200"
+  class="p-4 sm:p-6 md:p-8 flex flex-col gap-4 rounded-lg border border-solid border-red-700 text-center group cursor-pointer hover:border-red-400 duration-200"
 >
   <div
     class="bg-slate-950 grid place-items-center px-4 text-5xl md:text-6xl -mt-10 sm:-mt-12 mx-auto duration-200"

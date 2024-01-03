@@ -75,14 +75,16 @@
       class="flex flex-col lg:justify-center text-center gap-6 md:gap-8 lg:gap-10"
     >
       <h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl">
-        Hi! I'm <span class="poppins text-violet-400">Olti</span> Maloku <br />
+        Hi! I'm <span class="poppins text-red-400">Olti</span> Maloku <br />
         Full Stack
-        <span class="poppins text-violet-400">Developer</span>
+        <span class="poppins text-red-400">Developer</span>
       </h2>
       <p class="text-base sm:text-lg md:text-xl">
-        My <span class="text-violet-400">favourite tech</span> includes Javascript
-        (NEXT.JS or SvelteKit), TailwindCSS, Node.js + Express.js & PostgreSQL or
-        Firebase/Firestore!
+        I'm currently studying <span class="text-red-400">
+          Computer Science</span
+        >
+        and <span class="text-red-400">Business</span>
+        at the University of British Columbia!
       </p>
       <a
         class="blueShadow mx-auto lg:mr-auto text-base sm:text-lg md:text-xl poppins relative overflow-hidden px-6 py-3 group rounded-full bg-white text-slate-950 cursor-pointer"
@@ -90,7 +92,7 @@
         target="_blank"
       >
         <div
-          class="absolute top-0 right-full w-full h-full bg-violet-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
+          class="absolute top-0 right-full w-full h-full bg-red-400 opacity-20 group-hover:translate-x-full z-0 duration-200"
         />
         <h4 class="relative z-9">Get in touch &rarr;</h4>
       </a>
@@ -102,7 +104,7 @@
         A few of my creative endeavors.
       </h6>
       <h3 class="text-3xl font-semibold sm:text-4xl md:text-5xl">
-        Curious to <span class="poppins text-violet-400">see</span> my work?
+        Curious to <span class="poppins text-red-400">see</span> my work?
       </h3>
     </div>
 
@@ -135,9 +137,45 @@
           facilitates user functionalities such as creating posts, joining
           communities, and awarding commendations. The project primarily
           emphasizes proficient database handling, ensuring seamless
-          interactions akin to mainstream platforms.
+          interactions.
         </p>
       </Step>
+    </div>
+  </section>
+  <section id="about" class="text-center justify-center items-center mb-40">
+    <h3 class="text-3xl font-semibold sm:text-4xl md:text-5xl my-4">
+      About me
+    </h3>
+    <div class="flex justify-center my-8">
+      <div
+        class="border h-64 w-64 overflow-hidden rounded-full flex flex-col justify-center items-center"
+      >
+        <img
+          src="../../src/assets/profile_photo.PNG"
+          class="object-cover w-full h-full rounded-full"
+        />
+      </div>
+    </div>
+    <div class="space-y-4 lg:mx-64 md:mx-16 sm:mx-8">
+      <h6 class="">
+        I am currently in my third year of studies at the University of British
+        Columbia. As a fervent soccer enthusiast, musician, and fitness devotee,
+        I find joy and fulfillment in a diverse range of activities. My love for
+        piano playing not only hones my artistic skills but also offers a
+        harmonious balance to my rigorous academic schedule.
+      </h6>
+      <h6 class="">
+        Beyond these interests, my fascination with the world of technology
+        plays a significant role in my pursuits. My technical interests
+        primarily focus on mobile app development, and web development.
+        Recently, I have found myself drawn to the space of virtual reality.
+        These areas not only captivate my curiosity but also fuel my ambition to
+        build and create innovative solutions.
+      </h6>
+      <h6 class="">
+        For a detailed overview of my professional journey and projects, feel
+        free to explore my resume [here].
+      </h6>
     </div>
   </section>
 </main>
