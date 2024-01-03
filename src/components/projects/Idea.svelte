@@ -62,7 +62,7 @@
       <div class="flex justify-center">
         <img
           src="../../src/assets/journal1.png"
-          class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8"
+          class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8 my-6"
         />
       </div>
     </div>
