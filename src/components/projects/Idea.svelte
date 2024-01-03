@@ -25,7 +25,7 @@
   <div class="m-8 space-y-4">
     <div class="flex flex-col lg:flex-row items-center lg:m-8 xl:m-16 2xl:m-32">
       <div class=" p-8">
-        <h1 class="">The Project</h1>
+        <h1 class="leading-tight">The Project</h1>
         <p class="mb-16">
           I embarked on an exciting project called IDEA (Interactive Daily
           Epilepsy Assistant) while working as a Product Manager Intern and
@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <h1>Project Phases</h1>
+    <h1 class="leading-tight">Project Phases</h1>
 
     <h2>1. IDEA SMS Pilot Program</h2>
 
@@ -131,7 +131,9 @@
     </p>
     <img src="../../src/assets/new_ui.PNG" />
     <div>
-      <h1 id="SManagement">Transition to Scalable State Management</h1>
+      <h1 id="SManagement" class="leading-tight">
+        Transition to Scalable State Management
+      </h1>
 
       <p>
         Initially, our app architecture relied on "parameter passing" for state
@@ -159,7 +161,9 @@
         maintainability.
       </p>
 
-      <h1 id="Database">Rethinking the Database Schema for Customization</h1>
+      <h1 id="Database" class="leading-tight">
+        Rethinking the Database Schema for Customization
+      </h1>
 
       <p>
         The original database design in MongoDB centered around a "User" object.
@@ -221,7 +225,9 @@
         health application.
       </p>
 
-      <h1 id="Backend">Transitioning the Backend to TypeScript</h1>
+      <h1 id="Backend" class="leading-tight">
+        Transitioning the Backend to TypeScript
+      </h1>
 
       <p>
         A key decision in our development process was the transition from
@@ -252,7 +258,7 @@
 
       <div class="lg:flex lg:items-center">
         <div class="lg:w-1/2">
-          <h1 id="Health">
+          <h1 id="Health" class="leading-tight">
             Enhanced Onboarding and Health Integration Process
           </h1>
 
