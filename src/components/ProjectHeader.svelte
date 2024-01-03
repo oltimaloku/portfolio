@@ -3,7 +3,7 @@
   export let date;
 </script>
 
-<div class="m-8 p-8 border rounded border-solid border-violet-700">
+<div class="p-8 border rounded border-solid border-violet-700">
   <div class="flex justify-center w-full">
     <div class="flex flex-col items-center justify-between">
       <h1 class="text-2xl">{title}</h1>

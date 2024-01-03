@@ -4,9 +4,8 @@
   let date = "September 2023 - December 2023";
 </script>
 
-<ProjectHeader {title} {date} />
-
-<div class="m-8">
+<div class="lg:mx-32 md:mx-16 mx-8 my-4">
+  <ProjectHeader {title} {date} />
   <h1>Project Overview</h1>
   <p>
     As part of the Introduction to Relational Databases course (CPSC 213) at the
@@ -23,7 +22,7 @@
     (ER) diagram to outline the database structure. The ER diagram, which laid
     the foundation for our database design, is illustrated below:
   </p>
-  <img src="../../src/assets/Er_diagram.png" />
+  <img src="../../src/assets/Er_diagram.png" class="" />
   <p>
     This is an example of what our database management system looks like with
     some test data:
@@ -65,6 +64,7 @@
     padding-top: 20px;
     font-weight: bold;
     padding-bottom: 20px;
+    line-height: 1.25;
   }
 
   h2 {

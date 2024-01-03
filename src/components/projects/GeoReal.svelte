@@ -4,10 +4,9 @@
   let date = "October 2022, August 2023 - September 2023";
 </script>
 
-<div class="m-8">
+<div class="lg:mx-32 md:mx-16 mx-8 my-4">
   <ProjectHeader {title} {date} />
-
-  <h2>Project Concept</h2>
+  <h1 class="leading-tight">Project Overview</h1>
   <p>
     Geo Real is a cross-platform mobile application that allows users to create
     and share location-based picture galleries. Users create 'Geo-Spheres' at
@@ -17,7 +16,7 @@
     unique way to chronicle memories linked to the places where they're made.
   </p>
 
-  <h2>Origins and Hackathon Experience</h2>
+  <h1 class="leading-tight">Origins</h1>
   <p>
     The project originated at a hackathon at the University of Washington called
     DubHacks. As a newcomer to programming, I found this hackathon to be a
@@ -26,7 +25,7 @@
     areas I needed to focus on and motivated me to enhance my skills.
   </p>
 
-  <h2>Development and Technical Challenges</h2>
+  <h1 class="leading-tight">Development and Technical Challenges</h1>
   <p>
     Initially, Geo Real was an Android app built with Java, featuring a Python
     Flask backend. About eight months later, after learning Flutter, I revisited
@@ -35,7 +34,7 @@
     by leveraging the Google Maps API.
   </p>
 
-  <h2>Future Enhancements</h2>
+  <h1 class="leading-tight">Future Enhancements</h1>
   <p>
     A current challenge is enabling the app to track location when the phone is
     turned off. Due to the limitations of the Apple ecosystem and its

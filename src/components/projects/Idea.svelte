@@ -20,13 +20,13 @@
   });
 </script>
 
-<div class="sm:text-center md:text-left">
+<div class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left">
   <ProjectHeader {title} {date} />
-  <div class="m-8 space-y-4">
-    <div class="flex flex-col lg:flex-row items-center lg:m-8 xl:m-16 2xl:m-32">
-      <div class=" p-8">
-        <h1 class="leading-tight">The Project</h1>
-        <p class="mb-16">
+  <div class=" space-y-4">
+    <div class="flex flex-col lg:flex-row items-center">
+      <div class="">
+        <h1 class="leading-tight">Project Overview</h1>
+        <p class="lg:mb-4 xl:mb-16">
           I embarked on an exciting project called IDEA (Interactive Daily
           Epilepsy Assistant) while working as a Product Manager Intern and
           Software Engineer Intern at <a
@@ -39,7 +39,7 @@
           demanding but also incredibly impactful, aiming to improve the quality
           of life for those living with epilepsy.
         </p>
-        <h1>The Development Journey</h1>
+        <h1 class="leading-tight">The Development Journey</h1>
 
         <p>
           As the sole software developer on this project, I faced the task of
@@ -61,7 +61,7 @@
       <div class="">
         <img
           src="../../src/assets/journal1.png"
-          class="object-contain md:px-32 sm:px-32 lg:px-2"
+          class="object-contain md:px-32 sm:px-32 lg:px-2 m-8"
         />
       </div>
     </div>
