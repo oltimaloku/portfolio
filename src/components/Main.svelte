@@ -105,13 +105,7 @@
         Curious to <span class="poppins text-violet-400">see</span> my work?
       </h3>
     </div>
-    <a
-      href=""
-      target="_blank"
-      class="mx-auto px-4 py-2 rounded-md border border-solid border-white flex items-center gap-2 -mb-4 sm:-mb-0 -mt-10 hover:border-violet-700 duration-200"
-    >
-      <i class="fa-regular fa-circle-play" />
-    </a>
+
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10">
       <Step step={steps[0]}>
         <p class="py-8">
