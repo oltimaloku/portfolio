@@ -24,7 +24,7 @@
   <ProjectHeader {title} {date} />
   <div class=" space-y-4">
     <div class="flex flex-col lg:flex-row items-center">
-      <div class="">
+      <div class="pr-8">
         <h1 class="leading-tight">Project Overview</h1>
         <p class="lg:mb-4 xl:mb-16">
           I embarked on an exciting project called IDEA (Interactive Daily
@@ -35,9 +35,10 @@
             target="_blank">Edee Care</a
           >, a startup dedicated to creating solutions for people with epilepsy.
           The mobile app, IDEA, was developed to help users track their
-          seizures, triggers, and medication. It was not only technically
-          demanding but also incredibly impactful, aiming to improve the quality
-          of life for those living with epilepsy.
+          seizures, triggers, and medication. Leading the development of this
+          project was not only technically demanding but also incredibly
+          impactful, aiming to improve the quality of life for those living with
+          epilepsy.
         </p>
         <h1 class="leading-tight">The Development Journey</h1>
 
@@ -58,10 +59,10 @@
           gratifying and a significant milestone in my career.
         </p>
       </div>
-      <div class="">
+      <div class="flex justify-center">
         <img
           src="../../src/assets/journal1.png"
-          class="object-contain md:px-32 sm:px-32 lg:px-2 m-8"
+          class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8"
         />
       </div>
     </div>
@@ -81,7 +82,7 @@
       trial led us to begin phase 2: the IDEA mobile application V1.
     </p>
 
-    <h2>2. IDEA Mobile Application V1</h2>
+    <h2 class="pt-5">2. IDEA Mobile Application V1</h2>
 
     <p>
       After months of piloting our SMS program, we leveraged our insights to
@@ -105,11 +106,18 @@
     <li>Understanding and implementing an effective file structure.</li>
     <li>Proficiency in using Git for version control.</li>
     <li>Developed effective state management techniques.</li>
-    <li>Implementing robust authentication mechanisms.</li>
+    <li>
+      Implementing robust authentication mechanisms utilizing <span
+        class="text-red-400"
+        ><a href="https://www.npmjs.com/package/bcrypt" target="_blank"
+          >Bcrypt</a
+        ></span
+      >.
+    </li>
     <li>Gaining expertise in NodeJS and API development.</li>
     <li>Developing a strong foundation in MongoDB usage.</li>
 
-    <h2>3. A Major Overhaul</h2>
+    <h2 class="pt-5">3. A Major Overhaul</h2>
 
     <p>
       The second iteration of the IDEA app marked a significant transformation,
@@ -138,12 +146,11 @@
       <p>
         Initially, our app architecture relied on "parameter passing" for state
         management, a method good for smaller applications but less suitable for
-        our expanding project. This technique, akin to passing data from parent
-        to child components through props in React, was becoming cumbersome. To
-        address this, I shifted to using Provider, a package that centralizes
-        data access and facilitates state management within the application.
-        This change not only improved scalability but also minimized the
-        coupling between widgets, making them more independent and
+        our expanding project. This simple technique, however, was becoming
+        cumbersome. To address this, I shifted to using Provider, a package that
+        centralizes data access and facilitates state management within the
+        application. This change not only improved scalability but also
+        minimized the coupling between widgets, making them more independent and
         test-friendly. With Provider, only UI components listening to state
         changes needed to rebuild, enhancing performance.
       </p>
@@ -152,13 +159,13 @@
 
       <p>
         To fully leverage Provider's capabilities, I transitioned our
-        application's architecture from MVC to MVVM. This change complemented
-        Provider’s design, which is geared towards efficient state distribution
-        in Flutter. MVVM’s reactive programming style, supported by
-        ChangeNotifierProvider, allows UI components to automatically update in
-        response to ViewModel state changes. This architecture enhanced the
-        separation between business logic and UI code, improving testability and
-        maintainability.
+        application's architecture from MVC (Model View Controller) to MVVM
+        (Model View ViewModel). This change complemented Provider’s design,
+        which is geared towards efficient state distribution in Flutter. MVVM’s
+        reactive programming style, supported by ChangeNotifierProvider, allows
+        UI components to automatically update in response to ViewModel state
+        changes. This architecture enhanced the separation between business
+        logic and UI code, improving testability and maintainability.
       </p>
 
       <h1 id="Database" class="leading-tight">
@@ -171,8 +178,11 @@
         name. Additionally, it linked to other related objects such as
         Medication, Seizure_event, and Triggers. For instance, within the "User"
         object, a field named 'seizures' held an array of ObjectIDs, each
-        pointing to a distinct seizure event. We utilized Mongoose on the server
-        to enforce and manage this schema effectively.
+        pointing to a distinct seizure event. We utilized
+        <span class="text-red-400"
+          ><a href="https://mongoosejs.com/" target="_blank">Mongoose</a>
+        </span>
+        on the server to enforce and manage this schema effectively.
       </p>
 
       <p>
@@ -189,9 +199,9 @@
         Given the specific requirements of a health application, particularly
         one focused on epilepsy, we recognized the need for greater
         personalization. A one-size-fits-all approach was insufficient, as each
-        user's condition and triggers are unique. This realization became
-        particularly evident when our initial user, participating in the pilot
-        program, reported specific triggers related to Fibromyalgia.
+        user's condition and triggers are unique. This became particularly
+        evident with our first user in the pilot program, who reported specific
+        triggers related to Fibromyalgia.
       </p>
 
       <p>
@@ -206,7 +216,7 @@
       <h4>Collaborative Schema Development</h4>
 
       <p>
-        Working alongside the CTO and our Machine Learning engineer, we crafted
+        Working alongside the CTO and our machine learning engineer, we crafted
         a new schema that aligned with our vision of a highly personalized user
         experience. This revised schema included a collection named 'constants',
         consisting of 'type' and 'value' fields. For example, under a 'triggers'
@@ -236,8 +246,11 @@
         transitional phase as an great moment to adopt this technology. Given
         the relative simplicity of our server architecture, the shift to
         TypeScript was a smooth and straightforward process. For MongoDB schema
-        implementation, we utilized Typegoose, which seamlessly integrated with
-        TypeScript.
+        implementation, we utilized <span class="text-red-400"
+          ><a href="https://typegoose.github.io/typegoose/" target="_blank"
+            >Typegoose</a
+          >
+        </span>, which seamlessly integrated with TypeScript.
       </p>
 
       <h4>Key Benefits of Using TypeScript</h4>
@@ -257,6 +270,7 @@
       </p>
 
       <div class="lg:flex lg:items-center">
+        <img src="../../src/assets/health_ui.PNG" class="lg:w-1/2" />
         <div class="lg:w-1/2">
           <h1 id="Health" class="leading-tight">
             Enhanced Onboarding and Health Integration Process
@@ -289,9 +303,24 @@
             health tracking solution.
           </p>
         </div>
-
-        <img src="../../src/assets/health_ui.PNG" class="lg:w-1/2" />
       </div>
+      <h1>Conclusion</h1>
+      <p class="mb-2">
+        Working on the IDEA project at Edee Care has been the largest and most
+        enriching project I've undertaken in my career thus far. Working in both
+        Product Management and Software Engineering as an intern, I navigated
+        new technologies and complex problem-solving, gaining invaluable skills.
+        This project, significant in its impact on epilepsy care, not only
+        sharpened my technical abilities but also deepened my insight into
+        user-focused design and innovation.
+      </p>
+      <p class="mb-10">
+        Be sure to check out <a
+          class="text-red-400"
+          href="https://www.edeecare.com/"
+          target="_blank">Edee Care</a
+        > for updates on their product!
+      </p>
     </div>
   </div>
 </div>
@@ -306,7 +335,6 @@
 
   h2 {
     font-size: 24px;
-    padding-top: 20px;
     font-weight: 600;
     padding-bottom: 20px;
   }

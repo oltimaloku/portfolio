@@ -4,38 +4,49 @@
   let date = "October 2022, August 2023 - September 2023";
 </script>
 
-<div class="lg:mx-32 md:mx-16 mx-8 my-4">
+<div class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left">
   <ProjectHeader {title} {date} />
-  <h1 class="leading-tight">Project Overview</h1>
-  <p>
-    Geo Real is a cross-platform mobile application that allows users to create
-    and share location-based picture galleries. Users create 'Geo-Spheres' at
-    specific locations like dorm rooms or houses. When friends enter these
-    zones, they're prompted to capture a photo, contributing to the communal
-    photo collection of that Geo Sphere. This innovative approach offers a
-    unique way to chronicle memories linked to the places where they're made.
-  </p>
+  <div class="flex items-center flex-col lg:flex-row">
+    <div class="pr-8">
+      <h1 class="leading-tight mt-8 md:mt-4 lg:mt-2">Project Overview</h1>
+      <p class="mb-10">
+        Geo Real is a cross-platform mobile application that allows users to
+        create and share location-based picture galleries. Users create
+        'Geo-Spheres' at specific locations like dorm rooms or houses. When
+        friends enter these zones, they're prompted to capture a photo,
+        contributing to the communal photo collection of that Geo Sphere. This
+        innovative approach offers a unique way to chronicle memories linked to
+        the places where they're made.
+      </p>
 
-  <h1 class="leading-tight">Origins</h1>
-  <p>
-    The project originated at a hackathon at the University of Washington called
-    DubHacks. As a newcomer to programming, I found this hackathon to be a
-    significant learning experience. Although my initial contributions were
-    limited, the high-pressure environment of the hackathon highlighted the
-    areas I needed to focus on and motivated me to enhance my skills.
-  </p>
+      <h1 class="leading-tight">Origins</h1>
+      <p class="mb-10">
+        The project originated at a hackathon at the University of Washington
+        called DubHacks. As a newcomer to programming, I found this hackathon to
+        be a significant learning experience. Although my initial contributions
+        were limited, the high-pressure environment of the hackathon highlighted
+        the areas I needed to focus on and motivated me to enhance my skills.
+      </p>
 
-  <h1 class="leading-tight">Development and Technical Challenges</h1>
-  <p>
-    Initially, Geo Real was an Android app built with Java, featuring a Python
-    Flask backend. About eight months later, after learning Flutter, I revisited
-    the project to develop a new frontend using my newly acquired Flutter
-    skills. A major challenge was implementing location-based tracking, achieved
-    by leveraging the Google Maps API.
-  </p>
+      <h1 class="leading-tight">Development and Technical Challenges</h1>
+      <p>
+        Initially, Geo Real was an Android app built with Java, featuring a
+        Python Flask backend. About eight months later, after learning Flutter,
+        I revisited the project to develop a new frontend using my newly
+        acquired Flutter skills. A major challenge was implementing
+        location-based tracking, achieved by leveraging the Google Maps API.
+      </p>
+    </div>
+    <div class="flex justify-center">
+      <img
+        src="../../src/assets/geo-real.png"
+        class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8"
+      />
+    </div>
+  </div>
 
   <h1 class="leading-tight">Future Enhancements</h1>
-  <p>
+  <p class="mb-8">
     A current challenge is enabling the app to track location when the phone is
     turned off. Due to the limitations of the Apple ecosystem and its
     integration with Flutter, this feature has been particularly challenging to
@@ -47,7 +58,7 @@
 <style>
   h1 {
     font-size: 35px;
-    padding-top: 20px;
+
     font-weight: bold;
     padding-bottom: 20px;
   }

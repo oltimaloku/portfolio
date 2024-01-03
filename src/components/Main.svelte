@@ -156,25 +156,36 @@
         />
       </div>
     </div>
-    <div class="space-y-4 lg:mx-64 md:mx-16 sm:mx-8">
+    <div class="space-y-4 lg:mx-64 md:mx-16 sm:mx-8 text-large">
       <h6 class="">
         I am currently in my third year of studies at the University of British
-        Columbia. As a fervent soccer enthusiast, musician, and fitness devotee,
-        I find joy and fulfillment in a diverse range of activities. My love for
-        piano playing not only hones my artistic skills but also offers a
-        harmonious balance to my rigorous academic schedule.
+        Columbia. Some of my passions outside of school include soccer, music,
+        travelling, and fitness.
       </h6>
       <h6 class="">
         Beyond these interests, my fascination with the world of technology
         plays a significant role in my pursuits. My technical interests
-        primarily focus on mobile app development, and web development.
-        Recently, I have found myself drawn to the space of virtual reality.
-        These areas not only captivate my curiosity but also fuel my ambition to
-        build and create innovative solutions.
+        primarily focus on mobile app development and web development. Recently,
+        I have found myself drawn to the space of virtual reality. These areas
+        not only captivate my curiosity but also fuel my ambition to build and
+        create innovative solutions.
+      </h6>
+      <h6 class="">
+        Being part of <span class="text-red-400"
+          ><a href="https://www.ubclaunchpad.com" target="_blank">Launch Pad</a
+          ></span
+        >, UBC's software engineering club, is one of my current pursuits.
+        Collaborating with like-minded peers in a dynamic setting not only
+        fosters a deeper connection with the university community but also helps
+        build long-lasting relationships.
       </h6>
       <h6 class="">
         For a detailed overview of my professional journey and projects, feel
-        free to explore my resume [here].
+        free to explore my resume <span class="text-red-400"
+          ><a href="../../src/assets/Resume-Olti-December27.pdf" target="_blank"
+            >here</a
+          ></span
+        >!
       </h6>
     </div>
   </section>

@@ -4,7 +4,7 @@
   let date = "September 2023 - December 2023";
 </script>
 
-<div class="lg:mx-32 md:mx-16 mx-8 my-4">
+<div class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left">
   <ProjectHeader {title} {date} />
   <h1>Project Overview</h1>
   <p>
@@ -22,14 +22,17 @@
     (ER) diagram to outline the database structure. The ER diagram, which laid
     the foundation for our database design, is illustrated below:
   </p>
-  <img src="../../src/assets/Er_diagram.png" class="" />
-  <p>
-    This is an example of what our database management system looks like with
-    some test data:
+  <img src="../../src/assets/Er_diagram.png" class="border-2 border-red-400" />
+  <p class="mt-4">
+    This is an example of what a projection query on users looks like with some
+    test data:
   </p>
-  <img src="../../src/assets/database_image.png" />
+  <img
+    src="../../src/assets/database_image.png"
+    class="border-2 border-red-400"
+  />
 
-  <h2>Technical Implementation</h2>
+  <h1>Technical Implementation</h1>
   <p>
     We built the project using the Oracle database with SQL*Plus and implemented
     it in Java, utilizing JDBC for database access. Key features of our
@@ -50,8 +53,8 @@
     </li>
   </ul>
 
-  <h2>Future Enhancements</h2>
-  <p>
+  <h1>Future Enhancements</h1>
+  <p class="mb-8">
     Moving forward, the next steps for this project include refining the user
     interface and enhancing the flexibility of the database queries to make them
     more customizable.
