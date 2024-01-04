@@ -8,7 +8,7 @@
   <ProjectHeader {title} {date} />
   <h1>Project Overview</h1>
   <p>
-    As part of the Introduction to Relational Databases course (CPSC 213) at the
+    As part of the Introduction to Relational Databases course (CPSC 304) at the
     University of British Columbia, I participated in a group project to develop
     a Database Management System (DBMS) for a Reddit-styled social media
     platform. This project focused on providing comprehensive database
