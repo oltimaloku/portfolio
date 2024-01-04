@@ -1,6 +1,6 @@
 <script>
   import { onMount } from "svelte";
-
+  import { base } from "$app/paths";
   export let y;
   let baseUrl;
   let tabs = [];
@@ -8,8 +8,8 @@
   onMount(() => {
     baseUrl = window.location.origin; // Set base URL after component mounts
     tabs = [
-      { name: "Projects", link: `${baseUrl}/#projects` },
-      { name: "About me", link: `${baseUrl}/#about` },
+      { name: "Projects", link: `${base}/#projects` },
+      { name: "About me", link: `${base}/#about` },
       // {name: 'Blog', link: `${baseUrl}/#blog`}, // Uncomment and edit as needed
     ];
   });
@@ -21,7 +21,7 @@
       ? " py-4 bg-slate-950 border-red-900"
       : "py-6 bg-transparent border-transparent")}
 >
-  <a href={baseUrl}>
+  <a href={base}>
     <h1 class="font-medium">
       <b class="font-bold poppins">Olti</b> Maloku
     </h1>
