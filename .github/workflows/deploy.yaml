@@ -28,7 +28,7 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: "/olti_portfolio"
+          BASE_PATH: "/portfolio"
         run: |
           npm run build
 
