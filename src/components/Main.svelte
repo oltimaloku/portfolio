@@ -72,10 +72,10 @@
     class="grid grid-cols-1 lg:grid-cols-1 gap-10 py-8 sm:py-14"
   >
     <div
-      class="flex flex-col lg:justify-center text-center gap-6 md:gap-8 lg:gap-10"
+      class=" flex flex-col lg:justify-center text-center gap-6 md:gap-8 lg:gap-10 py-20 2xl:py-40"
     >
       <h2 class="font-semibold text-4xl sm:text-5xl md:text-6xl">
-        Hi! I'm <span class="poppins text-red-400">Olti</span> Maloku <br />
+        Hi! I'm <span class="poppins text-red-400">Olti</span> Maloku, <br />
         Full Stack
         <span class="poppins text-red-400">Developer</span>
       </h2>
@@ -98,7 +98,7 @@
       </a>
     </div>
   </section>
-  <section id="projects" class="py-20 lg:py-32 flex flex-col gap-24">
+  <section id="projects" class="py-30 lg:py-40 flex flex-col gap-24">
     <div class="flex flex-col gap-2 text-center">
       <h6 class="text-lg sm:text-xl md:text-2xl">
         A few of my creative endeavors.
