@@ -148,7 +148,7 @@
     </h3>
     <div class="flex justify-center my-8">
       <div
-        class="border h-64 w-64 overflow-hidden rounded-full flex flex-col justify-center items-center"
+        class="border border-red-600 hover:border-red-400 duration-200 h-64 w-64 overflow-hidden rounded-full flex flex-col justify-center items-center"
       >
         <img
           src="{base}/assets/profile_photo.png"
@@ -189,4 +189,7 @@
       </h6>
     </div>
   </section>
+  <h3 class="pb-20 text-center">
+    This website was built using SvelteKit and Tailwind CSS!
+  </h3>
 </main>
