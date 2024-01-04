@@ -151,7 +151,7 @@
         class="border h-64 w-64 overflow-hidden rounded-full flex flex-col justify-center items-center"
       >
         <img
-          src="${base}/src/assets/profile_photo.PNG"
+          src="{base}/src/assets/profile_photo.PNG"
           class="object-cover w-full h-full rounded-full"
         />
       </div>
