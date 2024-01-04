@@ -6,7 +6,7 @@ const config = {
   kit: {
     adapter: adapter(),
     paths: {
-      base: process.env.NODE_ENV === 'production' ? process.env.BASE_PATH : '',
+      base: dev ? '' : process.env.BASE_PATH,
     }
   },
   extensions: ['.svelte', '.md', '.svx'],
