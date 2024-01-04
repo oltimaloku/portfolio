@@ -1,9 +1,10 @@
 <script>
   export let step;
+  import { base } from "$app/paths";
 </script>
 
 <a
-  href={`/projects${step.href}`}
+  href={`${base}/projects${step.href}`}
   class="p-4 sm:p-6 md:p-8 flex flex-col gap-4 rounded-lg border border-solid border-red-700 text-center group cursor-pointer hover:border-red-400 duration-200"
 >
   <div
