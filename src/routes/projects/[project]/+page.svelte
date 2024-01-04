@@ -1,5 +1,5 @@
 <script>
-  import Dbms from "../../../components/projects/DBMS.svelte";
+  import Dbms from "../../../components/projects/Dbms.svelte";
   import GeoReal from "../../../components/projects/GeoReal.svelte";
   import Idea from "../../../components/projects/idea.svelte";
 
