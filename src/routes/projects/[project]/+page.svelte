@@ -1,7 +1,7 @@
 <script>
   import Dbms from "../../../components/projects/Dbms.svelte";
   import GeoReal from "../../../components/projects/GeoReal.svelte";
-  import Idea from "../../../components/projects/idea.svelte";
+  import Idea from "../../../components/projects/Idea.svelte";
 
   export let data;
 
