@@ -151,7 +151,7 @@
         class="border h-64 w-64 overflow-hidden rounded-full flex flex-col justify-center items-center"
       >
         <img
-          src="{base}/src/assets/profile_photo.PNG"
+          src="{base}/assets/profile_photo.png"
           class="object-cover w-full h-full rounded-full"
         />
       </div>
@@ -182,7 +182,7 @@
       <h6 class="">
         For a detailed overview of my professional journey and projects, feel
         free to explore my resume <span class="text-red-400"
-          ><a href="../../src/assets/Resume-Olti-December27.pdf" target="_blank"
+          ><a href="{base}/assets/Resume-Olti-December27.pdf" target="_blank"
             >here</a
           ></span
         >!

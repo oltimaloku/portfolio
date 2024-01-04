@@ -40,7 +40,7 @@
     </div>
     <div class="flex justify-center">
       <img
-        src="{base}/src/assets/geo-real.png"
+        src="{base}/assets/geo-real.PNG"
         class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8"
       />
     </div>
