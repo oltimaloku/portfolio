@@ -1,5 +1,6 @@
 <script>
   import ProjectHeader from "../ProjectHeader.svelte";
+  import { base } from "$app/paths";
   let title = "Geo Real";
   let date = "October 2022, August 2023 - September 2023";
 </script>
@@ -39,7 +40,7 @@
     </div>
     <div class="flex justify-center">
       <img
-        src="../../src/assets/geo-real.png"
+        src="${base}/src/assets/geo-real.png"
         class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8"
       />
     </div>

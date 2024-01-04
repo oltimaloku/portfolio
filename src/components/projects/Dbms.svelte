@@ -2,6 +2,7 @@
   import ProjectHeader from "../ProjectHeader.svelte";
   let title = "Social Media Database Management System";
   let date = "September 2023 - December 2023";
+  import { base } from "$app/paths";
 </script>
 
 <div class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left">
@@ -22,13 +23,16 @@
     (ER) diagram to outline the database structure. The ER diagram, which laid
     the foundation for our database design, is illustrated below:
   </p>
-  <img src="../../src/assets/Er_diagram.png" class="border-2 border-red-400" />
+  <img
+    src="${base}/src/assets/Er_diagram.png"
+    class="border-2 border-red-400"
+  />
   <p class="mt-4">
     This is an example of what a projection query on users looks like with some
     test data:
   </p>
   <img
-    src="../../src/assets/database_image.png"
+    src="${base}/src/assets/database_image.png"
     class="border-2 border-red-400"
   />
 

@@ -1,5 +1,6 @@
 <script>
   import { onMount } from "svelte";
+  import { base } from "$app/paths";
   import ProjectHeader from "../ProjectHeader.svelte";
 
   let title = "IDEA";
@@ -61,7 +62,7 @@
       </div>
       <div class="flex justify-center">
         <img
-          src="../../src/assets/journal1.png"
+          src="${base}/src/assets/journal1.png"
           class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8 my-6"
         />
       </div>
@@ -99,7 +100,7 @@
       early challenges and was now ready to apply these valuable lessons to the
       forthcoming iteration of the mobile MVP.
     </p>
-    <img src="../../src/assets/old_ui.PNG" />
+    <img src="${base}/src/assets/old_ui.PNG" />
 
     <h4>Key Skills Developed</h4>
 
@@ -137,7 +138,7 @@
       >
       processes to better cater to individual user needs.
     </p>
-    <img src="../../src/assets/new_ui.PNG" />
+    <img src="${base}/src/assets/new_ui.PNG" />
     <div>
       <h1 id="SManagement" class="leading-tight">
         Transition to Scalable State Management
@@ -270,7 +271,7 @@
       </p>
 
       <div class="lg:flex lg:items-center">
-        <img src="../../src/assets/health_ui.PNG" class="lg:w-1/2" />
+        <img src="${base}/src/assets/health_ui.PNG" class="lg:w-1/2" />
         <div class="lg:w-1/2">
           <h1 id="Health" class="leading-tight">
             Enhanced Onboarding and Health Integration Process
