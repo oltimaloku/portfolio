@@ -98,7 +98,7 @@
       </a>
     </div>
   </section>
-  <section id="projects" class="py-30 lg:py-40 flex flex-col gap-24">
+  <section id="projects" class="py-30 lg:py-40 xl:py-52 flex flex-col gap-24">
     <div class="flex flex-col gap-2 text-center">
       <h6 class="text-lg sm:text-xl md:text-2xl">
         A few of my creative endeavors.
