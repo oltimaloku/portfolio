@@ -40,15 +40,15 @@
   </p>
   <ul>
     <li>
-      Development of an intuitive Java Swing interface for seamless database
+      - Development of an intuitive Java Swing interface for seamless database
       interactions and real-time data visualization.
     </li>
     <li>
-      Utilization of advanced SQL features like nested statements, division, and
-      aggregation using group-by and having clauses.
+      - Utilization of advanced SQL features like nested statements, division,
+      and aggregation using group-by and having clauses.
     </li>
     <li>
-      Effective integration of the ER diagram into the application to ensure
+      - Effective integration of the ER diagram into the application to ensure
       robust database integrity.
     </li>
   </ul>
