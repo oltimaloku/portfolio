@@ -5,7 +5,9 @@
   import { base } from "$app/paths";
 </script>
 
-<div class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left">
+<div
+  class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left max-w-screen-2xl"
+>
   <ProjectHeader {title} {date} />
   <h1>Project Overview</h1>
   <p>
