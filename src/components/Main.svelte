@@ -66,7 +66,7 @@
   ];
 </script>
 
-<main class="flex flex-col flex-1 p-4 max-w-screen-2xl">
+<main class="flex flex-col flex-1 p-4 mx-auto max-w-screen-2xl">
   <section
     id="introPage"
     class="grid grid-cols-1 lg:grid-cols-1 gap-10 py-8 sm:py-14"

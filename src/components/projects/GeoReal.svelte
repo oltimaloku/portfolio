@@ -5,9 +5,7 @@
   let date = "October 2022, August 2023 - September 2023";
 </script>
 
-<div
-  class="lg:mx-32 md:mx-16 mx-8 my-4 text-center md:text-left max-w-screen-2xl"
->
+<div class="my-4 text-center md:text-left mx-auto max-w-screen-xl">
   <ProjectHeader {title} {date} />
   <div class="flex items-center flex-col lg:flex-row">
     <div class="pr-8">
