@@ -20,4 +20,6 @@
   }
 </script>
 
-<svelte:component this={ComponentToRender} />
+<div class="my-4 text-center md:text-left mx-auto max-w-screen-xl">
+  <svelte:component this={ComponentToRender} />
+</div>
