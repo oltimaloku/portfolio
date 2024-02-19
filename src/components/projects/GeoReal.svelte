@@ -44,14 +44,34 @@
     />
   </div>
 </div>
-
-<h1 class="leading-tight">Future Enhancements</h1>
-<p class="mb-8">
-  A current challenge is enabling the app to track location when the phone is
-  turned off. Due to the limitations of the Apple ecosystem and its integration
-  with Flutter, this feature has been particularly challenging to implement.
-  Continued work in this area is a key focus for future development.
-</p>
+<div class="flex items-center flex-col lg:flex-row">
+  <div class="flex justify-center">
+    <img
+      src="{base}/assets/georeal_gallery.PNG"
+      class="object-contain md:px-32 sm:px-32 lg:px-2 mx-8"
+    />
+  </div>
+  <div class="pr-8">
+    <h1 class="leading-tight">Features</h1>
+    <p class="mb-8">
+      The app features a user-friendly interface that allows users to create,
+      share and view geo-fenced picture galleries. The application tracks the
+      location and identifies when they have entered a Geo-Sphere. Users are
+      then prompted to take a photo, which is then added to the communal
+      gallery. The app also features a map view that displays the location of
+      all Geo-Spheres. Users can decide between a list view and a map view to
+      see geo-spheres near them.
+    </p>
+    <h1 class="leading-tight">Future Enhancements</h1>
+    <p class="mb-8">
+      A current challenge is enabling the app to track location when the phone
+      is turned off. Due to the limitations of the Apple ecosystem and its
+      integration with Flutter, this feature has been particularly challenging
+      to implement. Continued work in this area is a key focus for future
+      development.
+    </p>
+  </div>
+</div>
 
 <style>
   h1 {
