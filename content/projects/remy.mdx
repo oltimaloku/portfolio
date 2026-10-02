@@ -1,0 +1,63 @@
+---
+title: "Remy"
+tagline: "Comments on a canvas that an AI designer can read."
+summary: "At Remy in San Francisco I worked on an AI product-design tool: you chat with an agent, and it generates UI prototypes, user flows and images onto an infinite canvas. I designed and built its commenting system end to end, so feedback pinned to any element on the canvas flows straight back into the agent's next design."
+scale: medium
+order: 3
+start: "2025-05"
+end: "2025-09"
+role: "Software Engineer Intern"
+team: "Remy · 4 engineers"
+platform: "Web"
+stack: ["Next.js", "React", "TypeScript", "tldraw", "Zustand", "Python", "FastAPI", "Agno", "Claude", "PostgreSQL", "Supabase"]
+metrics:
+  - value: "54%"
+    label: "Of the UI repo's commits, the most of anyone"
+  - value: "24"
+    label: "Pull requests merged to main"
+  - value: "300+"
+    label: "Commits across UI and API"
+  - value: "4"
+    label: "Months, Jun – Sep 2025"
+triad: { engineering: 0.44, product: 0.2, design: 0.36 }
+---
+
+## The product
+
+Remy's tool lets a product team design by conversation. You describe what you want and an agent generates it as real HTML and CSS: web and mobile screens, user flows, diagrams and images. Everything lands as a shape on a [tldraw](https://tldraw.dev) canvas beside the chat, so several prototypes can sit side by side and be compared, rearranged and iterated on.
+
+The weak point was iteration. Once a design existed, the only way to change it was to describe the change in words, which is slow and imprecise when the problem is *that button* or *this spacing*. Designers give feedback by pointing.
+
+## Feedback the agent can see
+
+I designed and built the commenting system across the front end and the API. It lets you point at what's wrong and have the agent see exactly what you pointed at.
+
+<Flow
+  steps={[
+    { label: "Point", note: "Pin a comment to an element, draw a box around a region, or pin onto an image." },
+    { label: "Identify", note: "Inside the prototype's iframe, the exact DOM element is found and highlighted." },
+    { label: "Capture", note: "The commented region is exported as a screenshot from the canvas." },
+    { label: "Package", note: "Comments, positions and screenshots become structured context for the agent." },
+    { label: "Regenerate", note: "The design agent revises the artifact with the feedback in view." },
+  ]}
+  caption="How a comment on the canvas becomes context for the next generation."
+/>
+
+- **Three kinds of comment.** Pins on a specific DOM element, boxes drawn over a region, and pins on generated images, each with threads and a sidebar on the canvas.
+- **Element identification.** Inside a prototype's iframe, the comment tool finds the element under the cursor and highlights it, so feedback is attached to the element rather than just to a coordinate. It keeps working on prototypes that scroll.
+- **Context for the agent.** On the API side, an "ingredients" model stores each canvas source with its comments. A context builder turns them into prompt context: what was said, where it is as a percentage of the frame, and a screenshot of the region, passed to the model as images.
+- **Ready to hand over.** In my final week I refactored the whole system into hooks and an event bus and wrote the documentation and handover guide, so another engineer could take it to production.
+
+## Making HTML behave on a canvas
+
+Live HTML inside a zoomable canvas fights the canvas for every scroll and pinch. I reworked the HTML artifact shape (about 800 of its roughly 1,000 lines are mine): click-to-activate so scrolling a prototype no longer zooms the canvas, a pinch-zoom fix, placeholder shapes while an artifact is still generating, and shareable public links that open any artifact on its own page.
+
+## Accounts, history and agents
+
+- **Auth and sessions, end to end:** Google sign-in through Supabase, JWT-protected endpoints, user-scoped sessions with refresh tokens, connection pooling and database migrations.
+- **Rollback:** restore a session to any earlier checkpoint, deleting the artifacts and messages that came after it.
+- **A new version of the design agent** that also generates user flows, plus versioning so every artifact records which agent and tool version produced it.
+
+## What I took from it
+
+Working next to designers changed how I think about AI tools. The model's output was rarely the bottleneck; how people *responded* to that output was. The best feature I built didn't make the agent smarter. It made it much easier to tell the agent what to fix.

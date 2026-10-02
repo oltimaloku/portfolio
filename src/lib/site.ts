@@ -20,6 +20,8 @@ export interface Role {
   org: string;
   place: string;
   note: string;
+  /** Slug of the related project, if there's a case study. */
+  project?: string;
 }
 
 /** Newest first. */
@@ -29,6 +31,7 @@ export const experience: Role[] = [
     end: "now",
     title: "Founder",
     org: "Neuron",
+    project: "neuron",
     place: "Vancouver",
     note: "Designing, building and shipping an AI tutor across web, iOS and AWS, alone.",
   },
@@ -37,6 +40,7 @@ export const experience: Role[] = [
     end: "2025",
     title: "Product Engineer Intern",
     org: "MeaningfulWork",
+    project: "meaningfulwork",
     place: "Vancouver",
     note: "Turned 15+ nonprofit interviews into a relationship CRM and shipped it to two pilot organisations.",
   },
@@ -45,14 +49,16 @@ export const experience: Role[] = [
     end: "2025",
     title: "Software Engineer Intern",
     org: "Remy",
+    project: "remy",
     place: "San Francisco",
-    note: "Built an AI product-design canvas that generates UI prototypes from natural language.",
+    note: "Built the commenting system for an AI design canvas, so feedback pinned to a prototype reaches the agent.",
   },
   {
     start: "2023",
     end: "2024",
     title: "Software Engineer Intern",
     org: "Edee Care",
+    project: "idea",
     place: "Vancouver",
     note: "Led the mobile app for people with epilepsy; later led and mentored a team of three developers.",
   },
@@ -61,6 +67,7 @@ export const experience: Role[] = [
     end: "2023",
     title: "Product Manager Intern",
     org: "Edee Care",
+    project: "idea",
     place: "Vancouver",
     note: "Ran an SMS pilot with two designers and a researcher, and specified the app's MVP.",
   },

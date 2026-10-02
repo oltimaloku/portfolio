@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { buildPantheon, CX, FLOOR, S, VIEWBOX, type Layer } from "./pantheon";
 
 const LAYER_STYLE: Record<Layer, { stroke: string; width: string; dash?: string; animated: boolean }> = {
@@ -11,9 +11,11 @@ const LAYER_STYLE: Record<Layer, { stroke: string; width: string; dash?: string;
   hidden: { stroke: "var(--gold-soft)", width: "calc(var(--sw) * 0.7)", dash: "4 3", animated: false },
 };
 
+// The geometry is fixed, so it's built once per module, not per render.
+const { strokes, labels, poche, scaleFills, centre } = buildPantheon();
+
 /** The hero drawing: a section through the Pantheon that plots itself, with a drafting crosshair. */
 export default function PantheonDrawing({ className }: { className?: string }) {
-  const { strokes, labels, poche, scaleFills, centre } = useMemo(buildPantheon, []);
   const svgRef = useRef<SVGSVGElement>(null);
   const [cursor, setCursor] = useState<{ x: number; y: number } | null>(null);
 

@@ -32,7 +32,14 @@ export function Practice() {
               </span>
               <div className="md:col-span-4">
                 <p className="t-title text-[28px]">{r.title}</p>
-                <p className="t-title italic text-[20px] text-ink-2">{r.org}</p>
+                {r.project ? (
+                  <Link href={`/projects/${r.project}/`} className="group/org inline-flex items-center gap-2 t-title italic text-[20px] text-ink-2 hover:text-gold-ink transition-colors">
+                    {r.org}
+                    <Arrow className="h-2 w-3 text-gold opacity-0 -translate-x-1 transition-all group-hover/org:opacity-100 group-hover/org:translate-x-0" />
+                  </Link>
+                ) : (
+                  <p className="t-title italic text-[20px] text-ink-2">{r.org}</p>
+                )}
               </div>
               <p className="text-[16px] leading-relaxed text-ink-2 md:col-span-4 md:pt-1.5">{r.note}</p>
               <span className="t-label-sm text-ink-3 md:col-span-2 md:pt-2.5 md:text-right">{r.place}</span>

@@ -1,0 +1,75 @@
+---
+# Copy this file to content/projects/<slug>.mdx. The file name becomes the URL: /projects/<slug>/
+# Files starting with "_" are ignored, so this template never appears on the site.
+
+title: "Project name"
+tagline: "One line that says what it is."
+summary: "Two or three sentences for the plate on the home page and the top of the case study."
+
+# How much room it gets: large (full-width plate), medium (half sheet), small (index card)
+scale: small
+# Optional. Lower numbers come first within the same scale; otherwise newest first.
+# order: 1
+
+start: "2026-01" # YYYY-MM
+end: "present" # YYYY-MM, "present", or leave out for a one-off
+
+role: "What you did"
+team: "Solo" # optional
+platform: "Web · iOS" # optional, used in figure labels
+status: "Live" # optional, shown with a red dot on large plates
+stack: ["Next.js", "TypeScript"]
+
+links: # optional
+  - label: "example.com"
+    href: "https://example.com"
+
+# Images go in public/images/projects/<slug>/. Run `npm run images` to convert them to WebP.
+cover: "/images/projects/<slug>/cover.webp" # optional; without it the plate shows its numeral
+coverAlt: "What the cover shows"
+# coverFit: cover # "contain" (default) floats mockups on the grid; "cover" fills the frame
+# coverInset: "/images/projects/<slug>/phone.webp" # optional phone laid over a large plate's cover
+
+metrics: # optional; up to four show on large plates, all show on the case study
+  - value: "120"
+    label: "Something you can count"
+
+# Where it sits in the triad on the home page. Any positive numbers; they're normalised.
+triad: { engineering: 0.4, product: 0.3, design: 0.3 }
+
+# evolvedFrom: "other-slug" # draws a lineage link between plates
+# evolvedInto: "other-slug"
+---
+
+## The problem
+
+Write the case study in Markdown. Every `##` heading appears in the section index beside the text.
+
+## What I built
+
+Components you can use anywhere in the body:
+
+<Figure src="/images/projects/<slug>/screen.webp" alt="Describe the image" caption="A caption." />
+
+<Gallery
+  images={[
+    { src: "/images/projects/<slug>/a.webp", alt: "First screen" },
+    { src: "/images/projects/<slug>/b.webp", alt: "Second screen" },
+  ]}
+  caption="Two or more images side by side."
+/>
+
+<Compare
+  before={{ src: "/images/projects/<slug>/old.webp", alt: "Before", label: "V1" }}
+  after={{ src: "/images/projects/<slug>/new.webp", alt: "After", label: "V2" }}
+/>
+
+<Flow
+  steps={[
+    { label: "Step one", note: "A short note." },
+    { label: "Step two", note: "Another." },
+  ]}
+  caption="A process, drawn when there's no screenshot."
+/>
+
+<Note title="Aside">A margin note.</Note>
