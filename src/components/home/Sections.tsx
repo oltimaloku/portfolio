@@ -4,7 +4,6 @@ import type { Article } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { Arrow, Img, SectionHead, Sheet } from "@/components/folio/primitives";
 import Reveal from "@/components/folio/Reveal";
-import Panorama from "@/components/drawing/Panorama";
 
 export function Practice() {
   return (
@@ -18,7 +17,7 @@ export function Practice() {
               Where the work <em className="text-gold-ink">was made.</em>
             </>
           }
-          lede="Product management, mobile, AI tooling and now a company of one. Each role added a different side of the triad."
+          lede="Product management, mobile, AI tooling, and now my own company."
         />
         <ol className="border-t border-gold-soft">
           {experience.map((r, i) => (
@@ -56,18 +55,7 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-24 pt-32 md:pt-48">
       <Sheet>
-        <SectionHead
-          mark="04"
-          latin="Ritratto"
-          title={
-            <>
-              From Vancouver, <em className="text-gold-ink">by way of Rome.</em>
-            </>
-          }
-        />
-        <div className="mb-20 md:mb-28">
-          <Panorama />
-        </div>
+        <SectionHead mark="04" latin="Ritratto" title={<>About <em className="text-gold-ink">me.</em></>} />
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <figure className="mx-auto max-w-[360px] lg:mx-0">
@@ -107,10 +95,8 @@ export function About() {
                 won&rsquo;t let you fake understanding.
               </p>
               <p>
-                Vancouver is home: the mountains, the water and a skyline of glass that&rsquo;s barely older than I am.
-                Then I lived in Rome for a while, and it changed how I think about craft. The buildings there were made
-                to last, made to be used, and made to be beautiful, all at once. I try to hold software to that
-                standard. Outside of work: soccer, music, travel and training.
+                I lived in Rome for a while, which is where the look of this site comes from. Outside of work: soccer,
+                music, travel and training.
               </p>
             </div>
           </Reveal>

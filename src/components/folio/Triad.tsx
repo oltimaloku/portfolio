@@ -22,27 +22,24 @@ const CENTRES: Record<Key, { x: number; y: number }> = {
   product: { x: 382, y: 338 },
 };
 
-export const VIRTUES: { key: Key; latin: string; name: string; line: string; body: string }[] = [
+export const VIRTUES: { key: Key; name: string; line: string; body: string }[] = [
   {
     key: "engineering",
-    latin: "Firmitas",
     name: "Engineering",
-    line: "It has to stand up.",
-    body: "Systems that hold under load: tested, measured and deployed, not demoed.",
+    line: "Make it hold up.",
+    body: "Tests, evals and a real deployment, not a demo that only works once.",
   },
   {
     key: "product",
-    latin: "Utilitas",
     name: "Product",
-    line: "It has to serve someone.",
-    body: "Finding the real problem by talking to the people who have it, then cutting everything else.",
+    line: "Solve the real problem.",
+    body: "Talk to the people who have it first, then cut whatever doesn't help them.",
   },
   {
     key: "design",
-    latin: "Venustas",
     name: "Design",
-    line: "It has to delight.",
-    body: "Interfaces with a point of view, where every detail was decided rather than defaulted.",
+    line: "Make it nice to use.",
+    body: "The details matter to me: the spacing, the wording, what happens when you tap.",
   },
 ];
 
@@ -108,7 +105,7 @@ export default function Triad({ projects }: { projects: TriadProject[] }) {
       {/* Legend */}
       <div className="lg:col-span-5 order-2 lg:order-1">
         <ol className="border-t border-gold-soft">
-          {VIRTUES.map((v, i) => (
+          {VIRTUES.map((v) => (
             <li
               key={v.key}
               onMouseEnter={() => setFocus(v.key)}
@@ -118,15 +115,9 @@ export default function Triad({ projects }: { projects: TriadProject[] }) {
                 focus && focus !== v.key && "opacity-35"
               )}
             >
-              <span className="t-display text-[34px] text-gold-ink leading-none pt-1">
-                {["I", "II", "III"][i]}
-              </span>
+              <span className="mt-1.5 block h-6 w-6 rounded-full border border-gold" aria-hidden />
               <div>
-                <div className="flex items-baseline gap-3 flex-wrap">
-                  <span className="t-label text-gold-ink">{v.latin}</span>
-                  <span className="t-label text-ink-4">/</span>
-                  <span className="t-label text-ink-2">{v.name}</span>
-                </div>
+                <span className="t-label text-gold-ink">{v.name}</span>
                 <p className="t-title text-[28px] mt-2 text-ink">{v.line}</p>
                 <p className="mt-2 text-ink-3 text-[16px] leading-relaxed max-w-[42ch]">{v.body}</p>
               </div>
@@ -141,7 +132,7 @@ export default function Triad({ projects }: { projects: TriadProject[] }) {
           viewBox="0 -34 600 580"
           className="w-full h-auto overflow-visible"
           role="img"
-          aria-label="Three overlapping circles labelled Firmitas (engineering), Utilitas (product) and Venustas (design), with each project plotted where its work fell between them."
+          aria-label="Three overlapping circles labelled engineering, product and design, with each project plotted where its work fell between them."
         >
           <defs>
             <clipPath id="clip-eng">
@@ -198,22 +189,9 @@ export default function Triad({ projects }: { projects: TriadProject[] }) {
                   strokeWidth={0.8}
                 />
                 <circle cx={c.x} cy={c.y} r={1.6} fill="var(--gold)" />
-                <text
+                                <text
                   x={LABELS[v.key].x}
-                  y={LABELS[v.key].y}
-                  textAnchor={LABELS[v.key].anchor}
-                  style={{
-                    fontFamily: "var(--ff-mono)",
-                    fontSize: 11,
-                    letterSpacing: "0.18em",
-                    fill: "var(--gold-ink)",
-                  }}
-                >
-                  {v.latin.toUpperCase()}
-                </text>
-                <text
-                  x={LABELS[v.key].x}
-                  y={LABELS[v.key].y + 24}
+                  y={LABELS[v.key].y + 14}
                   textAnchor={LABELS[v.key].anchor}
                   style={{
                     fontFamily: "var(--ff-display)",

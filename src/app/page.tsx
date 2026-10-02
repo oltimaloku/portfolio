@@ -21,15 +21,10 @@ export default function Home() {
             latin="Metodo"
             title={
               <>
-                Firmitas, utilitas, <em className="text-gold-ink">venustas.</em>
+                How I <em className="text-gold-ink">work.</em>
               </>
             }
-            lede={
-              <>
-                Two thousand years ago Vitruvius wrote that a building must be sound, useful and beautiful. I hold
-                software to the same three, and I do my best work where they overlap.
-              </>
-            }
+            lede="I like owning things end to end: talking to the people who'll use it, designing it, and building it. The projects I'm proudest of needed all three. Here's roughly where each one landed."
           />
           <Reveal>
             <Triad

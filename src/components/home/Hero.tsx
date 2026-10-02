@@ -98,8 +98,7 @@ export default function Hero({ plates }: { plates: number }) {
           className="mt-4 mb-2 max-w-[70ch] px-1 text-[14px] italic text-ink-3 fade"
           style={{ "--delay": "4s" } as React.CSSProperties}
         >
-          The Pantheon&rsquo;s dome is exactly as high as it is wide: a sphere 43.3 m across fits inside it. Sound,
-          useful and beautiful at once, which is the standard this site is about.
+          The Pantheon in Rome. Its dome is exactly as high as it is wide, so a sphere 43.3 m across fits inside.
         </p>
       </div>
     </section>
