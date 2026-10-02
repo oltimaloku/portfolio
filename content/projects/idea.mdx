@@ -28,79 +28,77 @@ metrics:
 triad: { engineering: 0.38, product: 0.4, design: 0.22 }
 ---
 
-## Project Overview
+## Overview
 
-I embarked on an exciting project called IDEA (Interactive Daily Epilepsy Assistant) while working as a Product Manager Intern and Software Engineer Intern at [Edee Care](https://www.edeecare.com/), a startup dedicated to creating solutions for people with epilepsy. The mobile app, IDEA, was developed to help users track their seizures, triggers, and medication. Leading the development of this project was not only technically demanding but also incredibly impactful, aiming to improve the quality of life for those living with epilepsy.
+IDEA, the Interactive Daily Epilepsy Assistant, is the product of [Edee Care](https://www.edeecare.com/), a startup building tools for people living with epilepsy. Seizures rarely come out of nowhere: stress, poor sleep, missed medication, alcohol and flashing lights all play a part, but those patterns are almost impossible to see from memory alone. IDEA makes them visible by pairing a short daily journal with seizure logs and data from the user's own wearables.
 
-## The Development Journey
+I was at Edee Care for almost two years, first as its product manager intern and then as the lead engineer on the app. It's the largest project I've worked on outside Neuron, and the one that taught me how to take a product from an idea to something people actually use.
 
-As the sole software developer on this project, I faced the task of building the app using Flutter for the frontend, Node.js for the backend, and MongoDB for data management. Despite my limited prior experience with these technologies, I was committed to learning them from scratch. This required a deep understanding of not only the technical aspects but also how to integrate them seamlessly into a functional and user-friendly application.
+## Phase I: an SMS pilot before any code
 
-The most valuable skill I honed during this project was adaptability in technology. Quickly assimilating new programming languages and frameworks was essential. The experience of developing an app single-handedly that positively impacted the real world was immensely gratifying and a significant milestone in my career.
+Before building an app, we needed to know the idea held up. As product manager intern I led a small team of two UX designers and a researcher to run an SMS pilot. Through Heymarket, participants received check-in texts twice a day linking to a short Typeform survey. I managed the incoming data, wrote a weekly report on each participant's condition, and interviewed our first users.
 
-## Project Phases
+The pilot validated the core value proposition and gave us the raw material for the app: which questions people would answer every day, which they skipped, and what they wanted back. From those interviews I designed the user flows, wireframes and requirements documents for six features of the app's MVP.
 
-### 1. IDEA SMS Pilot Program
+## Phase II: version one
 
-The project started with the IDEA SMS pilot program, a test to both gather market information and validate the company's value proposition. It utilized Heymarket to manage SMS communications, sending periodic text messages to users as a personalized assistant and prompting them to complete a Typeform survey twice a day. My role was to manage the data collected from users and create weekly reports detailing their condition. I also conducted interviews with our initial users. The success of this trial led us to begin phase 2: the IDEA mobile application V1.
+With the pilot's findings in hand we built the first version. I chose **Flutter** so one codebase would ship to both iOS and Android, with a **Node.js and Express** backend and **MongoDB** through Mongoose. The MVP covered the essentials: logging seizures, recording triggers and tracking medication, with authentication built on bcrypt.
 
-### 2. IDEA Mobile Application V1
+It was basic, but it went out to testers on Apple TestFlight. For most of 2023 I was the only developer on the app, learning Flutter, Node and MongoDB from scratch as I went.
 
-After months of piloting our SMS program, we leveraged our insights to develop the initial version of our mobile application. As the lead developer, I opted for Flutter, valuing its cross-platform functionality, and integrated it with a Node.js and JavaScript backend, utilizing Express for efficient routing and MongoDB with Mongoose for effective data management.
+## Phase III: a major overhaul
 
-This initial MVP featured core functionalities like recording seizure incidents, identifying triggers, and tracking medications. Though basic, it was instrumental in launching the app on Apple TestFlight for user trials. This process was not only pivotal in introducing the app to users but also in enhancing my understanding of Flutter, Node, and MongoDB.
+Feedback from V1 testing, a new visual identity and new designers on the team led to a near-complete rewrite of the front end.
 
-**Key Skills Developed:**
-- Understanding and implementing an effective file structure
-- Proficiency in using Git for version control
-- Developed effective state management techniques
-- Implementing robust authentication mechanisms utilizing [Bcrypt](https://www.npmjs.com/package/bcrypt)
-- Gaining expertise in NodeJS and API development
-- Developing a strong foundation in MongoDB usage
+<Compare
+  before={{ src: "/images/projects/idea/redesign-before.webp", alt: "IDEA version one: login, medication and trigger screens", label: "V1 · spring 2023" }}
+  after={{ src: "/images/projects/idea/redesign-after.webp", alt: "The redesigned IDEA: calendar, home with seizure history, trigger picker and login", label: "Redesign · fall 2023" }}
+  caption="The same app before and after the redesign, built against Edee Care's new brand guide."
+/>
 
-### 3. A Major Overhaul
+### From parameter passing to MVVM
 
-The second iteration of the IDEA app marked a significant transformation, initiated by feedback from V1 testing and the addition of new UX designers. This phase included a revamp of Edee Care's visual style, resulting in a major rewrite of the frontend code for better integration of design changes, and improvements in state management for enhanced performance and scalability.
+The original app passed state down through widget parameters. That's fine for a small app but was becoming unmanageable. I moved state into **Provider** and restructured the app from MVC to **MVVM**, so views react to view-model changes and widgets stop depending on each other. The app became noticeably more stable and much easier to test and extend.
 
-## Transition to Scalable State Management
+### A schema that bends to the person
 
-Initially, our app architecture relied on "parameter passing" for state management, a method good for smaller applications but less suitable for our expanding project. This simple technique, however, was becoming cumbersome. To address this, I shifted to using Provider, a package that centralizes data access and facilitates state management within the application. This change not only improved scalability but also minimized the coupling between widgets, making them more independent and test-friendly.
+The first MongoDB schema centred on a single User document linked to medications, seizure events and triggers. A one-size-fits-all list of triggers turned out not to fit anyone: our very first pilot user reported triggers related to fibromyalgia that no standard list included. So we introduced **user-defined types**: a shared set of common triggers (alcohol, sunlight, heat) that each person can extend with their own.
 
-### Architectural Shift to MVVM with Provider
+### TypeScript on the server
 
-To fully leverage Provider's capabilities, I transitioned our application's architecture from MVC (Model View Controller) to MVVM (Model View ViewModel). This change complemented Provider's design, which is geared towards efficient state distribution in Flutter. MVVM's reactive programming style, supported by ChangeNotifierProvider, allows UI components to automatically update in response to ViewModel state changes.
+I used the rewrite as the moment to move the server from JavaScript to **TypeScript**, with **Typegoose** for the MongoDB models. Strict types caught whole categories of mistakes before they reached testers and made the codebase far easier to navigate.
 
-## Rethinking the Database Schema for Customization
+### Onboarding and health data
 
-The original database design in MongoDB centered around a "User" object. This object encapsulated essential information like email, password, and name. Additionally, it linked to other related objects such as Medication, Seizure_event, and Triggers. We utilized [Mongoose](https://mongoosejs.com/) on the server to enforce and manage this schema effectively.
+A new multi-step onboarding builds a profile of each person's condition. IDEA then connects to **Apple HealthKit** and **Android Health Connect**, so heart rate and other wearable data can sit alongside the journal.
 
-Our preference for a NoSQL database like MongoDB was driven by its inherent flexibility. As our application was poised for continuous evolution, the ability to effortlessly add new fields or modify the existing schema was crucial.
+<Compare
+  before={{ src: "/images/projects/idea/journal-design.webp", alt: "Design mockup of the daily journal with stress and sleep sliders", label: "Design" }}
+  after={{ src: "/images/projects/idea/journal.webp", alt: "The built daily journal running on TestFlight", label: "Build" }}
+  caption="The daily journal: from the designers' mockup to the screen on TestFlight."
+/>
 
-### Customization for Individual User Needs
+## Phase IV: Coach, Detective and a team (2024)
 
-Given the specific requirements of a health application, particularly one focused on epilepsy, we recognized the need for greater personalization. A one-size-fits-all approach was insufficient, as each user's condition and triggers are unique. This became particularly evident with our first user in the pilot program, who reported specific triggers related to Fibromyalgia.
+I came back in 2024 to lead the app's next version, this time with a team. I led and mentored three developers while continuing to write most of the Flutter code. That version added:
 
-To enhance customization, we introduced the concept of user-defined types. While we had a standard set of triggers applicable to all users (like alcohol, sunlight, and heat), we also wanted users to have the ability to add specific triggers unique to their condition.
+- **Coach:** an eScore that summarises how a person is doing, with daily challenges, journal prompts and streaks to keep the habit going.
+- **Detective:** a calendar and pattern view that surfaces seizure cycles and time-of-day patterns.
+- **Wearable charts:** each logged event shows the heart-rate data from around that moment.
+- **Sign in with Apple and Google**, which cut the time it took a new user to get value from the app by roughly 40%.
+- **CI/CD on AWS CodePipeline**, which cut deployment time by 90% and made rapid user testing practical.
+- Health data stored in **Amazon S3** for later analysis, nested MongoDB documents restructured to cut queries by 30%, and a **Retool** admin so the team could update content without a release.
 
-## Transitioning the Backend to TypeScript
+<Gallery
+  images={[
+    { src: "/images/projects/idea/home.webp", alt: "IDEA home screen with a greeting, a Start Journaling button and this week's seizure history" },
+    { src: "/images/projects/idea/seizure-log.webp", alt: "The seizure log: time, duration, type, aura, rescue medication, mood and triggers" },
+  ]}
+  caption="Home, with this week's seizure history, and the seizure log."
+/>
 
-A key decision in our development process was the transition from JavaScript to TypeScript for our NodeJS server. Recognizing TypeScript's growing popularity and its array of benefits, I saw our project's transitional phase as a great moment to adopt this technology. For MongoDB schema implementation, we utilized [Typegoose](https://typegoose.github.io/typegoose/), which seamlessly integrated with TypeScript.
+By the end, I had written more than 630 of the project's roughly 820 commits and about 86% of the Flutter code, along with the first version of the TypeScript backend that grew to 44 endpoints.
 
-**Key Benefits of Using TypeScript:**
+## What I took from it
 
-- **Enhanced Developer Experience**: TypeScript's robust type system provided improved autocompletion, more precise IntelliSense, and superior code navigation capabilities.
-- **Increased Code Reliability**: TypeScript's strict typing instilled greater confidence in the accuracy of our code, substantially minimizing common coding mistakes.
-
-## Enhanced Onboarding and Health Integration Process
-
-Aligned with our commitment to delivering a highly customizable user experience, we implemented a thorough onboarding process for the IDEA app. This process was designed to gather essential user information, creating a comprehensive profile including basic personal details and specific epilepsy-related information.
-
-### Integration with Health Applications
-
-A pivotal component of our application was the integration with users' mobile device health applications. This feature was central to one of our primary objectives: the acquisition of real-time health data through smartwatches. I utilized a health package that enabled seamless integration with major health platforms like Apple Health and Google Fit.
-
-## Conclusion
-
-Working on the IDEA project at Edee Care has been the largest and most enriching project I've undertaken in my career thus far. Working in both Product Management and Software Engineering as an intern, I navigated new technologies and complex problem-solving, gaining invaluable skills. This project, significant in its impact on epilepsy care, not only sharpened my technical abilities but also deepened my insight into user-focused design and innovation.
-
-Be sure to check out [Edee Care](https://www.edeecare.com/) for updates on their product!
+IDEA is where I learned that product and engineering aren't separate jobs. The questions in the journal came from interviews I ran; the schema changed because of one user's fibromyalgia; the architecture changed because the design did. It's also where I learned to pick up a new stack quickly and still ship something people with a real condition could rely on.

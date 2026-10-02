@@ -50,7 +50,7 @@ export default function Header() {
           </span>
         </Link>
 
-        <nav className="ml-auto hidden items-center gap-9 md:flex" aria-label="Primary">
+        <nav className="ml-auto hidden items-center gap-9 lg:flex" aria-label="Primary">
           {NAV.map((item) => (
             <Link key={item.name} href={item.href} className="group flex items-baseline gap-1.5 t-label text-ink-2 hover:text-ink">
               <span className="text-gold-ink text-[9px]">{item.n}</span>
@@ -71,7 +71,7 @@ export default function Header() {
         <button
           type="button"
           onClick={() => setOpen((v) => !v)}
-          className="ml-auto flex h-10 items-center gap-3 t-label md:hidden"
+          className="ml-auto flex h-10 items-center gap-3 t-label lg:hidden"
           aria-expanded={open}
           aria-controls="mobile-nav"
         >
@@ -84,7 +84,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <nav id="mobile-nav" className="h-[calc(100svh-68px)] overflow-y-auto border-t border-gold-faint bg-paper px-[var(--gutter)] pt-8 md:hidden" aria-label="Primary">
+        <nav id="mobile-nav" className="h-[calc(100svh-68px)] overflow-y-auto border-t border-gold-faint bg-paper px-[var(--gutter)] pt-8 lg:hidden" aria-label="Primary">
           <ul>
             {NAV.map((item, i) => (
               <li key={item.name} className="rise border-b border-gold-faint" style={{ "--delay": `${i * 0.05}s` } as React.CSSProperties}>

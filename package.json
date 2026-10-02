@@ -1,12 +1,14 @@
 {
-  "name": "personal_website",
+  "name": "olti-portfolio",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "images": "./scripts/optimize-images.sh",
+    "preview": "NEXT_PUBLIC_BASE_PATH=/portfolio next build && npx serve out"
   },
   "dependencies": {
     "clsx": "^2.1.1",

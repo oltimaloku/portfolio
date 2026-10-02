@@ -14,43 +14,17 @@ links:
 triad: { engineering: 0.52, product: 0.3, design: 0.18 }
 ---
 
-## Project Overview
+## Why I built it
 
-ChefAI is an innovative iOS application designed to revolutionize how people manage their kitchen inventory and discover new recipes. By leveraging computer vision and AI technologies, the app provides an intuitive way to track pantry items and generate personalized recipe suggestions.
+ChefAI was a small project with one goal: learn how to put AI inside a real app rather than next to it. The idea was simple enough to finish and concrete enough to be useful. Point your phone at what's in your kitchen, and get something to cook from it.
 
-## Key Features
+## How it works
 
-### Inventory Management
+- **Build a pantry** by scanning product barcodes with the camera, photographing items for recognition with Apple's **Vision** framework, or adding them by hand.
+- **Generate recipes** from what's actually in the pantry. The ingredient list is sent to a language model, which returns recipes that use what you have and suggests substitutes for what you don't.
 
-Users can easily build their digital pantry through multiple input methods:
+The app is written in **SwiftUI**, with the pantry stored on the device.
 
-- **Barcode Scanning**: Quick product identification using the device camera
-- **Photo Recognition**: Take a photo of items for automatic identification
-- **Manual Entry**: Traditional input for items not recognized
+## What I took from it
 
-### AI-Powered Recipe Generation
-
-The core innovation of ChefAI lies in its intelligent recipe generation:
-
-- Analyzes available ingredients in your pantry
-- Generates personalized recipes based on what you have
-- Considers dietary preferences and restrictions
-- Suggests substitutions for missing ingredients
-
-## Technical Implementation
-
-Built entirely with SwiftUI, ChefAI showcases modern iOS development practices:
-
-- **Clean Architecture**: Separation of concerns with well-defined layers
-- **Computer Vision Integration**: Utilizing Apple's Vision framework
-- **AI Integration**: Leveraging language models for recipe generation
-- **Local Storage**: Efficient data persistence for pantry management
-
-## Impact
-
-ChefAI addresses a common problem many households face: food waste and meal planning. By providing visibility into available ingredients and suggesting creative ways to use them, the app helps users:
-
-- Reduce food waste by using items before they expire
-- Save money by cooking with what's available
-- Discover new recipes and cooking techniques
-- Streamline grocery shopping
+Most of the work was in the seams: turning noisy camera results into clean ingredient names, and shaping prompts so the model returned recipes the app could actually display. Those same problems, making model output dependable enough to build a product on, came back at a much larger scale in [Neuron](/projects/neuron/).
