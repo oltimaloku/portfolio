@@ -22,6 +22,8 @@ export interface Role {
   note: string;
   /** Slug of the related project, if there's a case study. */
   project?: string;
+  /** The organisation's website. Shown in place of the location. */
+  url?: string;
 }
 
 /** Newest first. */
@@ -41,6 +43,7 @@ export const experience: Role[] = [
     title: "Product Engineer Intern",
     org: "MeaningfulWork",
     project: "meaningfulwork",
+    url: "https://www.meaningful.ca",
     place: "Vancouver",
     note: "Turned 15+ nonprofit interviews into a relationship CRM and shipped it to two pilot organisations.",
   },
@@ -50,6 +53,7 @@ export const experience: Role[] = [
     title: "Software Engineer Intern",
     org: "Remy",
     project: "remy",
+    url: "https://www.withremy.com",
     place: "San Francisco",
     note: "Built the commenting system for an AI design canvas, so feedback pinned to a prototype reaches the agent.",
   },

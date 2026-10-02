@@ -42,7 +42,16 @@ export function Practice() {
                 )}
               </div>
               <p className="text-[16px] leading-relaxed text-ink-2 md:col-span-4 md:pt-1.5">{r.note}</p>
-              <span className="t-label-sm text-ink-3 md:col-span-2 md:pt-2.5 md:text-right">{r.place}</span>
+              <span className="t-label-sm text-ink-3 md:col-span-2 md:pt-2.5 md:text-right">
+                {r.url ? (
+                  <a href={r.url} target="_blank" rel="noopener noreferrer" className="group/site inline-flex items-center gap-1.5 hover:text-ink transition-colors">
+                    <span className="link-draw">{r.url.replace(/^https?:\/\/(www\.)?/, "")}</span>
+                    <Arrow dir="up-right" className="h-2 w-2.5 text-gold" />
+                  </a>
+                ) : (
+                  r.place
+                )}
+              </span>
             </Reveal>
           ))}
         </ol>
@@ -87,8 +96,10 @@ export function About() {
                 That means sitting with the people who have the problem, deciding what not to build, designing the
                 screens, and writing the code that holds it up. I started as a product manager intern at Edee Care,
                 running an SMS pilot for people with epilepsy, and stayed on to build their app as lead mobile
-                engineer. Since then I&rsquo;ve built an AI design canvas at Remy in San Francisco and shipped a CRM to
-                nonprofits at MeaningfulWork.
+                engineer. Since then I&rsquo;ve built an AI design canvas at{" "}
+                <a href="https://www.withremy.com" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">Remy</a> in San
+                Francisco and shipped a CRM to nonprofits at{" "}
+                <a href="https://www.meaningful.ca" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">MeaningfulWork</a>.
               </p>
               <p>
                 Now I&rsquo;m building <Link href="/projects/neuron/" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">Neuron</Link> on my own: an AI tutor that reads your lecture slides and
