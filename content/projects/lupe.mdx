@@ -1,0 +1,87 @@
+---
+title: "Lupe"
+slug: "lupe"
+description: "An educational mobile app leveraging the Feynman Technique, allowing users to learn by explaining concepts in their own words. Features voice-to-text capabilities using Whisper.cpp for on-device inference, and AI-powered response grading through the OpenAI API."
+date: "2023-09-01"
+endDate: "2023-12-01"
+featured: true
+technologies: ["SwiftUI", "OpenAI", "Whisper.cpp"]
+icon: "graduation-cap"
+---
+
+## Project Overview
+
+Lupe is an innovative educational mobile application that leverages the Feynman Technique to enhance learning through explanation. Named after the renowned physicist Richard Feynman, the app encourages users to solidify their understanding of concepts by explaining them in their own words. What sets Lupe apart is its integration of advanced AI technologies for both voice recognition and response evaluation, creating a seamless and effective learning experience.
+
+## The Development Journey
+
+Developed using SwiftUI for a native iOS experience, Lupe represented my first major project using Apple's modern UI framework. The project challenged me to integrate multiple cutting-edge technologies while maintaining high performance and user privacy. A key technical achievement was implementing on-device voice recognition using Whisper.cpp, ensuring user privacy while providing accurate transcription capabilities.
+
+The project pushed me to deeply understand iOS development patterns, API integration, and the implementation of complex AI models in mobile applications. Managing the balance between feature richness and application performance was a constant learning experience.
+
+## Key Features and Technical Implementation
+
+### Voice Recognition with Whisper.cpp
+
+One of Lupe's standout features is its implementation of offline voice recognition using Whisper.cpp. This required careful optimization to run efficiently on mobile devices while maintaining accuracy. The implementation process involved:
+
+- Compiling Whisper.cpp for iOS architecture
+- Creating a bridge between Swift and C++ code
+- Optimizing model size and performance for mobile devices
+- Implementing error handling and fallback mechanisms
+
+The result was a robust voice recognition system that works entirely on-device, protecting user privacy while providing fast and accurate transcription.
+
+### AI-Powered Response Evaluation
+
+Integration with OpenAI's API formed the backbone of Lupe's response evaluation system. The implementation required careful consideration of:
+
+- Prompt engineering for consistent and helpful feedback
+- Token optimization to minimize API costs
+- Response caching for improved performance
+- Error handling and retry mechanisms
+
+### SwiftUI Implementation
+
+Building Lupe with SwiftUI provided an opportunity to work with modern iOS development patterns. Key aspects included:
+
+- Implementation of MVVM architecture
+- Use of Combine framework for reactive programming
+- Custom animations and transitions
+- Accessible design implementation
+
+## Technical Challenges and Solutions
+
+### On-Device Processing
+
+One of the biggest challenges was optimizing Whisper.cpp for mobile devices. This required careful memory management and performance optimization:
+
+**Key Solutions:**
+- Implemented model quantization to reduce memory footprint
+- Created an efficient audio buffer management system
+- Developed a queuing system for processing longer recordings
+- Implemented background processing for better user experience
+
+### User Experience Optimization
+
+Ensuring a smooth user experience while processing complex operations required careful consideration of the UI/UX design:
+
+**Implementation Details:**
+- Designed an intuitive recording interface with visual feedback
+- Created smooth transitions between recording and processing states
+- Implemented progress indicators for long-running operations
+- Added helpful tooltips and onboarding guidance
+
+## Learning Outcomes
+
+Developing Lupe has been an invaluable learning experience that helped me grow as a developer in several ways:
+
+- Gained deep understanding of SwiftUI and iOS development patterns
+- Learned to integrate and optimize AI models for mobile devices
+- Improved skills in API design and integration
+- Enhanced understanding of user experience design
+- Developed expertise in performance optimization for mobile applications
+
+## Future Developments
+
+Future plans for Lupe include expanding to Android platforms, implementing more sophisticated feedback mechanisms, and adding collaborative learning features. The project continues to evolve as new technologies become available and user feedback shapes its development.

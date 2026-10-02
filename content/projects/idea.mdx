@@ -1,0 +1,88 @@
+---
+title: "IDEA"
+slug: "idea"
+description: "A cross-platform mobile application designed to integrate with Apple Health and Google Fit for seamless data collection. Enables users to journal key metrics like stress, sleep, and medication, aiding in precise seizure tracking."
+date: "2023-01-01"
+endDate: "2023-10-01"
+featured: true
+technologies: ["Flutter", "TypeScript", "MongoDB", "Node.js"]
+icon: "notes-medical"
+coverImage: "/images/projects/journal1.png"
+---
+
+## Project Overview
+
+I embarked on an exciting project called IDEA (Interactive Daily Epilepsy Assistant) while working as a Product Manager Intern and Software Engineer Intern at [Edee Care](https://www.edeecare.com/), a startup dedicated to creating solutions for people with epilepsy. The mobile app, IDEA, was developed to help users track their seizures, triggers, and medication. Leading the development of this project was not only technically demanding but also incredibly impactful, aiming to improve the quality of life for those living with epilepsy.
+
+## The Development Journey
+
+As the sole software developer on this project, I faced the task of building the app using Flutter for the frontend, Node.js for the backend, and MongoDB for data management. Despite my limited prior experience with these technologies, I was committed to learning them from scratch. This required a deep understanding of not only the technical aspects but also how to integrate them seamlessly into a functional and user-friendly application.
+
+The most valuable skill I honed during this project was adaptability in technology. Quickly assimilating new programming languages and frameworks was essential. The experience of developing an app single-handedly that positively impacted the real world was immensely gratifying and a significant milestone in my career.
+
+## Project Phases
+
+### 1. IDEA SMS Pilot Program
+
+The project started with the IDEA SMS pilot program, a test to both gather market information and validate the company's value proposition. It utilized Heymarket to manage SMS communications, sending periodic text messages to users as a personalized assistant and prompting them to complete a Typeform survey twice a day. My role was to manage the data collected from users and create weekly reports detailing their condition. I also conducted interviews with our initial users. The success of this trial led us to begin phase 2: the IDEA mobile application V1.
+
+### 2. IDEA Mobile Application V1
+
+After months of piloting our SMS program, we leveraged our insights to develop the initial version of our mobile application. As the lead developer, I opted for Flutter, valuing its cross-platform functionality, and integrated it with a Node.js and JavaScript backend, utilizing Express for efficient routing and MongoDB with Mongoose for effective data management.
+
+This initial MVP featured core functionalities like recording seizure incidents, identifying triggers, and tracking medications. Though basic, it was instrumental in launching the app on Apple TestFlight for user trials. This process was not only pivotal in introducing the app to users but also in enhancing my understanding of Flutter, Node, and MongoDB.
+
+**Key Skills Developed:**
+- Understanding and implementing an effective file structure
+- Proficiency in using Git for version control
+- Developed effective state management techniques
+- Implementing robust authentication mechanisms utilizing [Bcrypt](https://www.npmjs.com/package/bcrypt)
+- Gaining expertise in NodeJS and API development
+- Developing a strong foundation in MongoDB usage
+
+### 3. A Major Overhaul
+
+The second iteration of the IDEA app marked a significant transformation, initiated by feedback from V1 testing and the addition of new UX designers. This phase included a revamp of Edee Care's visual style, resulting in a major rewrite of the frontend code for better integration of design changes, and improvements in state management for enhanced performance and scalability.
+
+## Transition to Scalable State Management
+
+Initially, our app architecture relied on "parameter passing" for state management, a method good for smaller applications but less suitable for our expanding project. This simple technique, however, was becoming cumbersome. To address this, I shifted to using Provider, a package that centralizes data access and facilitates state management within the application. This change not only improved scalability but also minimized the coupling between widgets, making them more independent and test-friendly.
+
+### Architectural Shift to MVVM with Provider
+
+To fully leverage Provider's capabilities, I transitioned our application's architecture from MVC (Model View Controller) to MVVM (Model View ViewModel). This change complemented Provider's design, which is geared towards efficient state distribution in Flutter. MVVM's reactive programming style, supported by ChangeNotifierProvider, allows UI components to automatically update in response to ViewModel state changes.
+
+## Rethinking the Database Schema for Customization
+
+The original database design in MongoDB centered around a "User" object. This object encapsulated essential information like email, password, and name. Additionally, it linked to other related objects such as Medication, Seizure_event, and Triggers. We utilized [Mongoose](https://mongoosejs.com/) on the server to enforce and manage this schema effectively.
+
+Our preference for a NoSQL database like MongoDB was driven by its inherent flexibility. As our application was poised for continuous evolution, the ability to effortlessly add new fields or modify the existing schema was crucial.
+
+### Customization for Individual User Needs
+
+Given the specific requirements of a health application, particularly one focused on epilepsy, we recognized the need for greater personalization. A one-size-fits-all approach was insufficient, as each user's condition and triggers are unique. This became particularly evident with our first user in the pilot program, who reported specific triggers related to Fibromyalgia.
+
+To enhance customization, we introduced the concept of user-defined types. While we had a standard set of triggers applicable to all users (like alcohol, sunlight, and heat), we also wanted users to have the ability to add specific triggers unique to their condition.
+
+## Transitioning the Backend to TypeScript
+
+A key decision in our development process was the transition from JavaScript to TypeScript for our NodeJS server. Recognizing TypeScript's growing popularity and its array of benefits, I saw our project's transitional phase as a great moment to adopt this technology. For MongoDB schema implementation, we utilized [Typegoose](https://typegoose.github.io/typegoose/), which seamlessly integrated with TypeScript.
+
+**Key Benefits of Using TypeScript:**
+
+- **Enhanced Developer Experience**: TypeScript's robust type system provided improved autocompletion, more precise IntelliSense, and superior code navigation capabilities.
+- **Increased Code Reliability**: TypeScript's strict typing instilled greater confidence in the accuracy of our code, substantially minimizing common coding mistakes.
+
+## Enhanced Onboarding and Health Integration Process
+
+Aligned with our commitment to delivering a highly customizable user experience, we implemented a thorough onboarding process for the IDEA app. This process was designed to gather essential user information, creating a comprehensive profile including basic personal details and specific epilepsy-related information.
+
+### Integration with Health Applications
+
+A pivotal component of our application was the integration with users' mobile device health applications. This feature was central to one of our primary objectives: the acquisition of real-time health data through smartwatches. I utilized a health package that enabled seamless integration with major health platforms like Apple Health and Google Fit.
+
+## Conclusion
+
+Working on the IDEA project at Edee Care has been the largest and most enriching project I've undertaken in my career thus far. Working in both Product Management and Software Engineering as an intern, I navigated new technologies and complex problem-solving, gaining invaluable skills. This project, significant in its impact on epilepsy care, not only sharpened my technical abilities but also deepened my insight into user-focused design and innovation.
+
+Be sure to check out [Edee Care](https://www.edeecare.com/) for updates on their product!

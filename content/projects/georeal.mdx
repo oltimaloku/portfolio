@@ -1,0 +1,51 @@
+---
+title: "Geo Real"
+slug: "georeal"
+description: "A cross-platform mobile application enabling users to create and share location-based picture galleries. Users craft 'Geo Spheres' tied to specific locations, and when friends enter these zones, they're prompted to capture a photo for the communal collection."
+date: "2022-10-01"
+endDate: "2023-09-01"
+featured: true
+technologies: ["Flutter", "Python", "Firebase", "Google Maps"]
+icon: "earth-americas"
+coverImage: "/images/projects/geo-real.PNG"
+---
+
+## Project Overview
+
+Geo Real is a cross-platform mobile application that allows users to create and share location-based picture galleries. Users create 'Geo-Spheres' at specific locations like dorm rooms or houses. When friends enter these zones, they're prompted to capture a photo, contributing to the communal photo collection of that Geo Sphere. This innovative approach offers a unique way to chronicle memories linked to the places where they're made.
+
+## Origins
+
+The project originated at a hackathon at the University of Washington called DubHacks. As a newcomer to programming, I found this hackathon to be a significant learning experience. Although my initial contributions were limited, the high-pressure environment of the hackathon highlighted the areas I needed to focus on and motivated me to enhance my skills.
+
+## Development and Technical Challenges
+
+Initially, Geo Real was an Android app built with Java, featuring a Python Flask backend. About eight months later, after learning Flutter, I revisited the project to develop a new frontend using my newly acquired Flutter skills. A major challenge was implementing location-based tracking, achieved by leveraging the Google Maps API.
+
+### Technical Stack
+
+- **Frontend**: Flutter for cross-platform mobile development
+- **Backend**: Python Flask for API services
+- **Database**: Firebase for real-time data sync
+- **Location Services**: Google Maps API for geofencing
+
+## Features
+
+The app features a user-friendly interface that allows users to create, share and view geo-fenced picture galleries:
+
+- **Location Tracking**: The application tracks the user's location and identifies when they have entered a Geo-Sphere
+- **Photo Prompts**: Users are prompted to take a photo upon entering a zone
+- **Communal Galleries**: Photos are added to the shared gallery for that location
+- **Map View**: Displays the location of all Geo-Spheres
+- **Dual Navigation**: Users can switch between list view and map view to discover geo-spheres near them
+
+## Future Enhancements
+
+A current challenge is enabling the app to track location when the phone is turned off. Due to the limitations of the Apple ecosystem and its integration with Flutter, this feature has been particularly challenging to implement. Continued work in this area is a key focus for future development.
+
+Additional planned features include:
+
+- Background location tracking improvements
+- Enhanced privacy controls
+- Social sharing capabilities
+- Photo filters and editing tools
