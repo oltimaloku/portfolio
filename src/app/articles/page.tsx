@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getAllArticles } from "@/lib/content";
 import { formatDate } from "@/lib/utils";
 import { Arrow, SectionHead, Sheet } from "@/components/folio/primitives";
@@ -12,6 +13,7 @@ export const metadata: Metadata = {
 
 export default function ArticlesPage() {
   const articles = getAllArticles();
+  if (articles.length === 0) notFound();
 
   return (
     <section className="pt-[68px]">

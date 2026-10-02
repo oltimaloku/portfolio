@@ -22,13 +22,10 @@ export default function Footer() {
         </div>
         <div className="mt-12 grid gap-12 lg:grid-cols-12">
           <h2 className="t-display text-[clamp(56px,8vw,128px)] lg:col-span-8">
-            Let&rsquo;s build something <em className="text-gold-ink">that lasts.</em>
+            Let&rsquo;s <em className="text-gold-ink">connect.</em>
           </h2>
           <div className="lg:col-span-4 lg:pt-6">
-            <p className="t-lede max-w-[34ch]">
-              I&rsquo;m always glad to talk about products, learning, or a role where I can design and build.
-            </p>
-            <ul className="mt-8 border-t border-gold-faint">
+            <ul className="border-t border-gold-faint">
               {links.map((l) => (
                 <li key={l.label} className="border-b border-gold-faint">
                   <a

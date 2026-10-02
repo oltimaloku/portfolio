@@ -77,10 +77,10 @@ export const experience: Role[] = [
   },
   {
     start: "",
-    end: "2027",
+    end: "2026",
     title: "B.Sc. Computer Science & Business",
     org: "University of British Columbia",
     place: "Vancouver",
-    note: "Combined major. Graduating May 2027.",
+    note: "Combined major. Graduating December 2026.",
   },
 ];

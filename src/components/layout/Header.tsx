@@ -14,10 +14,11 @@ const NAV = [
   { n: "05", name: "Writing", href: "/articles/" },
 ];
 
-export default function Header() {
+export default function Header({ showWriting = true }: { showWriting?: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const nav = showWriting ? NAV : NAV.filter((item) => item.name !== "Writing");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -56,7 +57,7 @@ export default function Header() {
         </Link>
 
         <nav className="ml-auto hidden items-center gap-9 lg:flex" aria-label="Primary">
-          {NAV.map((item) => (
+          {nav.map((item) => (
             <Link key={item.name} href={item.href} className="group flex items-baseline gap-1.5 t-label text-ink-2 hover:text-ink">
               <span className="text-gold-ink text-[9px]">{item.n}</span>
               <span className="link-draw">{item.name}</span>
@@ -91,7 +92,7 @@ export default function Header() {
       {open && (
         <nav id="mobile-nav" className="h-[calc(100svh-68px)] overflow-y-auto border-t border-gold-faint bg-paper px-[var(--gutter)] pt-8 lg:hidden" aria-label="Primary">
           <ul>
-            {NAV.map((item, i) => (
+            {nav.map((item, i) => (
               <li key={item.name} className="rise border-b border-gold-faint" style={{ "--delay": `${i * 0.05}s` } as React.CSSProperties}>
                 <Link href={item.href} className="flex items-baseline gap-4 py-5" onClick={() => setOpen(false)}>
                   <span className="t-label text-gold-ink">{item.n}</span>

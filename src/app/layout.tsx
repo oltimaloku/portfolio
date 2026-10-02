@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { site } from "@/lib/site";
+import { getAllArticles } from "@/lib/content";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
@@ -56,7 +57,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         >
           Skip to content
         </a>
-        <Header />
+        <Header showWriting={getAllArticles().length > 0} />
         <main id="main" className="overflow-x-clip">{children}</main>
         <Footer />
       </body>

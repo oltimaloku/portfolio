@@ -89,13 +89,11 @@ export function About() {
           <Reveal className="lg:col-span-7 lg:col-start-6" delay={0.1}>
             <div className="space-y-6 text-[19px] leading-[1.7] text-ink-2 max-w-[60ch]">
               <p className="t-title text-[clamp(28px,2.6vw,36px)] leading-[1.25] text-ink">
-                I&rsquo;m Olti. I&rsquo;m from Vancouver, in my final year of Computer Science and Business at UBC,
-                and I like the whole arc of making something.
+                I&rsquo;m Olti. I&rsquo;m from Vancouver and in my last term of Computer Science and Business at UBC.
               </p>
               <p>
-                That means sitting with the people who have the problem, deciding what not to build, designing the
-                screens, and writing the code that holds it up. I started as a product manager intern at Edee Care,
-                running an SMS pilot for people with epilepsy, and stayed on to build their app as lead mobile
+                I started as a product manager intern at Edee Care, running an SMS pilot for people with epilepsy, and
+                stayed on to build their app as the lead mobile
                 engineer. Since then I&rsquo;ve built an AI design canvas at{" "}
                 <a href="https://www.withremy.com" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">Remy</a> in San
                 Francisco and shipped a CRM to nonprofits at{" "}
