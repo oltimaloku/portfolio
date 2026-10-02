@@ -1,86 +1,64 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Source_Serif_4, Inter, Cormorant_Garamond } from "next/font/google";
+import { Cormorant_Garamond, IBM_Plex_Mono, Newsreader } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import BackgroundArt from "@/components/layout/BackgroundArt";
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-  display: "swap",
-});
+import { site } from "@/lib/site";
 
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
+  style: ["normal", "italic"],
   display: "swap",
-  weight: ["400", "500", "600", "700"],
+});
+
+const newsreader = Newsreader({
+  variable: "--font-newsreader",
+  subsets: ["latin"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
+  subsets: ["latin"],
+  weight: ["400", "500"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title: {
-    default: "Olti | Full Stack Developer",
-    template: "%s | Olti",
+    default: `${site.name} · ${site.role}`,
+    template: `%s · ${site.name}`,
   },
-  description:
-    "Full Stack Developer specializing in mobile and web development. UBC Computer Science & Business student.",
-  keywords: [
-    "Full Stack Developer",
-    "iOS Developer",
-    "React",
-    "SwiftUI",
-    "Flutter",
-    "UBC",
-    "Software Engineer",
-  ],
-  authors: [{ name: "Olti" }],
-  creator: "Olti",
+  description: site.description,
+  authors: [{ name: site.name }],
+  creator: site.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Olti Portfolio",
-    title: "Olti | Full Stack Developer",
-    description:
-      "Full Stack Developer specializing in mobile and web development.",
+    siteName: site.name,
+    title: `${site.name} · ${site.role}`,
+    description: site.description,
   },
-  twitter: {
-    card: "summary_large_image",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  twitter: { card: "summary_large_image" },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className="scroll-smooth">
-      <body
-        className={`${playfair.variable} ${sourceSerif.variable} ${inter.variable} ${cormorant.variable} antialiased min-h-screen`}
-      >
-        <BackgroundArt />
-        <div className="relative z-10 flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" className={`${cormorant.variable} ${newsreader.variable} ${plexMono.variable}`}>
+      <body className="antialiased min-h-screen">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-paper focus:px-4 focus:py-2 t-label"
+        >
+          Skip to content
+        </a>
+        <Header />
+        <main id="main" className="overflow-x-clip">{children}</main>
+        <Footer />
       </body>
     </html>
   );

@@ -1,0 +1,110 @@
+---
+title: "Neuron"
+tagline: "An AI tutor that never gives the answer."
+summary: "Neuron reads your lecture slides and teaches from them Socratically: it asks, cites the exact slide, names the gap in your explanation, and leaves the filling to you. One tutor voice is backed by a team of specialist agents, a routing layer written in code, and an evaluation harness that grades the tutor's behaviour run after run."
+scale: large
+order: 1
+start: "2025-09"
+end: "present"
+role: "Founder · product, design and every line of code"
+team: "Solo"
+platform: "Web · iOS · AWS"
+status: "Private beta"
+stack: ["Next.js", "React", "TypeScript", "Python", "FastAPI", "Postgres", "SwiftUI", "Claude Agent SDK", "Docker", "AWS"]
+links:
+  - label: "learnwithneuron.com"
+    href: "https://learnwithneuron.com"
+cover: "/images/projects/neuron/home.webp"
+coverInset: "/images/projects/neuron/iphone-home.webp"
+coverAlt: "Neuron's course home on the web, with the iPhone app beside it"
+metrics:
+  - value: "670"
+    label: "Commits, Sep 2025 – now"
+  - value: "2,600+"
+    label: "Automated tests"
+  - value: "38"
+    label: "Scripted tutor evals"
+  - value: "~200k"
+    label: "Lines across 3 platforms"
+triad: { engineering: 0.36, product: 0.33, design: 0.31 }
+evolvedFrom: "lupe"
+---
+
+## The problem
+
+Chat AI made studying feel easier and learning worse. Reading a fluent answer *feels* like understanding, but what actually makes knowledge stick is retrieval: producing the idea yourself, getting it wrong, and fixing it. A tool that hands over the answer on request quietly removes the part that teaches.
+
+Neuron is built on the opposite premise. It's for university students in concept-heavy technical courses (CS, math, engineering, stats) and it is designed to give them **the right kind of difficulty** instead of removing it.
+
+> Cites the slide. Names the gap. Never gives the answer.
+
+## What a session feels like
+
+A student uploads their own course material: lecture PDFs, slide decks, readings, recordings or links. Neuron reads the first lecture and the course is teachable within about a minute. From there, every session follows three moves:
+
+1. **Brain dump.** You say what you think you know. Neuron maps that baseline before it asks anything, so the first question is already the right one.
+2. **Socratic drill.** Pinpointed questions, one to three sentences at a time, until the misconception has nowhere to hide. Hints start vague and only sharpen when you're actually stuck. Every claim cites the slide it came from, and the citation opens the page.
+3. **Cold review.** Days later you rewrite the concept from nothing. Neuron compares you against the source, names what's missing, and leaves the filling to you.
+
+<Figure src="/images/projects/neuron/session.webp" alt="A Neuron session: the student has answered and is asked how sure they were" caption="Commit first, then rate your confidence. Separating the guess from the help is what keeps the record honest." />
+
+Underneath, a concept map tracks what you can reproduce *cold*: every concept you've explained, scored against the source and scheduled for review. It's a map of what you own, not a checklist of what you read.
+
+## One voice, many specialists
+
+Students only ever talk to Neuron. Behind it, specialist agents each do one job within set limits, and none of them marks its own work:
+
+- **Perk**, the course builder, reads files and the syllabus (sections, dates, figures) and keeps the plan current as uploads arrive.
+- **Oli** finds how concepts depend on each other and draws the map the tutor can bring in.
+- **Pyra** judges no-help attempts against a fixed answer key, keeping *help given* separate from *recall shown*.
+- **Jev** is a fast reader that classifies what kind of message just arrived in 70–500 ms, so the expensive model isn't asked questions a cheap one can answer.
+- A **review scheduler** written in plain code (no model involved) decides when you're tested next.
+
+<Figure src="/images/projects/neuron/agents.webp" alt="Diagram of Neuron's agents: the tutor in the centre, with planner, course builder, connections, review and memory, fast reader, emotion and observer around it, all writing to a shared record" caption="Who does what. Every agent reads the same shared record; only checked writes go in." wide />
+
+## Code decides, the model teaches
+
+The most important design decision in Neuron is where the model *isn't* trusted. A turn router written in code picks the route (teach, wrap up, skip, explain, show a figure, draw a visual) before the tutor model runs. Anything countable is counted in code. Mastery levels and review dates come from rules, not from a model's opinion of itself.
+
+Where a fast model reading *is* used, the thresholds came from data. Across 64 recorded readings, questions about the *form* of a message came back at 0.92–0.97 confidence, while questions about its *content* sat at 0.40–0.61. So Jev only answers form questions. The same analysis exposed a route whose confidence gate could never be cleared. It looked cautious, but in practice nothing could ever reach it.
+
+## Measuring behaviour, not vibes
+
+A tutor's quality lives in its behaviour across many conversations, so Neuron has its own evaluation harness:
+
+- **38 scripted tasks**, for example *conditional vs. marginal probability*, *don't diagnose an error in a correct answer*, *cite on demand*.
+- Each task runs **k trials, each in a fresh fixture course**, graded on the event log and the files the trial left behind.
+- Tasks are fingerprinted and tracked across a **five-run health window**, with cost and model recorded, so a regression is visible the day it lands.
+- Between September 10 and October 1, 2026 the suite ran **23 times** across four Claude models.
+
+Around that sit roughly 2,400 backend tests and 240 frontend tests, including one that walks every route of the real app to prove each one sits behind authentication.
+
+## Shipping it
+
+Neuron runs as a web app, an iPhone and iPad app, and a marketing site:
+
+- **Web:** Next.js 16, React 19, TypeScript, Tailwind. KaTeX for math, pdf.js for the slide viewer, d3-force for the concept map.
+- **Backend:** Python and FastAPI over Postgres, with a Postgres-backed job queue and an isolated document-extraction worker (Docling, PyMuPDF, Tesseract). Teaching runs on the Claude Agent SDK. Diagrams the tutor draws are rendered with Playwright so the model can check what it drew.
+- **iOS:** SwiftUI, with sketching on slides from a paired iPad, voice input and spaced review.
+- **Infrastructure:** one AWS EC2 host running Docker Compose behind Caddy, on three isolated networks with non-root containers. Google OAuth with PKCE and opaque server-side sessions; only hashes of tokens are stored.
+
+<Gallery
+  images={[
+    { src: "/images/projects/neuron/iphone-home.webp", alt: "Neuron on iPhone: course home" },
+    { src: "/images/projects/neuron/iphone-finish.webp", alt: "Neuron on iPhone: the finish screen after a session" },
+  ]}
+  caption="The iPhone app. Design mockups from September 2026."
+/>
+
+## Where it came from
+
+Neuron didn't start as Neuron. In fall 2024 I built [Lupe](/projects/lupe/), a SwiftUI app for learning by explaining things in your own words, with on-device speech recognition. Lupe proved the idea and showed the limit: grading an explanation is easy, but *teaching* someone toward a better one needs memory, sources and judgement.
+
+In fall 2025 the first real MVP was deliberately manual: an AI coding agent acting as a tutor over real material for three of my own UBC CS courses, with every failure written down. Those notes became the product rules. Lupe was rebuilt on the web with an agentic tool loop, file-based memory and click-to-slide citations, and grew into the Neuron that's in private beta today.
+
+## Principles
+
+- **Struggle is the feature.** No answers on demand. Hints get sharper, not longer.
+- **Terse by default.** One to three sentences. More only when you ask.
+- **Never off-source.** Locked to your materials; if it isn't in your slides, Neuron says so.
+- **Nothing marks its own work.** The tutor teaches, a separate judge grades, and code keeps the schedule.

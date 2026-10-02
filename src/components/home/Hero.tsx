@@ -1,109 +1,107 @@
-"use client";
+import PantheonDrawing from "@/components/drawing/PantheonDrawing";
+import { Arrow, ButtonLink } from "@/components/folio/primitives";
+import { site } from "@/lib/site";
+import { toRoman } from "@/lib/utils";
 
-import Container from "@/components/ui/Container";
-import Button from "@/components/ui/Button";
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+const COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H"];
+const ROWS = ["1", "2", "3", "4", "5"];
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
-
-export default function Hero() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const ctaRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      // Initial entrance animation timeline
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-
-      tl.from(headingRef.current?.querySelectorAll(".word") || [], {
-        y: 100,
-        opacity: 0,
-        duration: 1,
-        stagger: 0.15,
-      })
-        .from(
-          subtitleRef.current,
-          {
-            y: 30,
-            opacity: 0,
-            duration: 0.8,
-          },
-          "-=0.4"
-        )
-        .from(
-          ctaRef.current,
-          {
-            y: 20,
-            opacity: 0,
-            duration: 0.6,
-          },
-          "-=0.3"
-        );
-
-      // Scroll-triggered fade out as user scrolls past
-      gsap.to(sectionRef.current, {
-        opacity: 0.3,
-        y: -50,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1,
-        },
-      });
-    }, sectionRef);
-
-    return () => ctx.revert();
-  }, []);
+/** Frontispiece: the page is a drawing sheet with a border, grid references and a title block. */
+export default function Hero({ plates }: { plates: number }) {
+  const now = new Date();
+  const month = now.toLocaleString("en-US", { month: "short" });
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-32 lg:py-40 min-h-[80vh]">
-      <Container>
-        <div className="max-w-3xl">
-          {/* Animated heading - words wrapped for stagger animation */}
-          <h1
-            ref={headingRef}
-            className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold text-[#111827] leading-tight overflow-hidden"
-          >
-            <span className="word inline-block">Hi!</span>{" "}
-            <span className="word inline-block">I&apos;m</span>{" "}
-            <span className="word inline-block text-[#DC2626]">Olti</span>
-          </h1>
+    <section id="top" className="relative pt-[68px]">
+      <div className="relative mx-auto max-w-[1440px] px-3 md:px-6 pt-4 md:pt-6">
+        {/* Sheet border: an outer hairline and an inner rule, with grid references between them */}
+        <div className="relative border border-gold-soft p-[5px] fade" style={{ "--delay": "0s" } as React.CSSProperties}>
+          <div className="pointer-events-none absolute inset-x-[5px] top-0 hidden h-[5px] md:flex" aria-hidden>
+            {COLUMNS.map((c) => (
+              <span key={c} className="flex-1 border-l border-gold-faint first:border-l-0" />
+            ))}
+          </div>
+          <div className="pointer-events-none absolute inset-x-6 -top-[15px] hidden justify-around md:flex" aria-hidden>
+            {COLUMNS.map((c) => (
+              <span key={c} className="t-label-sm text-gold">{c}</span>
+            ))}
+          </div>
+          <div className="pointer-events-none absolute inset-y-6 -left-[14px] hidden flex-col justify-around md:flex" aria-hidden>
+            {ROWS.map((r) => (
+              <span key={r} className="t-label-sm text-gold">{r}</span>
+            ))}
+          </div>
 
-          {/* Subtitle */}
-          <p
-            ref={subtitleRef}
-            className="mt-8 text-lg md:text-xl text-[#374151] font-[family-name:var(--font-source-serif)] max-w-2xl"
-          >
-            I&apos;m currently studying{" "}
-            <span className="text-[#DC2626] font-medium">Computer Science</span>{" "}
-            and <span className="text-[#DC2626] font-medium">Business</span> at
-            the University of British Columbia!
-          </p>
+          <div className="relative flex min-h-[calc(100svh-68px-44px)] flex-col border border-gold-faint">
+            <div className="grid flex-1 lg:grid-cols-12">
+              {/* Statement */}
+              <div className="relative z-10 flex flex-col justify-center px-6 pb-10 pt-6 md:px-12 lg:col-span-5 lg:py-16 lg:pr-0">
+                <p className="t-label text-gold-ink rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
+                  Portfolio · {toRoman(now.getFullYear())}
+                </p>
+                <h1 className="mt-6 t-display text-[clamp(84px,10vw,160px)]">
+                  <span className="block rise" style={{ "--delay": "0.35s" } as React.CSSProperties}>
+                    Olti
+                  </span>
+                  <span className="block italic text-gold-ink rise -mt-[0.06em] pl-[0.5em]" style={{ "--delay": "0.5s" } as React.CSSProperties}>
+                    Maloku
+                  </span>
+                </h1>
 
-          {/* CTA */}
-          <div ref={ctaRef} className="mt-10">
-            <Button
-              href="https://www.linkedin.com/in/oltimaloku/"
-              external
-              size="lg"
-              className="group"
-            >
-              Get in touch
-              <span className="ml-2 transition-transform group-hover:translate-x-1">
-                &rarr;
-              </span>
-            </Button>
+                <div className="mt-9 flex items-center gap-4 rise" style={{ "--delay": "0.7s" } as React.CSSProperties}>
+                  <span className="h-px w-10 bg-gold" />
+                  <span className="t-label text-ink">{site.role}</span>
+                </div>
+                <p className="mt-5 t-lede max-w-[30ch] rise" style={{ "--delay": "0.8s" } as React.CSSProperties}>
+                  I design, build and ship software, from the first user interview to the last migration. Right now
+                  that&rsquo;s <em className="text-ink">Neuron</em>, an AI tutor that never gives the answer.
+                </p>
+
+                <div className="mt-10 flex flex-wrap gap-3 rise" style={{ "--delay": "0.95s" } as React.CSSProperties}>
+                  <ButtonLink href="/#work" solid>
+                    See the work <Arrow dir="down" className="h-2 w-3" />
+                  </ButtonLink>
+                  <ButtonLink href={site.resume} external>
+                    Résumé <Arrow dir="up-right" className="h-2 w-3" />
+                  </ButtonLink>
+                </div>
+              </div>
+
+              {/* Drawing */}
+              <div className="relative order-first flex flex-col justify-center px-2 pt-6 md:px-8 lg:order-none lg:col-span-7 lg:py-10">
+                <PantheonDrawing className="w-full h-auto lg:w-[104%] max-w-none" />
+              </div>
+            </div>
+
+            {/* Title block */}
+            <dl className="grid grid-cols-2 border-t border-gold-faint sm:grid-cols-3 lg:ml-auto lg:w-[58%] lg:grid-cols-[1.4fr_1fr_0.8fr_1fr] lg:border-l">
+              {[
+                ["Soggetto", "Pantheon, Roma · c. 125 AD"],
+                ["Vista", "Sezione A–A"],
+                ["Scala", "1 : 400"],
+                ["Tavole", `${toRoman(plates)} · ${month} ${now.getFullYear()}`],
+              ].map(([k, v], i) => (
+                <div
+                  key={k}
+                  className="border-gold-faint px-4 py-3 md:px-5 [&:not(:first-child)]:border-l max-sm:[&:nth-child(3)]:border-l-0 max-sm:[&:nth-child(n+3)]:border-t fade"
+                  style={{ "--delay": `${3.6 + i * 0.08}s` } as React.CSSProperties}
+                >
+                  <dt className="t-label-sm text-ink-4">{k}</dt>
+                  <dd className="mt-1 t-label text-ink-2 normal-case tracking-[0.06em]">{v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
-      </Container>
+
+        <p
+          className="mt-4 mb-2 max-w-[70ch] px-1 text-[14px] italic text-ink-3 fade"
+          style={{ "--delay": "4s" } as React.CSSProperties}
+        >
+          The Pantheon&rsquo;s dome is exactly as high as it is wide: a sphere 43.3 m across fits inside it. Sound,
+          useful and beautiful at once, which is the standard this site is about.
+        </p>
+      </div>
     </section>
   );
 }

@@ -1,230 +1,213 @@
-import { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Container from "@/components/ui/Container";
-import { getProjectBySlug, getProjectSlugs } from "@/lib/content";
-import { formatDateRange } from "@/lib/utils";
-import { MDXRemote } from "next-mdx-remote/rsc";
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
+import { notFound } from "next/navigation";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { getAdjacentProjects, getAllProjects, getProjectBySlug, getProjectSlugs } from "@/lib/content";
+import { cn, formatPeriod } from "@/lib/utils";
+import { mdxComponents } from "@/components/folio/mdx";
+import { Arrow, Dimension, Img, Sheet } from "@/components/folio/primitives";
+import Reveal from "@/components/folio/Reveal";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
 }
 
-// Generate static params for all projects
-export async function generateStaticParams() {
-  const slugs = getProjectSlugs();
-  return slugs.map((slug) => ({ slug }));
+export function generateStaticParams() {
+  return getProjectSlugs().map((slug) => ({ slug }));
 }
 
-// Generate metadata for SEO
-export async function generateMetadata({
-  params,
-}: PageProps): Promise<Metadata> {
-  const { slug } = await params;
-  const project = getProjectBySlug(slug);
-
-  if (!project) {
-    return {
-      title: "Project Not Found",
-    };
-  }
-
-  return {
-    title: project.title,
-    description: project.description,
-  };
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const project = getProjectBySlug((await params).slug);
+  if (!project) return { title: "Not found" };
+  return { title: project.title, description: project.summary };
 }
-
-// MDX components for custom styling
-const mdxComponents = {
-  h1: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h1
-      className="font-[family-name:var(--font-playfair)] text-3xl md:text-4xl font-bold text-[#111827] mt-12 mb-6"
-      {...props}
-    />
-  ),
-  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2
-      className="font-[family-name:var(--font-playfair)] text-2xl md:text-3xl font-semibold text-[#111827] mt-10 mb-4"
-      {...props}
-    />
-  ),
-  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3
-      className="font-[family-name:var(--font-playfair)] text-xl md:text-2xl font-semibold text-[#111827] mt-8 mb-3"
-      {...props}
-    />
-  ),
-  h4: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h4
-      className="font-[family-name:var(--font-playfair)] text-lg md:text-xl font-medium text-[#111827] mt-6 mb-2"
-      {...props}
-    />
-  ),
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p
-      className="text-[#374151] font-[family-name:var(--font-source-serif)] text-base md:text-lg leading-relaxed mb-4"
-      {...props}
-    />
-  ),
-  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul
-      className="list-disc list-inside text-[#374151] font-[family-name:var(--font-source-serif)] space-y-2 mb-6 ml-4"
-      {...props}
-    />
-  ),
-  ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol
-      className="list-decimal list-inside text-[#374151] font-[family-name:var(--font-source-serif)] space-y-2 mb-6 ml-4"
-      {...props}
-    />
-  ),
-  li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="text-[#374151] leading-relaxed" {...props} />
-  ),
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a
-      className="text-[#DC2626] hover:text-[#B91C1C] underline transition-colors"
-      target={props.href?.startsWith("http") ? "_blank" : undefined}
-      rel={props.href?.startsWith("http") ? "noopener noreferrer" : undefined}
-      {...props}
-    />
-  ),
-  blockquote: (props: React.HTMLAttributes<HTMLQuoteElement>) => (
-    <blockquote
-      className="border-l-4 border-[#DC2626] pl-6 my-6 italic text-[#6B7280]"
-      {...props}
-    />
-  ),
-  strong: (props: React.HTMLAttributes<HTMLElement>) => (
-    <strong className="font-semibold text-[#111827]" {...props} />
-  ),
-  code: (props: React.HTMLAttributes<HTMLElement>) => (
-    <code
-      className="bg-[#F5F2ED] px-2 py-0.5 rounded text-sm font-mono text-[#B91C1C]"
-      {...props}
-    />
-  ),
-  pre: (props: React.HTMLAttributes<HTMLPreElement>) => (
-    <pre
-      className="bg-[#1F2937] text-[#F5F2ED] p-4 rounded-lg overflow-x-auto mb-6 font-mono text-sm"
-      {...props}
-    />
-  ),
-  img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      className="rounded-lg border border-[#D1D5DB]/50 my-6 max-w-full h-auto"
-      alt={props.alt || ""}
-      {...props}
-    />
-  ),
-};
 
 export default async function ProjectPage({ params }: PageProps) {
   const { slug } = await params;
   const project = getProjectBySlug(slug);
+  if (!project) notFound();
 
-  if (!project) {
-    notFound();
-  }
+  const { prev, next } = getAdjacentProjects(slug);
+  const all = getAllProjects();
+  const lineage = [project.evolvedFrom, project.evolvedInto]
+    .map((s) => all.find((p) => p.slug === s))
+    .filter(Boolean);
+
+  const facts: [string, React.ReactNode][] = [
+    ["Role", project.role],
+    ...(project.team ? [["Team", project.team] as [string, string]] : []),
+    ["Period", formatPeriod(project.start, project.end)],
+    ...(project.platform ? [["Platform", project.platform] as [string, string]] : []),
+    ...(project.status ? [["Status", project.status] as [string, string]] : []),
+  ];
 
   return (
-    <article className="py-12 md:py-20">
-      <Container size="md">
-        {/* Back Link */}
-        <Link
-          href="/projects"
-          className="inline-flex items-center text-[#6B7280] hover:text-[#DC2626] transition-colors mb-8 no-underline font-[family-name:var(--font-inter)] text-sm"
-        >
-          <span className="mr-2">&larr;</span>
-          Back to Projects
-        </Link>
+    <article className="pt-[68px]">
+      {/* Title sheet */}
+      <Sheet className="pt-10 md:pt-16">
+        <nav className="flex items-center gap-3 t-label text-ink-3" aria-label="Breadcrumb">
+          <Link href="/#work" className="group inline-flex items-center gap-2 hover:text-ink">
+            <Arrow dir="left" className="group-hover:-translate-x-1" />
+            <span className="link-draw">Works</span>
+          </Link>
+          <span className="text-ink-4">/</span>
+          <span className="text-gold-ink">Tav. {project.numeral}</span>
+        </nav>
 
-        {/* Project Header */}
-        <header className="mb-12">
-          <h1 className="font-[family-name:var(--font-playfair)] text-4xl sm:text-5xl md:text-6xl font-bold text-[#111827] mb-4">
-            {project.title}
-          </h1>
+        <header className="mt-10 grid gap-10 border-t border-gold-soft pt-10 lg:grid-cols-12 md:mt-14">
+          <div className="lg:col-span-7">
+            <p className="t-label text-gold-ink rise">Tavola {project.numeral} of {all.length}</p>
+            <h1 className="mt-4 t-display text-[clamp(72px,11vw,168px)] rise" style={{ "--delay": "0.1s" } as React.CSSProperties}>
+              {project.title}
+            </h1>
+            <p className="mt-4 t-title italic text-[clamp(24px,2.4vw,32px)] text-ink-2 max-w-[28ch] rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
+              {project.tagline}
+            </p>
+          </div>
 
-          {/* Date Range */}
-          <p className="text-[#6B7280] font-[family-name:var(--font-source-serif)] text-lg mb-6">
-            {formatDateRange(project.date, project.endDate)}
-          </p>
+          {/* Title block */}
+          <dl className="self-end border border-gold-soft lg:col-span-5 rise" style={{ "--delay": "0.3s" } as React.CSSProperties}>
+            {facts.map(([k, v]) => (
+              <div key={k} className="grid grid-cols-[96px_1fr] border-b border-gold-faint last:border-b-0">
+                <dt className="border-r border-gold-faint px-4 py-3 t-label-sm text-ink-4">{k}</dt>
+                <dd className="px-4 py-3 text-[15px] text-ink-2">{v}</dd>
+              </div>
+            ))}
+            <div className="grid grid-cols-[96px_1fr] border-t border-gold-faint">
+              <dt className="border-r border-gold-faint px-4 py-3 t-label-sm text-ink-4">Built with</dt>
+              <dd className="flex flex-wrap gap-x-4 gap-y-1 px-4 py-3">
+                {project.stack.map((s) => (
+                  <span key={s} className="t-label-sm text-ink-3">{s}</span>
+                ))}
+              </dd>
+            </div>
+            {project.links.length > 0 && (
+              <div className="flex flex-wrap gap-x-6 gap-y-2 border-t border-gold-soft bg-gold-wash px-4 py-3">
+                {project.links.map((l) => (
+                  <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="group inline-flex items-center gap-2 t-label text-ink">
+                    <span className="link-draw">{l.label}</span>
+                    <Arrow dir="up-right" className="h-2 w-3 text-gold" />
+                  </a>
+                ))}
+              </div>
+            )}
+          </dl>
+        </header>
+      </Sheet>
 
-          {/* Description */}
-          <p className="text-xl text-[#374151] font-[family-name:var(--font-source-serif)] leading-relaxed mb-8">
-            {project.description}
-          </p>
+      {/* Cover */}
+      {project.cover && (
+        <Sheet className="mt-14 md:mt-20">
+          <Reveal className="plate">
+            <div className={cn("grid-ground relative aspect-[16/9] overflow-hidden", project.coverFit === "cover" && "aspect-[16/8]")}>
+              <Img
+                src={project.cover}
+                alt={project.coverAlt ?? project.title}
+                eager
+                className={cn(
+                  "absolute inset-0 h-full w-full",
+                  project.coverFit === "cover" ? "object-cover" : "object-contain p-[5%]"
+                )}
+              />
+              {project.coverInset && (
+                <Img
+                  src={project.coverInset}
+                  alt=""
+                  eager
+                  className="absolute bottom-[-8%] right-[6%] h-[80%] w-auto drop-shadow-[0_24px_40px_rgba(23,22,15,0.18)]"
+                />
+              )}
+            </div>
+          </Reveal>
+          <Dimension label={`fig. ${project.numeral}.1 — ${project.platform ?? project.title}`} className="mt-3" />
+        </Sheet>
+      )}
 
-          {/* Technologies */}
-          <div className="flex flex-wrap gap-2 mb-8">
-            {project.technologies.map((tech) => (
-              <span
-                key={tech}
-                className="px-4 py-2 bg-[#F5F2ED] text-[#4B5563] text-sm font-[family-name:var(--font-inter)] rounded-full border border-[#D1D5DB]/50"
-              >
-                {tech}
-              </span>
+      {/* Summary and metrics */}
+      <Sheet className="mt-16 md:mt-24">
+        <div className="grid gap-12 lg:grid-cols-12">
+          <p className="t-title text-[clamp(26px,2.5vw,34px)] leading-[1.3] text-ink lg:col-span-7">{project.summary}</p>
+          {project.metrics.length > 0 && (
+            <dl className="grid grid-cols-2 self-start border-t border-gold-soft lg:col-span-4 lg:col-start-9">
+              {project.metrics.map((m, i) => (
+                <div key={m.label} className={cn("border-b border-gold-faint py-5", i % 2 === 0 ? "border-r pr-4" : "pl-5")}>
+                  <dd className="t-display text-[44px] leading-none">{m.value}</dd>
+                  <dt className="mt-2 t-label-sm text-ink-3">{m.label}</dt>
+                </div>
+              ))}
+            </dl>
+          )}
+        </div>
+      </Sheet>
+
+      {/* Body, with a running index of sections */}
+      <Sheet className="mt-20 md:mt-28">
+        <div className="grid gap-12 lg:grid-cols-12">
+          {project.headings.length > 2 && (
+            <aside className="hidden lg:col-span-3 lg:block">
+              <nav className="sticky top-28" aria-label="Sections">
+                <p className="t-label-sm text-ink-4">Indice</p>
+                <ol className="mt-4 border-l border-gold-faint">
+                  {project.headings.map((h, i) => (
+                    <li key={h.id}>
+                      <a href={`#${h.id}`} className="group flex gap-3 py-1.5 pl-4 -ml-px border-l border-transparent hover:border-gold transition-colors">
+                        <span className="t-label-sm text-gold-ink w-5">{String(i + 1).padStart(2, "0")}</span>
+                        <span className="text-[15px] text-ink-3 group-hover:text-ink transition-colors">{h.text}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ol>
+              </nav>
+            </aside>
+          )}
+          <div className={cn("prose-folio", project.headings.length > 2 ? "lg:col-span-7 lg:col-start-5" : "lg:col-span-8 lg:col-start-3")}>
+            <MDXRemote source={project.content} components={mdxComponents} />
+          </div>
+        </div>
+      </Sheet>
+
+      {/* Lineage */}
+      {lineage.length > 0 && (
+        <Sheet className="mt-20">
+          <div className="lg:ml-[33.33%] lg:w-[58%] border-y border-gold-soft py-6">
+            {lineage.map((p) => (
+              <Link key={p!.slug} href={`/projects/${p!.slug}/`} className="group flex items-baseline gap-4">
+                <span className="t-label text-gold-ink">{p!.slug === project.evolvedFrom ? "Grew out of" : "Became"}</span>
+                <span className="t-title text-[28px] group-hover:text-gold-ink transition-colors">
+                  Tav. {p!.numeral} · {p!.title}
+                </span>
+                <Arrow className="ml-auto text-gold group-hover:translate-x-1" />
+              </Link>
             ))}
           </div>
+        </Sheet>
+      )}
 
-          {/* Links */}
-          <div className="flex flex-wrap gap-4">
-            {project.github && (
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2 bg-[#1F2937] text-white font-[family-name:var(--font-inter)] text-sm rounded-full hover:bg-[#111827] transition-colors no-underline"
-              >
-                View on GitHub
-              </a>
-            )}
-            {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-2 bg-[#DC2626] text-white font-[family-name:var(--font-inter)] text-sm rounded-full hover:bg-[#B91C1C] transition-colors no-underline"
-              >
-                View Live
-              </a>
-            )}
-          </div>
-        </header>
-
-        {/* Cover Image */}
-        {project.coverImage && (
-          <div className="mb-12 rounded-xl overflow-hidden border border-[#D1D5DB]/50">
-            <Image
-              src={project.coverImage}
-              alt={project.title}
-              width={1200}
-              height={675}
-              className="w-full h-auto"
-              priority
-            />
-          </div>
-        )}
-
-        {/* MDX Content */}
-        <div className="prose-container">
-          <MDXRemote source={project.content} components={mdxComponents} />
-        </div>
-
-        {/* Navigation */}
-        <div className="mt-16 pt-8 border-t border-[#D1D5DB]/50">
-          <Link
-            href="/projects"
-            className="inline-flex items-center text-[#DC2626] hover:text-[#B91C1C] transition-colors no-underline font-[family-name:var(--font-inter)]"
-          >
-            <span className="mr-2">&larr;</span>
-            View All Projects
-          </Link>
-        </div>
-      </Container>
+      {/* Previous / next plate */}
+      <Sheet className="mt-24 md:mt-36">
+        <nav className="grid border-y border-gold-soft md:grid-cols-2" aria-label="More works">
+          {[
+            { p: prev, label: "Previous plate", dir: "left" as const },
+            { p: next, label: "Next plate", dir: "right" as const },
+          ].map(({ p, label, dir }) => (
+            <Link
+              key={label}
+              href={`/projects/${p.slug}/`}
+              className={cn(
+                "group flex flex-col gap-3 py-8 transition-colors duration-500 hover:bg-gold-wash md:px-8",
+                dir === "right" && "md:items-end md:text-right md:border-l md:border-gold-soft border-t border-gold-faint md:border-t-0"
+              )}
+            >
+              <span className="flex items-center gap-3 t-label text-ink-3">
+                {dir === "left" && <Arrow dir="left" className="group-hover:-translate-x-1" />}
+                {label} · Tav. {p.numeral}
+                {dir === "right" && <Arrow className="group-hover:translate-x-1" />}
+              </span>
+              <span className="t-display text-[clamp(44px,5vw,72px)]">{p.title}</span>
+            </Link>
+          ))}
+        </nav>
+      </Sheet>
     </article>
   );
 }

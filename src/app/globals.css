@@ -1,291 +1,454 @@
 @import "tailwindcss";
-@plugin "@tailwindcss/typography";
 
-/* Custom Theme Variables */
+/* ==========================================================================
+   FOLIO — design tokens
+   White paper, hairline gold, ink. Every line on the site is drawn from
+   these values; nothing else should introduce a colour.
+   ========================================================================== */
+
 :root {
-  /* Background Colors */
-  --color-cream-50: #FEFDFB;
-  --color-cream-100: #FAF8F5;
-  --color-cream-200: #F5F2ED;
+  /* Paper */
+  --paper: #ffffff;
+  --paper-2: #fbfaf6; /* travertine: insets, plate grounds */
+  --paper-3: #f5f1e7;
 
-  /* Text Colors */
-  --color-charcoal-700: #374151;
-  --color-charcoal-800: #1F2937;
-  --color-charcoal-900: #111827;
+  /* Ink */
+  --ink: #17160f;
+  --ink-2: #45423a;
+  --ink-3: #7a7569; /* captions, annotations */
+  --ink-4: #aaa597;
 
-  /* Accent Colors */
-  --color-accent-red-400: #F87171;
-  --color-accent-red-500: #EF4444;
-  --color-accent-red-600: #DC2626;
-  --color-accent-red-700: #B91C1C;
+  /* Gold — lines first, text second */
+  --gold: #b48f4c; /* primary hairlines */
+  --gold-soft: #d9c597; /* secondary lines, frames */
+  --gold-faint: #ede3cb; /* construction lines, grids */
+  --gold-wash: #f8f3e6;
+  --gold-ink: #85662a; /* gold that has to be read: 5:1 on white */
 
-  --color-accent-grey-300: #D1D5DB;
-  --color-accent-grey-400: #9CA3AF;
-  --color-accent-grey-500: #6B7280;
-  --color-accent-grey-600: #4B5563;
+  /* One accent, used for a single dot at a time */
+  --rosso: #a5402f;
 
-  /* Gold Colors - Renaissance */
-  --color-gold-300: #F0D875;
-  --color-gold-400: #D4AF37;
-  --color-gold-500: #B8860B;
-  --color-gold-600: #996515;
+  --hair: 1px;
+  --gutter: clamp(20px, 4vw, 56px);
+  --sheet: 1320px;
 
-  /* Primary Theme */
-  --background: var(--color-cream-100);
-  --foreground: var(--color-charcoal-800);
+  --ease-draw: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Font stacks. next/font sets --font-* on <html>, so these resolve there. */
+  --ff-display: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --ff-serif: var(--font-newsreader), Georgia, serif;
+  --ff-mono: var(--font-plex-mono), ui-monospace, monospace;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-paper-3: var(--paper-3);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-ink-4: var(--ink-4);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-gold-faint: var(--gold-faint);
+  --color-gold-wash: var(--gold-wash);
+  --color-gold-ink: var(--gold-ink);
+  --color-rosso: var(--rosso);
 
-  /* Custom Colors */
-  --color-cream-50: var(--color-cream-50);
-  --color-cream-100: var(--color-cream-100);
-  --color-cream-200: var(--color-cream-200);
+  --font-display: var(--ff-display);
+  --font-serif: var(--ff-serif);
+  --font-mono: var(--ff-mono);
 
-  --color-charcoal-700: var(--color-charcoal-700);
-  --color-charcoal-800: var(--color-charcoal-800);
-  --color-charcoal-900: var(--color-charcoal-900);
-
-  --color-accent-red: var(--color-accent-red-600);
-  --color-accent-red-light: var(--color-accent-red-400);
-  --color-accent-red-dark: var(--color-accent-red-700);
-
-  --color-accent-grey: var(--color-accent-grey-500);
-  --color-accent-grey-light: var(--color-accent-grey-300);
-  --color-accent-grey-dark: var(--color-accent-grey-600);
-
-  /* Gold Colors */
-  --color-gold: var(--color-gold-400);
-  --color-gold-light: var(--color-gold-300);
-  --color-gold-dark: var(--color-gold-600);
-
-  /* Fonts */
-  --font-serif: var(--font-cormorant);
-  --font-body: var(--font-source-serif);
-  --font-sans: var(--font-inter);
-
-  /* Animations */
-  --animate-fade-in: fade-in 0.6s ease-out forwards;
-  --animate-fade-in-up: fade-in-up 0.6s ease-out forwards;
-  --animate-slide-in: slide-in 0.5s ease-out forwards;
+  --ease-draw: var(--ease-draw);
+  --ease-out: var(--ease-out);
 }
 
-/* Keyframe Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
+@layer base {
+/* ==========================================================================
+   Base
+   ========================================================================== */
 
-@keyframes fade-in-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes slide-in {
-  from {
-    opacity: 0;
-    transform: translateX(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-/* Base Styles */
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-body), Georgia, 'Times New Roman', serif;
-  line-height: 1.7;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--ff-serif);
+  font-size: 17px;
+  line-height: 1.6;
+  font-optical-sizing: auto;
+  text-rendering: optimizeLegibility;
 }
 
-/* Typography Base */
-h1, h2, h3, h4 {
-  font-family: var(--font-cormorant), Georgia, 'Times New Roman', serif;
-  font-weight: 600;
-  line-height: 1.2;
-  color: var(--color-charcoal-900);
-}
-
-/* Link Styles - only for prose/content links, not buttons */
-.prose a,
-p a,
-li a {
-  color: var(--color-accent-red-600);
-  transition: color 0.2s ease;
-}
-
-.prose a:hover,
-p a:hover,
-li a:hover {
-  color: var(--color-accent-red-700);
-}
-
-/* Selection Styling */
 ::selection {
-  background-color: var(--color-accent-red-600);
-  color: white;
+  background: var(--gold-faint);
+  color: var(--ink);
 }
 
-/* Prose Overrides for Articles */
-.prose {
-  --tw-prose-body: var(--color-charcoal-700);
-  --tw-prose-headings: var(--color-charcoal-900);
-  --tw-prose-links: var(--color-accent-red-600);
-  --tw-prose-bold: var(--color-charcoal-900);
-  --tw-prose-quotes: var(--color-charcoal-800);
-  --tw-prose-quote-borders: var(--color-accent-red-600);
+:focus-visible {
+  outline: 1px solid var(--gold);
+  outline-offset: 4px;
+}
 }
 
-/* Animation Utilities */
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
+@layer components {
+/* ==========================================================================
+   Type roles
+   ========================================================================== */
+
+/* Display — Cormorant at light weights, set tight */
+.t-display {
+  font-family: var(--ff-display);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.92;
 }
 
-.animate-fade-in-up {
-  animation: fade-in-up 0.6s ease-out forwards;
+.t-title {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.02;
 }
 
-.animate-slide-in {
-  animation: slide-in 0.5s ease-out forwards;
+/* Annotation — the voice of the drawing: dimensions, labels, numerals */
+.t-label {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
 }
 
-/* Staggered Animation Delays */
-.delay-100 { animation-delay: 100ms; }
-.delay-200 { animation-delay: 200ms; }
-.delay-300 { animation-delay: 300ms; }
-.delay-400 { animation-delay: 400ms; }
-.delay-500 { animation-delay: 500ms; }
-.delay-600 { animation-delay: 600ms; }
-
-/* ================================================
-   HIGH-TECH BEAM BORDER EFFECT
-   ================================================ */
-
-/* Beam animation keyframes */
-@keyframes beam-rotate {
-  0% { --beam-angle: 0deg; }
-  100% { --beam-angle: 360deg; }
+.t-label-sm {
+  font-family: var(--ff-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.4;
 }
 
-/* Tech button/card with beam border effect */
-.beam-border {
+.t-lede {
+  font-family: var(--ff-serif);
+  font-size: clamp(19px, 1.6vw, 22px);
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+/* ==========================================================================
+   Line primitives
+   ========================================================================== */
+
+.rule {
+  height: var(--hair);
+  background: var(--gold-soft);
+  border: 0;
+}
+
+/* A frame with crop marks that reach past each corner, like a print plate */
+.plate {
   position: relative;
-  background: var(--color-cream-50);
-  overflow: hidden;
+  border: var(--hair) solid var(--gold-soft);
 }
 
-.beam-border::before {
-  content: '';
+.plate::before,
+.plate::after {
+  content: "";
   position: absolute;
-  inset: 0;
-  padding: 1px;
-  background: linear-gradient(
-    var(--beam-angle, 0deg),
-    transparent 0%,
-    transparent 30%,
-    var(--color-gold-400) 45%,
-    var(--color-accent-red-600) 55%,
-    transparent 70%,
-    transparent 100%
+  inset: -9px;
+  pointer-events: none;
+  background:
+    linear-gradient(var(--gold), var(--gold)) top left / 9px 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) top left / 1px 9px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) top right / 9px 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) top right / 1px 9px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) bottom left / 9px 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) bottom left / 1px 9px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) bottom right / 9px 1px no-repeat,
+    linear-gradient(var(--gold), var(--gold)) bottom right / 1px 9px no-repeat;
+  transition: inset 0.5s var(--ease-out);
+}
+
+.plate::after {
+  display: none;
+}
+
+.plate-hover:hover::before {
+  inset: -14px;
+}
+
+/* Construction grid used as a ground behind figures */
+.grid-ground {
+  background-color: var(--paper-2);
+  background-image:
+    linear-gradient(var(--gold-faint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--gold-faint) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: -1px -1px;
+}
+
+/* Hatching for the overlap in the triad and other "solid" fills */
+.hatch {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--gold-soft) 0 1px,
+    transparent 1px 6px
   );
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  animation: beam-rotate 3s linear infinite;
-  pointer-events: none;
 }
 
-.beam-border:hover::before {
+/* Links that draw a gold line under themselves */
+.link-draw {
+  background-image: linear-gradient(var(--gold), var(--gold));
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.5s var(--ease-out), color 0.2s;
+  padding-bottom: 2px;
+}
+
+.link-draw:hover,
+.group:hover .link-draw {
+  background-size: 100% 1px;
+}
+}
+
+/* ==========================================================================
+   Motion
+   ========================================================================== */
+
+/* SVG strokes with pathLength="1" draw themselves in */
+.draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw var(--dur, 1.4s) var(--ease-draw) var(--delay, 0s) forwards;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.fade {
+  opacity: 0;
+  animation: fade var(--dur, 0.9s) var(--ease-out) var(--delay, 0s) forwards;
+}
+
+@keyframes fade {
+  to {
+    opacity: 1;
+  }
+}
+
+.rise {
+  opacity: 0;
+  transform: translateY(14px);
+  animation: rise var(--dur, 1s) var(--ease-out) var(--delay, 0s) forwards;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Scroll reveals: <Reveal> toggles data-shown */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 1s var(--ease-out) var(--delay, 0s),
+    transform 1s var(--ease-out) var(--delay, 0s);
+}
+
+[data-reveal][data-shown="true"] {
   opacity: 1;
+  transform: none;
 }
 
-/* Static border when not hovering */
-.beam-border::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--color-gold-400) 0%, var(--color-accent-grey-300) 100%);
-  -webkit-mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  mask:
-    linear-gradient(#fff 0 0) content-box,
-    linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0.5;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+[data-reveal] .draw-on-reveal {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 1.6s var(--ease-draw) var(--delay, 0.2s);
 }
 
-.beam-border:hover::after {
-  opacity: 0;
+[data-reveal][data-shown="true"] .draw-on-reveal {
+  stroke-dashoffset: 0;
 }
 
-/* Glow effect on hover */
-.beam-border:hover {
-  box-shadow:
-    0 0 20px rgba(212, 175, 55, 0.15),
-    0 0 40px rgba(220, 38, 38, 0.1);
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .draw,
+  .fade,
+  .rise,
+  [data-reveal],
+  [data-reveal] .draw-on-reveal {
+    animation: none !important;
+    transition: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
 }
 
-/* ================================================
-   RENAISSANCE TEXTURE OVERLAYS
-   ================================================ */
+@layer components {
+/* ==========================================================================
+   Long-form prose (case studies, notes)
+   ========================================================================== */
 
-/* Parchment texture overlay */
-.texture-parchment {
+.prose-folio {
+  font-size: 18.5px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.prose-folio > * + * {
+  margin-top: 1.15em;
+}
+
+.prose-folio h2 {
+  font-family: var(--ff-display);
+  font-weight: 400;
+  font-size: clamp(32px, 3.4vw, 44px);
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-top: 2.6em;
+  margin-bottom: 0.5em;
+  scroll-margin-top: 110px;
+}
+
+.prose-folio h3 {
+  font-family: var(--ff-display);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-top: 1.8em;
+}
+
+.prose-folio h4 {
+  font-family: var(--ff-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+  margin-top: 2em;
+}
+
+.prose-folio strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.prose-folio a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  transition: text-decoration-color 0.2s;
+}
+
+.prose-folio a:hover {
+  text-decoration-color: var(--ink);
+}
+
+.prose-folio ul,
+.prose-folio ol {
+  padding-left: 1.3em;
+}
+
+.prose-folio ul {
+  list-style: none;
+}
+
+.prose-folio ul > li {
   position: relative;
 }
 
-.texture-parchment::before {
-  content: '';
+.prose-folio ul > li::before {
+  content: "";
   position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 20% 30%, rgba(212, 175, 55, 0.03) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 70%, rgba(184, 134, 11, 0.02) 0%, transparent 50%);
-  pointer-events: none;
+  left: -1.15em;
+  top: 0.78em;
+  width: 9px;
+  height: 1px;
+  background: var(--gold);
 }
 
-/* Marble vein texture */
-.texture-marble {
-  position: relative;
+.prose-folio ol {
+  list-style: upper-roman;
 }
 
-.texture-marble::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(135deg, transparent 40%, rgba(212, 175, 55, 0.02) 45%, transparent 50%),
-    linear-gradient(225deg, transparent 40%, rgba(107, 114, 128, 0.02) 45%, transparent 50%),
-    linear-gradient(315deg, transparent 40%, rgba(212, 175, 55, 0.015) 45%, transparent 50%);
-  pointer-events: none;
+.prose-folio ol > li::marker {
+  font-family: var(--ff-display);
+  color: var(--gold-ink);
 }
+
+.prose-folio li + li {
+  margin-top: 0.45em;
+}
+
+.prose-folio blockquote {
+  font-family: var(--ff-display);
+  font-style: italic;
+  font-size: 28px;
+  line-height: 1.3;
+  color: var(--ink);
+  border-left: 1px solid var(--gold);
+  padding-left: 28px;
+  margin: 2em 0;
+}
+
+.prose-folio code {
+  font-family: var(--ff-mono);
+  font-size: 0.82em;
+  background: var(--paper-3);
+  padding: 0.12em 0.4em;
+  color: var(--ink);
+}
+
+.prose-folio pre {
+  font-family: var(--ff-mono);
+  font-size: 14px;
+  line-height: 1.6;
+  background: var(--paper-2);
+  border: 1px solid var(--gold-faint);
+  padding: 20px 24px;
+  overflow-x: auto;
+}
+
+.prose-folio pre code {
+  background: none;
+  padding: 0;
+}
+
+.prose-folio hr {
+  border: 0;
+  height: 1px;
+  background: var(--gold-soft);
+  margin: 3em 0;
+}
+
+/* Hairline weight for the hero drawing, in drawing units. Thicker on small
+   screens, where the drawing is scaled down. */
+.pantheon {
+  --sw: 1.1;
+}
+
+@media (max-width: 640px) {
+  .pantheon {
+    --sw: 1.9;
+  }
+}
+}
+

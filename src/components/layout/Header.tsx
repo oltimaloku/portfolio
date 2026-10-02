@@ -1,124 +1,126 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import Link from "next/link";
-import Button from "@/components/ui/Button";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import { site } from "@/lib/site";
+import { asset, cn } from "@/lib/utils";
+import { Arrow } from "@/components/folio/primitives";
+
+const NAV = [
+  { n: "02", name: "Work", href: "/#work" },
+  { n: "03", name: "Practice", href: "/#practice" },
+  { n: "04", name: "About", href: "/#about" },
+  { n: "05", name: "Writing", href: "/articles/" },
+];
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const navItems = [
-    { name: "Projects", href: "/#projects" },
-    { name: "Articles", href: "/articles" },
-    { name: "About", href: "/#about" },
-  ];
+  useEffect(() => setOpen(false), [pathname]);
+
+  useEffect(() => {
+    document.documentElement.style.overflow = open ? "hidden" : "";
+  }, [open]);
 
   return (
     <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "py-4 bg-[#FAF8F5]/50 backdrop-blur-md border-b border-[#D4AF37]/20"
-          : "py-6 bg-transparent"
-      }`}
+      className={cn(
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color] duration-500",
+        scrolled || open
+          ? "bg-paper/92 backdrop-blur-md border-b border-gold-faint"
+          : "border-b border-transparent"
+      )}
     >
-      <nav className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
-        <Link
-          href="/"
-          className="text-2xl text-[#111827] no-underline hover:text-[#D4AF37] transition-colors"
-        >
-          <span className="font-bold text-[#DC2626]">Olti</span>
+      <div className="mx-auto flex h-[68px] max-w-[1320px] items-center px-[var(--gutter)]">
+        <Link href="/" className="group flex items-center gap-3" aria-label={`${site.name}, home`}>
+          <Seal />
+          <span className="flex flex-col leading-none">
+            <span className="t-title text-[21px]">{site.name}</span>
+            <span className="t-label-sm text-ink-3 mt-1">{site.role}</span>
+          </span>
         </Link>
 
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
-          {navItems.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="font-[family-name:var(--font-source-serif)] text-[#374151] hover:text-[#DC2626] transition-colors no-underline"
-            >
-              {item.name}
+        <nav className="ml-auto hidden items-center gap-9 md:flex" aria-label="Primary">
+          {NAV.map((item) => (
+            <Link key={item.name} href={item.href} className="group flex items-baseline gap-1.5 t-label text-ink-2 hover:text-ink">
+              <span className="text-gold-ink text-[9px]">{item.n}</span>
+              <span className="link-draw">{item.name}</span>
             </Link>
           ))}
-        </div>
-
-        {/* CTA Button - Using the new Button component */}
-        <div className="hidden md:block">
-          <Button
-            href="https://linkedin.com/in/oltimaloku"
-            external
-            size="sm"
+          <a
+            href={asset(site.resume)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex h-9 items-center gap-2 border border-gold-soft px-4 t-label text-ink hover:border-gold hover:bg-gold-wash transition-colors"
           >
-            Get in Touch
-          </Button>
-        </div>
+            Résumé
+            <Arrow dir="up-right" className="h-2 w-3" />
+          </a>
+        </nav>
 
-        {/* Mobile Menu Button */}
         <button
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 text-[#374151] hover:text-[#DC2626] transition-colors"
-          aria-label="Toggle menu"
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="ml-auto flex h-10 items-center gap-3 t-label md:hidden"
+          aria-expanded={open}
+          aria-controls="mobile-nav"
         >
-          <svg
-            className="w-6 h-6"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            {mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            )}
-          </svg>
+          {open ? "Close" : "Menu"}
+          <span className="relative block h-3 w-5">
+            <span className={cn("absolute left-0 h-px w-5 bg-ink transition-all duration-300", open ? "top-1.5 rotate-45" : "top-0")} />
+            <span className={cn("absolute left-0 h-px w-5 bg-ink transition-all duration-300", open ? "top-1.5 -rotate-45" : "top-3")} />
+          </span>
         </button>
-      </nav>
+      </div>
 
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#FAF8F5]/98 backdrop-blur-sm border-b border-[#D4AF37]/20 shadow-lg">
-          <div className="px-6 py-4 space-y-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="block font-[family-name:var(--font-source-serif)] text-[#374151] hover:text-[#DC2626] transition-colors no-underline py-2"
-              >
-                {item.name}
-              </Link>
+      {open && (
+        <nav id="mobile-nav" className="h-[calc(100svh-68px)] overflow-y-auto border-t border-gold-faint bg-paper px-[var(--gutter)] pt-8 md:hidden" aria-label="Primary">
+          <ul>
+            {NAV.map((item, i) => (
+              <li key={item.name} className="rise border-b border-gold-faint" style={{ "--delay": `${i * 0.05}s` } as React.CSSProperties}>
+                <Link href={item.href} className="flex items-baseline gap-4 py-5" onClick={() => setOpen(false)}>
+                  <span className="t-label text-gold-ink">{item.n}</span>
+                  <span className="t-display text-[52px]">{item.name}</span>
+                </Link>
+              </li>
             ))}
-            <div className="pt-2">
-              <Button
-                href="https://linkedin.com/in/oltimaloku"
-                external
-                size="md"
-                className="w-full justify-center"
-              >
-                Get in Touch
-              </Button>
-            </div>
+          </ul>
+          <div className="mt-10 flex flex-col gap-4 t-label">
+            <a href={asset(site.resume)} target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+            <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           </div>
-        </div>
+        </nav>
       )}
     </header>
+  );
+}
+
+/** Monogram: O and M inscribed in a circle in a square, the plan of the Pantheon. */
+function Seal() {
+  return (
+    <svg viewBox="0 0 40 40" className="h-10 w-10 text-gold transition-transform duration-700 group-hover:rotate-90" aria-hidden>
+      <rect x="0.5" y="0.5" width="39" height="39" fill="none" stroke="currentColor" strokeWidth="1" />
+      <circle cx="20" cy="20" r="15" fill="none" stroke="currentColor" strokeWidth="1" />
+      <path d="M20 2 V38 M2 20 H38" stroke="var(--gold-faint)" strokeWidth="1" />
+      <text
+        x="20"
+        y="24.5"
+        textAnchor="middle"
+        style={{ fontFamily: "var(--ff-display)", fontSize: 13, fontWeight: 500, fill: "var(--ink)", letterSpacing: "0.04em" }}
+      >
+        OM
+      </text>
+    </svg>
   );
 }
