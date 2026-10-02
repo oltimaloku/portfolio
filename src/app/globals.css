@@ -452,3 +452,30 @@ body {
 }
 }
 
+
+/* The Vancouver–Roma panorama. --pw is its hairline weight in drawing units. */
+.panorama {
+  --pw: 2.2;
+}
+
+@media (max-width: 767px) {
+  .panorama {
+    --pw: 3;
+  }
+}
+
+[data-reveal] .fade-on-reveal {
+  opacity: 0;
+  transition: opacity 1s var(--ease-out) var(--delay, 0.4s);
+}
+
+[data-reveal][data-shown="true"] .fade-on-reveal {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] .fade-on-reveal {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+}
