@@ -74,7 +74,7 @@ export function About() {
                   <Img
                     src="/images/profile/portrait.webp"
                     alt="Portrait of Olti Maloku"
-                    className="absolute inset-0 h-full w-full object-cover object-[50%_30%] grayscale-[35%] sepia-[12%] transition-[filter] duration-700 hover:grayscale-0 hover:sepia-0"
+                    className="absolute inset-0 h-full w-full object-cover object-[50%_30%]"
                   />
                 </div>
               </div>
