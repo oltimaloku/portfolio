@@ -4,7 +4,7 @@ export const site = {
   role: "Product builder",
   location: "Vancouver",
   description:
-    "Olti Maloku is a product builder working where design, product and engineering meet. Currently building Neuron, an AI tutor that never gives the answer.",
+    "Olti Maloku is a product builder working where design, product and engineering meet. Currently building Neuron, an AI tutor that teaches from your own course material.",
   url: "https://oltimaloku.github.io/portfolio",
   email: "oltimaloku03@gmail.com",
   /** The résumé isn't published; this opens an email asking for it. */

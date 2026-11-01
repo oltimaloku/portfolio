@@ -54,7 +54,7 @@ export default function Hero({ plates }: { plates: number }) {
                 </div>
                 <p className="mt-5 t-lede max-w-[30ch] rise" style={{ "--delay": "0.8s" } as React.CSSProperties}>
                   I design, build and ship software, from the first user interview to the last migration. Right now
-                  that&rsquo;s <em className="text-ink">Neuron</em>, an AI tutor that never gives the answer.
+                  that&rsquo;s <em className="text-ink">Neuron</em>, an AI tutor that teaches from your own course material.
                 </p>
 
                 <div className="mt-10 flex flex-wrap gap-3 rise" style={{ "--delay": "0.95s" } as React.CSSProperties}>
