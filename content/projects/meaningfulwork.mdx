@@ -38,7 +38,7 @@ Every relationship moves through a **flow**: a pipeline of stages such as *resea
 
 <Figure src="/images/projects/meaningfulwork/flow-card.webp" alt="A fundraising flow card: goal progress, conversion rate, leads needed, active pipeline and conversion rates for each stage" caption="A fundraising flow: goal progress and conversion at every stage." plain />
 
-## Under the hood
+## How it's built
 
 - **Email sync with Nylas.** OAuth2 connection with state verification, several email accounts per organisation, inbox and sent folders, sending, attachments, and errors handled by category (expired auth, provider outage, rate limits) with retries.
 - **Metadata first, bodies on demand.** Instead of copying every email, the backend stores only metadata and fetches full bodies when they're opened, with a cache. Sync stops early once most fetched emails are already known, and a background job running every 30 minutes gave way to an on-demand refresh.
@@ -47,10 +47,10 @@ Every relationship moves through a **flow**: a pipeline of stages such as *resea
 
 Within the feature, I built almost all of it, front end and back end, including its API.
 
-## Shipping it with the people who'd use it
+## Working with pilot clients
 
 I prototyped quickly with v0, then replaced each placeholder with the real thing. The product went to two pilot organisations through four or five rounds of client feedback, and each round reshaped what got built next.
 
-## What I took from it
+## What I learned
 
 This was the clearest case I've had of product work and engineering being one job. The interviews decided the shape of the product (put it in the inbox), and the shape of the product decided the hardest engineering problems: syncing email reliably, cheaply and fast.

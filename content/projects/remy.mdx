@@ -22,7 +22,7 @@ triad: { engineering: 0.44, product: 0.2, design: 0.36 }
 
 The weak point was iteration. Once a design existed, the only way to change it was to describe the change in words, which is slow and imprecise when the problem is *that button* or *this spacing*. Designers give feedback by pointing.
 
-## Feedback the agent can see
+## Canvas comments as feedback
 
 I designed and built the commenting system across the front end and the API. It lets you point at what's wrong and have the agent see exactly what you pointed at.
 
@@ -42,7 +42,7 @@ I designed and built the commenting system across the front end and the API. It 
 - **Context for the agent.** On the API side, an "ingredients" model stores each canvas source with its comments. A context builder turns them into prompt context: what was said, where it is as a percentage of the frame, and a screenshot of the region, passed to the model as images.
 - **Ready to hand over.** In my final week I refactored the whole system into hooks and an event bus and wrote the documentation and handover guide, so another engineer could take it to production.
 
-## Making HTML behave on a canvas
+## Rendering HTML on the canvas
 
 Live HTML inside a zoomable canvas fights the canvas for every scroll and pinch. I reworked the HTML artifact shape: click-to-activate so scrolling a prototype no longer zooms the canvas, a pinch-zoom fix, placeholder shapes while an artifact is still generating, and shareable public links that open any artifact on its own page.
 
@@ -52,6 +52,6 @@ Live HTML inside a zoomable canvas fights the canvas for every scroll and pinch.
 - **Rollback:** restore a session to any earlier checkpoint, deleting the artifacts and messages that came after it.
 - **A new version of the design agent** that also generates user flows, plus versioning so every artifact records which agent and tool version produced it.
 
-## What I took from it
+## What I learned
 
 Working next to designers changed how I think about AI tools. The model's output was rarely the bottleneck; how people *responded* to that output was. The best feature I built didn't make the agent smarter. It made it much easier to tell the agent what to fix.

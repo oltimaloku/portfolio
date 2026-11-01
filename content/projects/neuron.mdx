@@ -31,7 +31,7 @@ Neuron is built on the opposite premise. It's for university students in concept
 
 <Video src="/videos/neuron/tour.mp4" poster="/videos/neuron/tour-poster.webp" label="A quick tour of Neuron on iPhone: it reads the lecture slides, sets goals for the exam, asks how sure you are, starts the first lesson at the gap and cites the page every answer came from" caption="A quick tour, on iPhone: goals written from your own slides, a quick check of what you already know, and a first lesson that starts at the gap." />
 
-## What a session feels like
+## How a session works
 
 A student uploads their own course material: lecture PDFs, slide decks, readings, recordings or links. Neuron reads the first lecture and the course is teachable within about a minute. From there, every session follows three moves:
 
@@ -43,7 +43,7 @@ A student uploads their own course material: lecture PDFs, slide decks, readings
 
 Underneath, a concept map tracks what you can reproduce *cold*: every concept you've explained, scored against the source and scheduled for review. It's a map of what you own, not a checklist of what you read.
 
-## One voice, many specialists
+## The agents behind the tutor
 
 Students only ever talk to Neuron. Behind it, specialist agents each do one job within set limits, and none of them marks its own work:
 
@@ -55,13 +55,13 @@ Students only ever talk to Neuron. Behind it, specialist agents each do one job 
 
 <Figure src="/images/projects/neuron/agents.webp" alt="Diagram of Neuron's agents: the tutor in the centre, with planner, course builder, connections, review and memory, fast reader, emotion and observer around it, all writing to a shared record" caption="Who does what. Every agent reads the same shared record; only checked writes go in." wide />
 
-## Code decides, the model teaches
+## Where code makes the decisions
 
 The most important design decision in Neuron is where the model *isn't* trusted. A turn router written in code picks the route (teach, wrap up, skip, explain, show a figure, draw a visual) before the tutor model runs. Anything countable is counted in code. Mastery levels and review dates come from rules, not from a model's opinion of itself.
 
 Where a fast model reading *is* used, the thresholds came from data. Across 64 recorded readings, questions about the *form* of a message came back at 0.92–0.97 confidence, while questions about its *content* sat at 0.40–0.61. So Jev only answers form questions. The same analysis exposed a route whose confidence gate could never be cleared. It looked cautious, but in practice nothing could ever reach it.
 
-## Measuring behaviour, not vibes
+## Evaluation
 
 A tutor's quality lives in its behaviour across many conversations, so Neuron has its own evaluation harness:
 
@@ -71,7 +71,7 @@ A tutor's quality lives in its behaviour across many conversations, so Neuron ha
 
 Around that sits a large automated test suite, including a test that walks every route of the real app to prove each one sits behind authentication.
 
-## Shipping it
+## Tech stack
 
 Neuron runs as a web app, an iPhone and iPad app, and a marketing site:
 
@@ -88,7 +88,7 @@ Neuron runs as a web app, an iPhone and iPad app, and a marketing site:
   caption="The iPhone app: course home, and the end of a review."
 />
 
-## Where it came from
+## How it started
 
 Neuron didn't start as Neuron. In fall 2024 I built [Lupe](/projects/lupe/), a SwiftUI app for learning by explaining things in your own words, with on-device speech recognition. Lupe proved the idea and showed the limit: grading an explanation is easy, but *teaching* someone toward a better one needs memory, sources and judgement.
 

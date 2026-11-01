@@ -51,7 +51,7 @@ Feedback from V1 testing, a new visual identity and new designers on the team le
 
 The original app passed state down through widget parameters. That's fine for a small app but was becoming unmanageable. I moved state into **Provider** and restructured the app from MVC to **MVVM**, so views react to view-model changes and widgets stop depending on each other. The app became noticeably more stable and much easier to test and extend.
 
-### A schema that bends to the person
+### A flexible schema for each person
 
 The first MongoDB schema centred on a single User document linked to medications, seizure events and triggers. A one-size-fits-all list of triggers turned out not to fit anyone: our very first pilot user reported triggers related to fibromyalgia that no standard list included. So we introduced **user-defined types**: a shared set of common triggers (alcohol, sunlight, heat) that each person can extend with their own.
 
@@ -90,6 +90,6 @@ I came back in 2024 to lead the app's next version, this time with a team. I led
 
 By the end, I had written most of the Flutter app, along with the first version of the TypeScript backend.
 
-## What I took from it
+## What I learned
 
 IDEA is where I learned that product and engineering aren't separate jobs. The questions in the journal came from interviews I ran; the schema changed because of one user's fibromyalgia; the architecture changed because the design did. It's also where I learned to pick up a new stack quickly and still ship something people with a real condition could rely on.
