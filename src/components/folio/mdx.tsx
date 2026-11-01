@@ -40,6 +40,42 @@ export function Figure({
   );
 }
 
+/** A screen recording in a plate frame. Doesn't autoplay; the poster shows until it's played. */
+export function Video({
+  src,
+  poster,
+  label,
+  caption,
+}: {
+  src: string;
+  poster?: string;
+  /** What the video shows, for screen readers. */
+  label: string;
+  caption?: string;
+}) {
+  return (
+    <figure className="not-prose my-12">
+      <div className="plate grid-ground p-3 md:p-5">
+        <video
+          src={asset(src)}
+          poster={poster ? asset(poster) : undefined}
+          aria-label={label}
+          controls
+          playsInline
+          preload="none"
+          className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full bg-paper"
+        />
+      </div>
+      {caption && (
+        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] italic leading-snug text-ink-3">
+          <span className="t-label-sm not-italic text-gold-ink pt-0.5">Fig.</span>
+          {caption}
+        </figcaption>
+      )}
+    </figure>
+  );
+}
+
 /** Two or more images side by side, usually phone screens. */
 export function Gallery({
   images,
@@ -171,6 +207,7 @@ export const mdxComponents = {
     );
   },
   Figure,
+  Video,
   Gallery,
   Compare,
   Flow,
