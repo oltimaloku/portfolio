@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
-import { asset, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { Arrow } from "@/components/folio/primitives";
 
 const NAV = [
@@ -64,12 +64,11 @@ export default function Header({ showWriting = true }: { showWriting?: boolean }
             </Link>
           ))}
           <a
-            href={asset(site.resume)}
-            target="_blank"
-            rel="noopener noreferrer"
+            href={site.resumeRequest}
+            title={`Email ${site.email} for my résumé`}
             className="group inline-flex h-9 items-center gap-2 border border-gold-soft px-4 t-label text-ink hover:border-gold hover:bg-gold-wash transition-colors"
           >
-            Résumé
+            Résumé on request
             <Arrow dir="up-right" className="h-2 w-3" />
           </a>
         </nav>
@@ -102,7 +101,7 @@ export default function Header({ showWriting = true }: { showWriting?: boolean }
             ))}
           </ul>
           <div className="mt-10 flex flex-col gap-4 t-label">
-            <a href={asset(site.resume)} target="_blank" rel="noopener noreferrer">Résumé ↗</a>
+            <a href={site.resumeRequest}>Résumé on request ↗</a>
             <a href={site.links.linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
             <a href={site.links.github} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
           </div>

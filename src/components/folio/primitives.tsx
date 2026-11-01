@@ -82,6 +82,13 @@ export function ButtonLink({
       : "border border-gold-soft text-ink hover:border-gold hover:bg-gold-wash",
     className
   );
+  if (href.startsWith("mailto:")) {
+    return (
+      <a href={href} className={cls}>
+        {children}
+      </a>
+    );
+  }
   if (external) {
     return (
       <a href={href.startsWith("/") ? asset(href) : href} target="_blank" rel="noopener noreferrer" className={cls}>

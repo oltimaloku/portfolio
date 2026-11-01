@@ -61,8 +61,8 @@ export default function Hero({ plates }: { plates: number }) {
                   <ButtonLink href="/#work" solid>
                     See the work <Arrow dir="down" className="h-2 w-3" />
                   </ButtonLink>
-                  <ButtonLink href={site.resume} external>
-                    Résumé <Arrow dir="up-right" className="h-2 w-3" />
+                  <ButtonLink href={site.resumeRequest}>
+                    Résumé on request <Arrow dir="up-right" className="h-2 w-3" />
                   </ButtonLink>
                 </div>
               </div>

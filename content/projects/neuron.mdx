@@ -17,15 +17,6 @@ links:
 cover: "/images/projects/neuron/home.webp"
 coverInset: "/images/projects/neuron/iphone-home.webp"
 coverAlt: "Neuron's course home on the web, with the iPhone app beside it"
-metrics:
-  - value: "670"
-    label: "Commits, Sep 2025 – now"
-  - value: "2,780"
-    label: "Automated tests"
-  - value: "38"
-    label: "Scripted tutor evals"
-  - value: "~200k"
-    label: "Lines across 3 platforms"
 triad: { engineering: 0.36, product: 0.33, design: 0.31 }
 evolvedFrom: "lupe"
 ---
@@ -72,12 +63,11 @@ Where a fast model reading *is* used, the thresholds came from data. Across 64 r
 
 A tutor's quality lives in its behaviour across many conversations, so Neuron has its own evaluation harness:
 
-- **38 scripted tasks**, for example *conditional vs. marginal probability*, *don't diagnose an error in a correct answer*, *cite on demand*.
+- **Scripted tasks**, for example *conditional vs. marginal probability*, *don't diagnose an error in a correct answer*, *cite on demand*.
 - Each task runs **k trials, each in a fresh fixture course**, graded on the event log and the files the trial left behind.
 - Tasks are fingerprinted and tracked across a **five-run health window**, with cost and model recorded, so a regression is visible the day it lands.
-- Between September 10 and October 1, 2026 the suite ran **23 times** across four Claude models.
 
-Around that sit 2,780 automated tests, including one that walks every route of the real app to prove each one sits behind authentication.
+Around that sits a large automated test suite, including a test that walks every route of the real app to prove each one sits behind authentication.
 
 ## Shipping it
 

@@ -3,6 +3,7 @@ import type { Project } from "@/lib/types";
 import { cn, formatYears } from "@/lib/utils";
 import { Arrow, Dimension, Img } from "./primitives";
 import Reveal from "./Reveal";
+import Stack from "./Stack";
 
 type Lookup = Record<string, Pick<Project, "title" | "numeral" | "slug">>;
 
@@ -66,20 +67,6 @@ function Cover({ project, className }: { project: Project; className?: string })
   );
 }
 
-function Stack({ items, max }: { items: string[]; max?: number }) {
-  const shown = max ? items.slice(0, max) : items;
-  return (
-    <ul className="flex flex-wrap gap-x-4 gap-y-1.5">
-      {shown.map((t) => (
-        <li key={t} className="t-label-sm text-ink-3">
-          {t}
-        </li>
-      ))}
-      {max && items.length > max && <li className="t-label-sm text-ink-4">+{items.length - max}</li>}
-    </ul>
-  );
-}
-
 /** Full-width plate for the largest works. `flip` mirrors it so consecutive plates alternate. */
 export function LargePlate({ project, lookup, flip }: { project: Project; lookup: Lookup; flip?: boolean }) {
   return (
@@ -111,23 +98,6 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
           <p className="mt-3 t-title italic text-[24px] text-ink-2">{project.tagline}</p>
           <p className="mt-6 text-[17px] leading-relaxed text-ink-2">{project.summary}</p>
 
-          {project.metrics.length > 0 && (
-            <dl className="mt-8 grid grid-cols-2 border-t border-gold-faint">
-              {project.metrics.slice(0, 4).map((m, i) => (
-                <div
-                  key={m.label}
-                  className={cn(
-                    "border-b border-gold-faint py-4",
-                    i % 2 === 0 ? "pr-4 border-r" : "pl-5"
-                  )}
-                >
-                  <dt className="sr-only">{m.label}</dt>
-                  <dd className="t-display text-[40px] leading-none text-ink">{m.value}</dd>
-                  <dd className="mt-2 t-label-sm text-ink-3">{m.label}</dd>
-                </div>
-              ))}
-            </dl>
-          )}
 
           <dl className="mt-7 space-y-3">
             <div className="grid grid-cols-[84px_1fr] gap-3">
@@ -137,7 +107,7 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
             <div className="grid grid-cols-[84px_1fr] gap-3">
               <dt className="t-label-sm text-ink-4 pt-0.5">Built with</dt>
               <dd>
-                <Stack items={project.stack} max={6} />
+                <Stack items={project.stack} max={8} />
               </dd>
             </div>
           </dl>

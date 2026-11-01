@@ -1,6 +1,6 @@
 /**
  * How much room a project gets on the page.
- *   large  — a full-width plate with figure, metrics and stack (Neuron, IDEA)
+ *   large  — a full-width plate with figure and stack (Neuron, IDEA)
  *   medium — a half-sheet plate with a figure (Geo Real)
  *   small  — an index card in the "minor works" grid
  */
@@ -16,11 +16,6 @@ export interface Triad {
 export interface ProjectLink {
   label: string;
   href: string;
-}
-
-export interface Metric {
-  value: string;
-  label: string;
 }
 
 export interface Project {
@@ -49,7 +44,6 @@ export interface Project {
   coverFit?: "contain" | "cover";
   /** Optional second image (usually a phone) laid over the cover's corner on large plates. */
   coverInset?: string;
-  metrics: Metric[];
   triad: Triad;
   evolvedFrom?: string;
   evolvedInto?: string;

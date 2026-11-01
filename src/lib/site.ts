@@ -6,7 +6,9 @@ export const site = {
   description:
     "Olti Maloku is a product builder working where design, product and engineering meet. Currently building Neuron, an AI tutor that never gives the answer.",
   url: "https://oltimaloku.github.io/portfolio",
-  resume: "/resume/Resume-Olti.pdf",
+  email: "oltimaloku555@gmail.com",
+  /** The résumé isn't published; this opens an email asking for it. */
+  resumeRequest: "mailto:oltimaloku555@gmail.com?subject=R%C3%A9sum%C3%A9%20request",
   links: {
     linkedin: "https://www.linkedin.com/in/oltimaloku/",
     github: "https://github.com/oltimaloku",

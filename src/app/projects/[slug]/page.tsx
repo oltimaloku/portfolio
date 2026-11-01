@@ -7,6 +7,7 @@ import { cn, formatPeriod } from "@/lib/utils";
 import { mdxComponents } from "@/components/folio/mdx";
 import { Arrow, Dimension, Img, Sheet } from "@/components/folio/primitives";
 import Reveal from "@/components/folio/Reveal";
+import Stack from "@/components/folio/Stack";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -75,10 +76,8 @@ export default async function ProjectPage({ params }: PageProps) {
             ))}
             <div className="grid grid-cols-[96px_1fr] border-t border-gold-faint">
               <dt className="border-r border-gold-faint px-4 py-3 t-label-sm text-ink-4">Built with</dt>
-              <dd className="flex flex-wrap gap-x-4 gap-y-1 px-4 py-3">
-                {project.stack.map((s) => (
-                  <span key={s} className="t-label-sm text-ink-3">{s}</span>
-                ))}
+              <dd className="px-4 py-3">
+                <Stack items={project.stack} />
               </dd>
             </div>
             {project.links.length > 0 && (
@@ -123,20 +122,10 @@ export default async function ProjectPage({ params }: PageProps) {
         </Sheet>
       )}
 
-      {/* Summary and metrics */}
+      {/* Summary */}
       <Sheet className="mt-16 md:mt-24">
         <div className="grid gap-12 lg:grid-cols-12">
           <p className="t-title text-[clamp(26px,2.5vw,34px)] leading-[1.3] text-ink lg:col-span-7">{project.summary}</p>
-          {project.metrics.length > 0 && (
-            <dl className="grid grid-cols-2 self-start border-t border-gold-soft lg:col-span-4 lg:col-start-9">
-              {project.metrics.map((m, i) => (
-                <div key={m.label} className={cn("border-b border-gold-faint py-5", i % 2 === 0 ? "border-r pr-4" : "pl-5")}>
-                  <dd className="t-display text-[44px] leading-none">{m.value}</dd>
-                  <dt className="mt-2 t-label-sm text-ink-3">{m.label}</dt>
-                </div>
-              ))}
-            </dl>
-          )}
         </div>
       </Sheet>
 

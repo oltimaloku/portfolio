@@ -1,5 +1,4 @@
 import { site } from "@/lib/site";
-import { asset } from "@/lib/utils";
 import Arcade from "@/components/drawing/Arcade";
 import Reveal from "@/components/folio/Reveal";
 import { Arrow, Sheet } from "@/components/folio/primitives";
@@ -9,7 +8,8 @@ export default function Footer() {
   const links = [
     { label: "LinkedIn", href: site.links.linkedin },
     { label: "GitHub", href: site.links.github },
-    { label: "Résumé", href: asset(site.resume) },
+    { label: "Email", href: `mailto:${site.email}` },
+    { label: "Résumé on request", href: site.resumeRequest },
   ];
 
   return (
@@ -30,8 +30,7 @@ export default function Footer() {
                 <li key={l.label} className="border-b border-gold-faint">
                   <a
                     href={l.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(l.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
                     className="group flex items-center justify-between py-4 t-label text-ink"
                   >
                     <span className="link-draw">{l.label}</span>
