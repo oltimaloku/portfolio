@@ -195,7 +195,6 @@ export default function Triad({ projects }: { projects: TriadProject[] }) {
                   textAnchor={LABELS[v.key].anchor}
                   style={{
                     fontFamily: "var(--ff-display)",
-                    fontStyle: "italic",
                     fontSize: 22,
                     fill: "var(--ink)",
                   }}

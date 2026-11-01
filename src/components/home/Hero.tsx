@@ -43,7 +43,7 @@ export default function Hero({ plates }: { plates: number }) {
                   <span className="block rise" style={{ "--delay": "0.35s" } as React.CSSProperties}>
                     Olti
                   </span>
-                  <span className="block italic text-gold-ink rise -mt-[0.06em] pl-[0.5em]" style={{ "--delay": "0.5s" } as React.CSSProperties}>
+                  <span className="block text-gold-ink rise -mt-[0.06em] pl-[0.5em]" style={{ "--delay": "0.5s" } as React.CSSProperties}>
                     Maloku
                   </span>
                 </h1>
@@ -95,7 +95,7 @@ export default function Hero({ plates }: { plates: number }) {
         </div>
 
         <p
-          className="mt-4 mb-2 max-w-[70ch] px-1 text-[14px] italic text-ink-3 fade"
+          className="mt-4 mb-2 max-w-[70ch] px-1 text-[14px] text-ink-3 fade"
           style={{ "--delay": "4s" } as React.CSSProperties}
         >
           The Pantheon in Rome. Its dome is exactly as high as it is wide, so a sphere 43.3 m across fits inside.

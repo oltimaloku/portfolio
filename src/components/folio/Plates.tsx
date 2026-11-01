@@ -95,7 +95,7 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
               {project.title}
             </Link>
           </h3>
-          <p className="mt-3 t-title italic text-[24px] text-ink-2">{project.tagline}</p>
+          <p className="mt-3 t-title text-[24px] text-ink-2">{project.tagline}</p>
           <p className="mt-6 text-[17px] leading-relaxed text-ink-2">{project.summary}</p>
 
 
@@ -144,7 +144,7 @@ export function MediumPlate({ project, lookup }: { project: Project; lookup: Loo
               {project.title}
             </Link>
           </h3>
-          <p className="mt-3 t-title italic text-[22px] text-ink-2">{project.tagline}</p>
+          <p className="mt-3 t-title text-[22px] text-ink-2">{project.tagline}</p>
           <p className="mt-5 text-[17px] leading-relaxed text-ink-2 max-w-[56ch]">{project.summary}</p>
           <div className="mt-6">
             <Stack items={project.stack} />

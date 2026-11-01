@@ -31,8 +31,8 @@ export function Figure({
         <Img src={src} alt={alt} className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full" />
       </div>
       {caption && (
-        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] italic leading-snug text-ink-3">
-          <span className="t-label-sm not-italic text-gold-ink pt-0.5">Fig.</span>
+        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-snug text-ink-3">
+          <span className="t-label-sm text-gold-ink pt-0.5">Fig.</span>
           {caption}
         </figcaption>
       )}
@@ -67,8 +67,8 @@ export function Video({
         />
       </div>
       {caption && (
-        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] italic leading-snug text-ink-3">
-          <span className="t-label-sm not-italic text-gold-ink pt-0.5">Fig.</span>
+        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-snug text-ink-3">
+          <span className="t-label-sm text-gold-ink pt-0.5">Fig.</span>
           {caption}
         </figcaption>
       )}
@@ -92,8 +92,8 @@ export function Gallery({
         ))}
       </div>
       {caption && (
-        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] italic leading-snug text-ink-3">
-          <span className="t-label-sm not-italic text-gold-ink pt-0.5">Fig.</span>
+        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-snug text-ink-3">
+          <span className="t-label-sm text-gold-ink pt-0.5">Fig.</span>
           {caption}
         </figcaption>
       )}
@@ -127,8 +127,8 @@ export function Compare({
         ))}
       </div>
       {caption && (
-        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] italic leading-snug text-ink-3">
-          <span className="t-label-sm not-italic text-gold-ink pt-0.5">Fig.</span>
+        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-snug text-ink-3">
+          <span className="t-label-sm text-gold-ink pt-0.5">Fig.</span>
           {caption}
         </figcaption>
       )}
@@ -167,8 +167,8 @@ export function Flow({
         ))}
       </ol>
       {caption && (
-        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] italic leading-snug text-ink-3">
-          <span className="t-label-sm not-italic text-gold-ink pt-0.5">Fig.</span>
+        <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-snug text-ink-3">
+          <span className="t-label-sm text-gold-ink pt-0.5">Fig.</span>
           {caption}
         </figcaption>
       )}

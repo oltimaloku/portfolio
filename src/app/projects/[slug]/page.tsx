@@ -61,7 +61,7 @@ export default async function ProjectPage({ params }: PageProps) {
             <h1 className="mt-4 t-display text-[clamp(72px,11vw,168px)] rise" style={{ "--delay": "0.1s" } as React.CSSProperties}>
               {project.title}
             </h1>
-            <p className="mt-4 t-title italic text-[clamp(24px,2.4vw,32px)] text-ink-2 max-w-[28ch] rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
+            <p className="mt-4 t-title text-[clamp(24px,2.4vw,32px)] text-ink-2 max-w-[28ch] rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
               {project.tagline}
             </p>
           </div>

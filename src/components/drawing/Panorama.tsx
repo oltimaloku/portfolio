@@ -70,7 +70,7 @@ export default function Panorama() {
           <Drawing viewBox="1240 20 1160 480" className="block h-auto w-full" />
         </div>
         <figcaption className="mt-6 flex flex-wrap items-baseline justify-between gap-x-8 gap-y-2 border-t border-gold-faint pt-4">
-          <span className="text-[15px] italic text-ink-3">
+          <span className="text-[15px] text-ink-3">
             Vancouver&rsquo;s ridge and towers are traced from a photograph; Rome is drawn from its monuments.
           </span>
           <span className="t-label-sm text-gold-ink">Vancouver → Roma · 8,989 km</span>
