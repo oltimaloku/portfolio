@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { asset, cn, slugify } from "@/lib/utils";
-import { Img } from "./primitives";
+import Zoom from "./Zoom";
 
 function text(node: ReactNode): string {
   if (typeof node === "string" || typeof node === "number") return String(node);
@@ -28,7 +28,7 @@ export function Figure({
   return (
     <figure className={cn("not-prose my-12", wide && "lg:-mx-[12%]")}>
       <div className={cn("plate", plain ? "bg-paper" : "grid-ground", "p-3 md:p-5")}>
-        <Img src={src} alt={alt} className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full" />
+        <Zoom src={src} alt={alt} className="mx-auto block h-auto max-h-[78vh] w-auto max-w-full" />
       </div>
       {caption && (
         <figcaption className="mt-5 grid grid-cols-[auto_1fr] gap-4 text-[15px] leading-snug text-ink-3">
@@ -88,7 +88,7 @@ export function Gallery({
     <figure className="not-prose my-12 lg:-mx-[12%]">
       <div className="plate grid-ground grid grid-cols-2 gap-4 p-5 md:gap-8 md:p-10" style={{ gridTemplateColumns: `repeat(${Math.min(images.length, 4)}, minmax(0, 1fr))` }}>
         {images.map((im) => (
-          <Img key={im.src} src={im.src} alt={im.alt} className="mx-auto h-auto max-h-[70vh] w-auto max-w-full" />
+          <Zoom key={im.src} src={im.src} alt={im.alt} className="mx-auto h-auto max-h-[70vh] w-auto max-w-full" />
         ))}
       </div>
       {caption && (
@@ -121,7 +121,7 @@ export function Compare({
               <span className="h-px flex-1 bg-gold-faint" />
             </div>
             <div className="plate grid-ground p-3 md:p-5">
-              <Img src={im.src} alt={im.alt} className="mx-auto h-auto w-full" />
+              <Zoom src={im.src} alt={im.alt} className="mx-auto h-auto w-full" />
             </div>
           </div>
         ))}
@@ -191,7 +191,7 @@ export const mdxComponents = {
   // Markdown images arrive wrapped in <p>, so this uses spans rather than <figure>
   img: (props: React.ImgHTMLAttributes<HTMLImageElement>) => (
     <span className="plate grid-ground my-10 block p-3 md:p-5">
-      <Img src={typeof props.src === "string" ? props.src : ""} alt={props.alt ?? ""} className="mx-auto block h-auto max-w-full" />
+      <Zoom src={typeof props.src === "string" ? props.src : ""} alt={props.alt ?? ""} className="mx-auto block h-auto max-w-full" />
     </span>
   ),
   a: ({ href = "", children }: { href?: string; children?: ReactNode }) => {

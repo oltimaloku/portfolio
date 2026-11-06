@@ -256,7 +256,7 @@ export default function Triad({ projects }: { projects: TriadProject[] }) {
         <figcaption className="mt-6 min-h-[52px] border-t border-gold-faint pt-4 flex items-baseline gap-4">
           {active ? (
             <>
-              <span className="t-label text-rosso shrink-0">Tav. {active.numeral}</span>
+              <span className="t-label text-rosso shrink-0">No. {active.numeral}</span>
               <span>
                 <span className="t-title text-[22px] text-ink">{active.title}</span>
                 <span className="text-ink-3 text-[15px]"> · {active.tagline}</span>

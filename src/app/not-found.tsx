@@ -47,9 +47,9 @@ export default function NotFound() {
     <section className="pt-[68px]">
       <Sheet className="flex min-h-[80svh] flex-col items-center justify-center py-24 text-center">
         <FallenColumn />
-        <p className="mt-10 t-label text-gold-ink">Tavola CDIV</p>
+        <p className="mt-10 t-label text-gold-ink">Error 404</p>
         <h1 className="mt-4 t-display text-[clamp(56px,8vw,112px)]">
-          This page is <em className="text-gold-ink">in ruins.</em>
+          This page is in ruins.
         </h1>
         <p className="mt-6 t-lede max-w-[40ch]">
           Whatever stood here didn&rsquo;t survive, or never existed. The rest of the site is in better shape.

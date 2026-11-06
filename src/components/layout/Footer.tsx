@@ -18,11 +18,11 @@ export default function Footer() {
         <div className="flex items-center gap-4 border-t border-gold-soft pt-4">
           <span className="t-label text-gold-ink">§ 06</span>
           <span className="h-px w-8 bg-gold-soft" />
-          <span className="t-label text-ink-3">Contatti</span>
+          <span className="t-label text-ink-3">Contact</span>
         </div>
         <div className="mt-12 grid gap-12 lg:grid-cols-12">
           <h2 className="t-display text-[clamp(56px,8vw,128px)] lg:col-span-8">
-            Let&rsquo;s <em className="text-gold-ink">connect.</em>
+            Let&rsquo;s connect.
           </h2>
           <div className="lg:col-span-4 lg:pt-6">
             <ul className="border-t border-gold-faint">
@@ -51,7 +51,7 @@ export default function Footer() {
         <Sheet className="flex flex-col gap-3 py-6 md:flex-row md:items-center md:justify-between">
           <span className="t-label-sm text-ink-3">© {year} {site.name}</span>
           <span className="t-label-sm text-ink-3">Set in Cormorant Garamond, Newsreader & IBM Plex Mono</span>
-          <span className="t-label-sm text-ink-3">Drawn in Vancouver, after Roma</span>
+          <span className="t-label-sm text-ink-3">Drawn in Vancouver, after Rome</span>
           <a href="#top" className="t-label-sm text-gold-ink hover:text-ink transition-colors">
             Back to top ↑
           </a>

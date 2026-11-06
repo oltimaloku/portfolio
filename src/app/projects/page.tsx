@@ -19,9 +19,9 @@ export default function ProjectsPage() {
       <Sheet className="pt-16 md:pt-24">
         <SectionHead
           mark="02"
-          latin="Opere"
-          title={<>Every work, <em className="text-gold-ink">in order.</em></>}
-          lede="An index of all the plates, then the plates themselves."
+          label="Work"
+          title={<>Every work, in order.</>}
+          lede="An index of every project, then each one in full."
         />
 
         <ol className="mb-24 border-t border-gold-soft md:mb-32">

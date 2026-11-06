@@ -18,10 +18,10 @@ export default function Home() {
         <Sheet>
           <SectionHead
             mark="01"
-            latin="Metodo"
+            label="Method"
             title={
               <>
-                How I <em className="text-gold-ink">work.</em>
+                How I work.
               </>
             }
             lede="I like owning things end to end: talking to the people who'll use it, designing it, and building it. The projects I'm proudest of needed all three. Here's roughly where each one landed."
@@ -44,13 +44,9 @@ export default function Home() {
         <Sheet>
           <SectionHead
             mark="02"
-            latin="Opere"
-            title={
-              <>
-                Selected works, <em className="text-gold-ink">drawn to scale.</em>
-              </>
-            }
-            lede="Each plate is sized by the size of the project. The two largest took years; the smallest took a few weeks of learning something new."
+            label="Work"
+            title="My Work"
+            lede="Each project is drawn at its real size. The two largest took years; the smallest took a few weeks of learning something new."
           />
           <Catalogue projects={projects} />
         </Sheet>

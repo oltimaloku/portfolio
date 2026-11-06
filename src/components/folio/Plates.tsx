@@ -11,7 +11,7 @@ function href(p: Project) {
   return `/projects/${p.slug}/`;
 }
 
-/** "Grew out of Tav. IV · Lupe" / "Became Tav. I · Neuron" */
+/** "Grew out of No. IV · Lupe" / "Became No. I · Neuron" */
 function Lineage({ project, lookup }: { project: Project; lookup: Lookup }) {
   const from = project.evolvedFrom ? lookup[project.evolvedFrom] : undefined;
   const into = project.evolvedInto ? lookup[project.evolvedInto] : undefined;
@@ -23,7 +23,7 @@ function Lineage({ project, lookup }: { project: Project; lookup: Lookup }) {
       className="relative z-10 inline-flex items-center gap-2 t-label-sm text-gold-ink hover:text-ink transition-colors"
     >
       <span className="inline-block h-px w-5 bg-gold" />
-      {from ? "Grew out of" : "Became"} Tav. {target.numeral} · {target.title}
+      {from ? "Grew out of" : "Became"} No. {target.numeral} · {target.title}
     </Link>
   );
 }
@@ -31,7 +31,7 @@ function Lineage({ project, lookup }: { project: Project; lookup: Lookup }) {
 function PlateBar({ project, className }: { project: Project; className?: string }) {
   return (
     <div className={cn("flex items-center justify-between border-b border-gold-faint px-5 py-3 md:px-7", className)}>
-      <span className="t-label text-gold-ink">Tav. {project.numeral}</span>
+      <span className="t-label text-gold-ink">No. {project.numeral}</span>
       <span className="t-label text-ink-3">{formatYears(project.start, project.end)}</span>
     </div>
   );
@@ -91,7 +91,10 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
           </div>
 
           <h3 className="mt-5 t-display" style={{ fontSize: fitTitle(project.title, "clamp(56px, 6vw, 92px)") }}>
-            <Link href={href(project)} className="hover:text-gold-ink transition-colors duration-300">
+            <Link
+              href={href(project)}
+              className="after:absolute after:inset-0 after:z-[1] group-hover:text-gold-ink transition-colors duration-300"
+            >
               {project.title}
             </Link>
           </h3>
@@ -140,7 +143,10 @@ export function MediumPlate({ project, lookup }: { project: Project; lookup: Loo
         </Link>
         <div className="@container md:col-span-7 flex flex-col p-6 md:p-10">
           <h3 className="t-display" style={{ fontSize: fitTitle(project.title, "clamp(48px, 4.6vw, 72px)") }}>
-            <Link href={href(project)} className="hover:text-gold-ink transition-colors duration-300">
+            <Link
+              href={href(project)}
+              className="after:absolute after:inset-0 after:z-[1] group-hover:text-gold-ink transition-colors duration-300"
+            >
               {project.title}
             </Link>
           </h3>
@@ -228,7 +234,7 @@ export function Catalogue({ projects }: { projects: Project[] }) {
             <span className="t-label text-ink-3">Studies & smaller works</span>
             <span className="h-px flex-1 bg-gold-faint" />
             <span className="t-label text-ink-4">
-              Tav. {small[0].numeral} – {small[small.length - 1].numeral}
+              No. {small[0].numeral} – {small[small.length - 1].numeral}
             </span>
           </div>
           {/* Three across; if that would orphan a card, the first one spans two columns */}

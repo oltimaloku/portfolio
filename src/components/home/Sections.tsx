@@ -11,10 +11,10 @@ export function Practice() {
       <Sheet>
         <SectionHead
           mark="03"
-          latin="Pratica"
+          label="Experience"
           title={
             <>
-              Where the work <em className="text-gold-ink">was made.</em>
+              Where the work was made.
             </>
           }
           lede="Product management, mobile, AI tooling, and now my own company."
@@ -64,7 +64,7 @@ export function About() {
   return (
     <section id="about" className="scroll-mt-24 pt-32 md:pt-48">
       <Sheet>
-        <SectionHead mark="04" latin="Ritratto" title={<>About <em className="text-gold-ink">me.</em></>} />
+        <SectionHead mark="04" label="About" title={<>About me.</>} />
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-8">
           <Reveal className="lg:col-span-4">
             <figure className="mx-auto max-w-[360px] lg:mx-0">
@@ -122,8 +122,8 @@ export function Writing({ articles }: { articles: Article[] }) {
       <Sheet>
         <SectionHead
           mark="05"
-          latin="Scritti"
-          title={<>Notes on <em className="text-gold-ink">learning.</em></>}
+          label="Writing"
+          title={<>Notes on learning.</>}
           aside={
             <Link href="/articles/" className="group inline-flex items-center gap-2 t-label text-ink-2 hover:text-ink">
               <span className="link-draw">All writing</span> <Arrow />

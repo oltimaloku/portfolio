@@ -20,8 +20,8 @@ export default function ArticlesPage() {
       <Sheet className="pt-16 md:pt-24">
         <SectionHead
           mark="05"
-          latin="Scritti"
-          title={<>Notes on <em className="text-gold-ink">learning.</em></>}
+          label="Writing"
+          title={<>Notes on learning.</>}
           lede="Writing is how I check whether I understand something. These are the drafts that survived."
         />
         <ol className="border-t border-gold-soft">

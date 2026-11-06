@@ -1,7 +1,6 @@
 import PantheonDrawing from "@/components/drawing/PantheonDrawing";
 import { Arrow, ButtonLink } from "@/components/folio/primitives";
 import { site } from "@/lib/site";
-import { toRoman } from "@/lib/utils";
 
 const COLUMNS = ["A", "B", "C", "D", "E", "F", "G", "H"];
 const ROWS = ["1", "2", "3", "4", "5"];
@@ -37,13 +36,13 @@ export default function Hero({ plates }: { plates: number }) {
               {/* Statement */}
               <div className="relative z-10 flex flex-col justify-center px-6 pb-10 pt-6 md:px-12 lg:col-span-5 lg:py-16 lg:pr-0">
                 <p className="t-label text-gold-ink rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
-                  Portfolio · {toRoman(now.getFullYear())}
+                  Portfolio · {now.getFullYear()}
                 </p>
                 <h1 className="mt-6 t-display text-[min(clamp(84px,10vw,150px),22vw)]">
                   <span className="block rise" style={{ "--delay": "0.35s" } as React.CSSProperties}>
                     Olti
                   </span>
-                  <span className="block text-gold-ink rise -mt-[0.06em] pl-[0.5em]" style={{ "--delay": "0.5s" } as React.CSSProperties}>
+                  <span className="block rise -mt-[0.06em] pl-[0.5em]" style={{ "--delay": "0.5s" } as React.CSSProperties}>
                     Maloku
                   </span>
                 </h1>
@@ -54,7 +53,14 @@ export default function Hero({ plates }: { plates: number }) {
                 </div>
                 <p className="mt-5 t-lede max-w-[30ch] rise" style={{ "--delay": "0.8s" } as React.CSSProperties}>
                   I design, build and ship software, from the first user interview to the last migration. Right now
-                  that&rsquo;s <em className="text-ink">Neuron</em>, an AI tutor that teaches from your own course material.
+                  that&rsquo;s <a
+                    href="https://learnwithneuron.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gold-ink underline decoration-gold-soft underline-offset-4 transition-colors hover:text-ink hover:decoration-gold"
+                  >
+                    Neuron
+                  </a>, an AI tutor that teaches from your own course material.
                 </p>
 
                 <div className="mt-10 flex flex-wrap gap-3 rise" style={{ "--delay": "0.95s" } as React.CSSProperties}>
@@ -76,10 +82,10 @@ export default function Hero({ plates }: { plates: number }) {
             {/* Title block */}
             <dl className="grid grid-cols-2 border-t border-gold-faint sm:grid-cols-3 lg:ml-auto lg:w-[58%] lg:grid-cols-[1.4fr_1fr_0.8fr_1fr] lg:border-l">
               {[
-                ["Soggetto", "Pantheon, Roma · c. 125 AD"],
-                ["Vista", "Sezione A–A"],
-                ["Scala", "1 : 400"],
-                ["Tavole", `${toRoman(plates)} · ${month} ${now.getFullYear()}`],
+                ["Subject", "Pantheon, Rome · c. 125 AD"],
+                ["View", "Section A–A"],
+                ["Scale", "1 : 400"],
+                ["Projects", `${plates} · ${month} ${now.getFullYear()}`],
               ].map(([k, v], i) => (
                 <div
                   key={k}

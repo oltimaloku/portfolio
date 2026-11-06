@@ -10,13 +10,13 @@ export function Sheet({ children, className }: { children: ReactNode; className?
 /** Section opener: a ruled line, a section mark, and a display title. */
 export function SectionHead({
   mark,
-  latin,
+  label,
   title,
   lede,
   aside,
 }: {
   mark: string;
-  latin: string;
+  label: string;
   title: ReactNode;
   lede?: ReactNode;
   aside?: ReactNode;
@@ -26,7 +26,7 @@ export function SectionHead({
       <div className="flex items-center gap-4 border-t border-gold-soft pt-4">
         <span className="t-label text-gold-ink">§ {mark}</span>
         <span className="h-px w-8 bg-gold-soft" />
-        <span className="t-label text-ink-3">{latin}</span>
+        <span className="t-label text-ink-3">{label}</span>
         {aside && <span className="ml-auto">{aside}</span>}
       </div>
       <div className="mt-10 grid gap-8 lg:grid-cols-12">

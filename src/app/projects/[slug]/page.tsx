@@ -52,12 +52,12 @@ export default async function ProjectPage({ params }: PageProps) {
             <span className="link-draw">Works</span>
           </Link>
           <span className="text-ink-4">/</span>
-          <span className="text-gold-ink">Tav. {project.numeral}</span>
+          <span className="text-gold-ink">No. {project.numeral}</span>
         </nav>
 
         <header className="mt-10 grid gap-10 border-t border-gold-soft pt-10 lg:grid-cols-12 md:mt-14">
           <div className="@container lg:col-span-7">
-            <p className="t-label text-gold-ink rise">Tavola {project.numeral} of {all.length}</p>
+            <p className="t-label text-gold-ink rise">Project {project.numeral} of {all.length}</p>
             <h1
               className="mt-4 t-display rise"
               style={{ "--delay": "0.1s", fontSize: fitTitle(project.title, "clamp(72px, 11vw, 168px)") } as React.CSSProperties}
@@ -138,7 +138,7 @@ export default async function ProjectPage({ params }: PageProps) {
           {project.headings.length > 2 && (
             <aside className="hidden lg:col-span-3 lg:block">
               <nav className="sticky top-28" aria-label="Sections">
-                <p className="t-label-sm text-ink-4">Indice</p>
+                <p className="t-label-sm text-ink-4">Contents</p>
                 <ol className="mt-4 border-l border-gold-faint">
                   {project.headings.map((h, i) => (
                     <li key={h.id}>
@@ -166,7 +166,7 @@ export default async function ProjectPage({ params }: PageProps) {
               <Link key={p!.slug} href={`/projects/${p!.slug}/`} className="group flex items-baseline gap-4">
                 <span className="t-label text-gold-ink">{p!.slug === project.evolvedFrom ? "Grew out of" : "Became"}</span>
                 <span className="t-title text-[28px] group-hover:text-gold-ink transition-colors">
-                  Tav. {p!.numeral} · {p!.title}
+                  No. {p!.numeral} · {p!.title}
                 </span>
                 <Arrow className="ml-auto text-gold group-hover:translate-x-1" />
               </Link>
@@ -179,8 +179,8 @@ export default async function ProjectPage({ params }: PageProps) {
       <Sheet className="mt-24 md:mt-36">
         <nav className="grid border-y border-gold-soft md:grid-cols-2" aria-label="More works">
           {[
-            { p: prev, label: "Previous plate", dir: "left" as const },
-            { p: next, label: "Next plate", dir: "right" as const },
+            { p: prev, label: "Previous project", dir: "left" as const },
+            { p: next, label: "Next project", dir: "right" as const },
           ].map(({ p, label, dir }) => (
             <Link
               key={label}
@@ -192,7 +192,7 @@ export default async function ProjectPage({ params }: PageProps) {
             >
               <span className="flex items-center gap-3 t-label text-ink-3">
                 {dir === "left" && <Arrow dir="left" className="group-hover:-translate-x-1" />}
-                {label} · Tav. {p.numeral}
+                {label} · No. {p.numeral}
                 {dir === "right" && <Arrow className="group-hover:translate-x-1" />}
               </span>
               <span className="t-display" style={{ fontSize: fitTitle(p.title, "clamp(44px, 5vw, 72px)") }}>
