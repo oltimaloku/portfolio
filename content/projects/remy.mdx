@@ -10,6 +10,8 @@ role: "Software Engineer Intern"
 team: "Remy · 4 engineers"
 platform: "Web"
 stack: ["Next.js", "React", "TypeScript", "tldraw", "Zustand", "Python", "FastAPI", "Agno", "Claude", "PostgreSQL", "Supabase"]
+cover: "/images/projects/remy/canvas.webp"
+coverAlt: "Remy: a chat with the design agent on the left, and two generated mobile screens with comment pins on the canvas"
 links:
   - label: "withremy.com"
     href: "https://www.withremy.com"
@@ -19,6 +21,8 @@ triad: { engineering: 0.44, product: 0.2, design: 0.36 }
 ## The product
 
 [Remy](https://www.withremy.com)'s tool lets a product team design by conversation. You describe what you want and an agent generates it as real HTML and CSS: web and mobile screens, user flows, diagrams and images. Everything lands as a shape on a [tldraw](https://tldraw.dev) canvas beside the chat, so several prototypes can sit side by side and be compared, rearranged and iterated on.
+
+<Figure src="/images/projects/remy/canvas.webp" alt="Remy with a chat on the left and two generated budgeting-app screens on the canvas, each with red comment pins" caption="A chat with the agent beside the canvas it designs on. Shown with made-up sample content." plain />
 
 The weak point was iteration. Once a design existed, the only way to change it was to describe the change in words, which is slow and imprecise when the problem is *that button* or *this spacing*. Designers give feedback by pointing.
 
@@ -36,6 +40,8 @@ I designed and built the commenting system across the front end and the API. It 
   ]}
   caption="How a comment on the canvas becomes context for the next generation."
 />
+
+<Figure src="/images/projects/remy/comments.webp" alt="Remy's comments sidebar listing three comments, each tagged with the screen it is pinned to, next to the pins on the canvas" caption="Pins on the prototype and the comments sidebar, each comment tagged with the screen it belongs to." plain />
 
 - **Three kinds of comment.** Pins on a specific DOM element, boxes drawn over a region, and pins on generated images, each with threads and a sidebar on the canvas.
 - **Element identification.** Inside a prototype's iframe, the comment tool finds the element under the cursor and highlights it, so feedback is attached to the element rather than just to a coordinate. It keeps working on prototypes that scroll.
