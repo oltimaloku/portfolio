@@ -9,7 +9,7 @@ import { Arrow } from "@/components/folio/primitives";
 
 const NAV = [
   { n: "02", name: "Work", href: "/#work" },
-  { n: "03", name: "Practice", href: "/#practice" },
+  { n: "03", name: "Experience", href: "/#experience" },
   { n: "04", name: "About", href: "/#about" },
   { n: "05", name: "Writing", href: "/articles/" },
 ];

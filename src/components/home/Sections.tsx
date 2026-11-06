@@ -7,7 +7,7 @@ import Reveal from "@/components/folio/Reveal";
 
 export function Practice() {
   return (
-    <section id="practice" className="scroll-mt-24 pt-32 md:pt-48">
+    <section id="experience" className="scroll-mt-24 pt-32 md:pt-48">
       <Sheet>
         <SectionHead
           mark="03"
