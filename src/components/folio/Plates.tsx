@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Project } from "@/lib/types";
-import { cn, formatYears } from "@/lib/utils";
+import { cn, fitTitle, formatYears } from "@/lib/utils";
 import { Arrow, Dimension, Img } from "./primitives";
 import Reveal from "./Reveal";
 import Stack from "./Stack";
@@ -40,7 +40,7 @@ function PlateBar({ project, className }: { project: Project; className?: string
 function Cover({ project, className }: { project: Project; className?: string }) {
   if (!project.cover) {
     return (
-      <div className={cn("grid-ground flex items-center justify-center", className)}>
+      <div className={cn("grid-ground flex min-w-0 items-center justify-center overflow-hidden", className)}>
         <span className="t-display text-[160px] text-gold-faint">{project.numeral}</span>
       </div>
     );
@@ -72,7 +72,7 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
   return (
     <Reveal as="article" className="plate plate-hover group relative bg-paper">
       <PlateBar project={project} />
-      <div className={cn("grid lg:grid-cols-12", flip && "lg:[direction:rtl]")}>
+      <div className={cn("grid grid-cols-[minmax(0,1fr)] lg:grid-cols-12", flip && "lg:[direction:rtl]")}>
         <div className="lg:col-span-7 [direction:ltr] flex flex-col lg:border-r lg:border-gold-faint">
           <Link href={href(project)} className="relative block lg:flex-1" aria-label={`${project.title}: read the case study`}>
             <Cover project={project} className="aspect-[4/3] w-full lg:absolute lg:inset-0 lg:aspect-auto lg:h-full" />
@@ -80,7 +80,7 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
           <Dimension label={`fig. ${project.numeral}.1 — ${project.platform ?? project.title}`} className="px-5 py-3 md:px-7" />
         </div>
 
-        <div className="lg:col-span-5 [direction:ltr] flex flex-col p-6 md:p-10">
+        <div className="@container lg:col-span-5 [direction:ltr] flex flex-col p-6 md:p-10">
           <div className="flex items-center gap-3">
             {project.status && (
               <span className="inline-flex items-center gap-2 t-label-sm text-ink-2">
@@ -90,7 +90,7 @@ export function LargePlate({ project, lookup, flip }: { project: Project; lookup
             )}
           </div>
 
-          <h3 className="mt-5 t-display text-[clamp(56px,6vw,92px)]">
+          <h3 className="mt-5 t-display" style={{ fontSize: fitTitle(project.title, "clamp(56px, 6vw, 92px)") }}>
             <Link href={href(project)} className="hover:text-gold-ink transition-colors duration-300">
               {project.title}
             </Link>
@@ -130,7 +130,7 @@ export function MediumPlate({ project, lookup }: { project: Project; lookup: Loo
   return (
     <Reveal as="article" className="plate plate-hover group relative bg-paper">
       <PlateBar project={project} />
-      <div className="grid md:grid-cols-12">
+      <div className="grid grid-cols-[minmax(0,1fr)] md:grid-cols-12">
         <Link
           href={href(project)}
           className="md:col-span-5 md:border-r md:border-gold-faint"
@@ -138,8 +138,8 @@ export function MediumPlate({ project, lookup }: { project: Project; lookup: Loo
         >
           <Cover project={project} className="aspect-[4/3] md:aspect-auto md:h-full md:min-h-[380px] w-full" />
         </Link>
-        <div className="md:col-span-7 flex flex-col p-6 md:p-10">
-          <h3 className="t-display text-[clamp(48px,4.6vw,72px)]">
+        <div className="@container md:col-span-7 flex flex-col p-6 md:p-10">
+          <h3 className="t-display" style={{ fontSize: fitTitle(project.title, "clamp(48px, 4.6vw, 72px)") }}>
             <Link href={href(project)} className="hover:text-gold-ink transition-colors duration-300">
               {project.title}
             </Link>
@@ -178,13 +178,13 @@ export function SmallPlate({
     <Reveal
       as="article"
       delay={delay}
-      className={cn("plate plate-hover group relative flex flex-col bg-paper p-6 md:p-8 min-h-[300px]", className)}
+      className={cn("@container plate plate-hover group relative flex flex-col bg-paper p-6 md:p-8 min-h-[300px]", className)}
     >
       <div className="flex items-start justify-between">
         <span className="t-display text-[52px] leading-none text-gold-ink">{project.numeral}</span>
         <span className="t-label-sm text-ink-3 pt-2">{formatYears(project.start, project.end)}</span>
       </div>
-      <h3 className="mt-8 t-title text-[32px]">
+      <h3 className="mt-8 t-title" style={{ fontSize: fitTitle(project.title, "32px") }}>
         <Link href={href(project)} className="after:absolute after:inset-0 group-hover:text-gold-ink transition-colors duration-300">
           {project.title}
         </Link>

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllProjects } from "@/lib/content";
-import { formatYears } from "@/lib/utils";
+import { fitTitle, formatYears } from "@/lib/utils";
 import { Catalogue } from "@/components/folio/Plates";
 import { Arrow, SectionHead, Sheet } from "@/components/folio/primitives";
 
@@ -29,14 +29,14 @@ export default function ProjectsPage() {
             <li key={p.slug} className="border-b border-gold-faint">
               <Link
                 href={`/projects/${p.slug}/`}
-                className="group grid grid-cols-[56px_1fr_auto] items-baseline gap-x-6 py-5 transition-colors duration-500 hover:bg-gold-wash md:grid-cols-12 md:px-3"
+                className="group grid grid-cols-[56px_1fr] items-baseline gap-x-6 gap-y-1 py-5 transition-colors duration-500 hover:bg-gold-wash md:grid-cols-12 md:px-3"
               >
-                <span className="t-display text-[28px] text-gold-ink md:col-span-1">{p.numeral}</span>
-                <span className="md:col-span-4">
-                  <span className="t-title text-[26px]">{p.title}</span>
+                <span className="t-display text-[28px] text-gold-ink md:col-span-2 lg:col-span-1">{p.numeral}</span>
+                <span className="@container min-w-0 md:col-span-6 lg:col-span-4">
+                  <span className="t-title" style={{ fontSize: fitTitle(p.title, "26px") }}>{p.title}</span>
                 </span>
-                <span className="hidden text-[16px] text-ink-3 md:col-span-4 md:block">{p.tagline}</span>
-                <span className="t-label-sm text-ink-3 md:col-span-2">{formatYears(p.start, p.end)}</span>
+                <span className="hidden text-[16px] text-ink-3 lg:col-span-4 lg:block">{p.tagline}</span>
+                <span className="col-start-2 t-label-sm text-ink-3 md:col-span-3 md:col-start-auto lg:col-span-2">{formatYears(p.start, p.end)}</span>
                 <Arrow className="hidden text-gold group-hover:translate-x-1 md:col-span-1 md:block md:justify-self-end" />
               </Link>
             </li>

@@ -33,13 +33,13 @@ export default function Hero({ plates }: { plates: number }) {
           </div>
 
           <div className="relative flex min-h-[calc(100svh-68px-44px)] flex-col border border-gold-faint">
-            <div className="grid flex-1 lg:grid-cols-12">
+            <div className="grid flex-1 grid-cols-[minmax(0,1fr)] lg:grid-cols-12">
               {/* Statement */}
               <div className="relative z-10 flex flex-col justify-center px-6 pb-10 pt-6 md:px-12 lg:col-span-5 lg:py-16 lg:pr-0">
                 <p className="t-label text-gold-ink rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
                   Portfolio · {toRoman(now.getFullYear())}
                 </p>
-                <h1 className="mt-6 t-display text-[clamp(84px,10vw,160px)]">
+                <h1 className="mt-6 t-display text-[min(clamp(84px,10vw,150px),22vw)]">
                   <span className="block rise" style={{ "--delay": "0.35s" } as React.CSSProperties}>
                     Olti
                   </span>

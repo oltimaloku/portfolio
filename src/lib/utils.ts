@@ -12,6 +12,16 @@ export function asset(path: string): string {
   return `${BASE_PATH}${path}`;
 }
 
+/**
+ * A font size that shrinks a title so its longest word still fits the nearest
+ * `@container` box. The site's serif faces average under 0.5em per character;
+ * 0.52 leaves a margin. `size` is the size the title would have otherwise.
+ */
+export function fitTitle(title: string, size: string): string {
+  const longest = Math.max(...title.split(/\s+/).map((w) => w.length));
+  return `min(${size}, ${(100 / (longest * 0.52)).toFixed(2)}cqi)`;
+}
+
 const ROMAN: [number, string][] = [
   [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"], [100, "C"], [90, "XC"],
   [50, "L"], [40, "XL"], [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"],

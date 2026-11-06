@@ -41,8 +41,8 @@ export function Practice() {
                   <p className="t-title text-[20px] text-ink-2">{r.org}</p>
                 )}
               </div>
-              <p className="text-[16px] leading-relaxed text-ink-2 md:col-span-4 md:pt-1.5">{r.note}</p>
-              <span className="t-label-sm text-ink-3 md:col-span-2 md:pt-2.5 md:text-right">
+              <p className="text-[16px] leading-relaxed text-ink-2 md:col-span-6 md:pt-1.5 lg:col-span-4">{r.note}</p>
+              <span className="t-label-sm text-ink-3 md:col-span-6 md:col-start-7 lg:col-span-2 lg:col-start-auto lg:pt-2.5 lg:text-right">
                 {r.url ? (
                   <a href={r.url} target="_blank" rel="noopener noreferrer" className="group/site inline-flex items-center gap-1.5 hover:text-ink transition-colors">
                     <span className="link-draw">{r.url.replace(/^https?:\/\/(www\.)?/, "")}</span>

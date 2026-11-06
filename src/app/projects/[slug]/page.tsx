@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getAdjacentProjects, getAllProjects, getProjectBySlug, getProjectSlugs } from "@/lib/content";
-import { cn, formatPeriod } from "@/lib/utils";
+import { cn, fitTitle, formatPeriod } from "@/lib/utils";
 import { mdxComponents } from "@/components/folio/mdx";
 import { Arrow, Dimension, Img, Sheet } from "@/components/folio/primitives";
 import Reveal from "@/components/folio/Reveal";
@@ -56,9 +56,12 @@ export default async function ProjectPage({ params }: PageProps) {
         </nav>
 
         <header className="mt-10 grid gap-10 border-t border-gold-soft pt-10 lg:grid-cols-12 md:mt-14">
-          <div className="lg:col-span-7">
+          <div className="@container lg:col-span-7">
             <p className="t-label text-gold-ink rise">Tavola {project.numeral} of {all.length}</p>
-            <h1 className="mt-4 t-display text-[clamp(72px,11vw,168px)] rise" style={{ "--delay": "0.1s" } as React.CSSProperties}>
+            <h1
+              className="mt-4 t-display rise"
+              style={{ "--delay": "0.1s", fontSize: fitTitle(project.title, "clamp(72px, 11vw, 168px)") } as React.CSSProperties}
+            >
               {project.title}
             </h1>
             <p className="mt-4 t-title text-[clamp(24px,2.4vw,32px)] text-ink-2 max-w-[28ch] rise" style={{ "--delay": "0.2s" } as React.CSSProperties}>
@@ -183,7 +186,7 @@ export default async function ProjectPage({ params }: PageProps) {
               key={label}
               href={`/projects/${p.slug}/`}
               className={cn(
-                "group flex flex-col gap-3 py-8 transition-colors duration-500 hover:bg-gold-wash md:px-8",
+                "@container group flex flex-col gap-3 py-8 transition-colors duration-500 hover:bg-gold-wash md:px-8",
                 dir === "right" && "md:items-end md:text-right md:border-l md:border-gold-soft border-t border-gold-faint md:border-t-0"
               )}
             >
@@ -192,7 +195,9 @@ export default async function ProjectPage({ params }: PageProps) {
                 {label} · Tav. {p.numeral}
                 {dir === "right" && <Arrow className="group-hover:translate-x-1" />}
               </span>
-              <span className="t-display text-[clamp(44px,5vw,72px)]">{p.title}</span>
+              <span className="t-display" style={{ fontSize: fitTitle(p.title, "clamp(44px, 5vw, 72px)") }}>
+                {p.title}
+              </span>
             </Link>
           ))}
         </nav>
