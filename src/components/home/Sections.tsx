@@ -92,15 +92,15 @@ export function About() {
                 I&rsquo;m Olti. I&rsquo;m from Vancouver and in my last term of Computer Science and Business at UBC.
               </p>
               <p>
-                I started as a product manager intern at Edee Care, running an SMS pilot for people with epilepsy, and
+                I started as a product manager intern at{" "}
+                <a href="https://www.edeecare.com" target="_blank" rel="noopener noreferrer" className="text-gold-ink underline decoration-gold-soft underline-offset-4 transition-colors hover:text-ink hover:decoration-gold">Edee Care</a>, running an SMS pilot for people with epilepsy, and
                 stayed on to build their app as the lead mobile
                 engineer. Since then I&rsquo;ve built an AI design canvas at{" "}
-                <a href="https://www.withremy.com" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">Remy</a> in San
-                Francisco and shipped a CRM to nonprofits at{" "}
-                <a href="https://www.meaningful.ca" target="_blank" rel="noopener noreferrer" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">MeaningfulWork</a>.
+                <a href="https://www.withremy.com" target="_blank" rel="noopener noreferrer" className="text-gold-ink underline decoration-gold-soft underline-offset-4 transition-colors hover:text-ink hover:decoration-gold">Remy</a> and shipped a CRM to nonprofits at{" "}
+                <a href="https://www.meaningful.ca" target="_blank" rel="noopener noreferrer" className="text-gold-ink underline decoration-gold-soft underline-offset-4 transition-colors hover:text-ink hover:decoration-gold">MeaningfulWork</a>.
               </p>
               <p>
-                Now I&rsquo;m building <Link href="/projects/neuron/" className="text-ink underline decoration-gold underline-offset-4 hover:decoration-ink">Neuron</Link> on my own: an AI tutor that reads your lecture slides and
+                Now I&rsquo;m building <a href="https://learnwithneuron.com" target="_blank" rel="noopener noreferrer" className="text-gold-ink underline decoration-gold-soft underline-offset-4 transition-colors hover:text-ink hover:decoration-gold">Neuron</a> on my own: an AI tutor that reads your lecture slides and
                 won&rsquo;t let you fake understanding.
               </p>
               <p>

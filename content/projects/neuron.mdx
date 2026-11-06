@@ -82,7 +82,7 @@ Logging the model on every call also caught a real gap: testers were getting Son
 
 ## How I build it
 
-I build Neuron alone, mostly through Claude Code. Testers leave feedback from a tab on every screen of the iPhone app. Each note becomes a GitHub issue with a screenshot and device details, Opus reviews it within minutes, and it can run as its own Claude Code session that fixes it and opens a pull request.
+I build Neuron alone, mostly through [Claude Code](https://claude.com/claude-code). Testers leave feedback from a tab on every screen of the iPhone app. Each note becomes a GitHub issue with a screenshot and device details, Opus reviews it within minutes, and it can run as its own Claude Code session that fixes it and opens a pull request.
 
 An `@claude` agent on GitHub answers questions and proposes fixes. One job with read-only access writes the patch, and a separate guarded job publishes it. Skills in the repo cover verifying the app, finishing a pull request and keeping the benchmark up to date.
 
